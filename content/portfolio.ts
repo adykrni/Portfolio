@@ -104,6 +104,8 @@ export const projects: Project[] = [
 export const callout = {
   eyebrow: "PORTFOLIO is WIP",
   headline: "Want to know more? Please reach out to me for case studies.",
+  subheadline:
+    "Happy to share deeper context on any of the work above—just say hello.",
   ctaLabel: "One click away…",
   ctaHref: "mailto:you@example.com",
 };
