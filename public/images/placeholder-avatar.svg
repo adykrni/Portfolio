@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" fill="#1a1a1a"/>
+  <rect x="0" y="0" width="120" height="120" fill="url(#g)" opacity="0.35"/>
+  <text x="60" y="68" text-anchor="middle" fill="#737373" font-family="ui-monospace, monospace" font-size="14" letter-spacing="0.1em">IMG</text>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#404040"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+</svg>
