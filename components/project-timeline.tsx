@@ -1,3 +1,4 @@
+import { FocusParagraph } from "@/components/focus-mode";
 import { projects } from "@/content/portfolio";
 
 export function ProjectTimeline() {
@@ -15,10 +16,12 @@ export function ProjectTimeline() {
             <article className="timeline__card">
               <h3 className="timeline__title">{project.title}</h3>
               <div className="timeline__body">
-                {project.paragraphs.map((p, i) => (
-                  <p key={`${project.id}-${i}`} className="timeline__p">
-                    {p}
-                  </p>
+                {project.paragraphs.map((segments, i) => (
+                  <FocusParagraph
+                    key={`${project.id}-${i}`}
+                    segments={segments}
+                    className="timeline__p timeline__p--focusable"
+                  />
                 ))}
               </div>
             </article>

@@ -1,3 +1,4 @@
+import { FocusParagraph } from "@/components/focus-mode";
 import { intro } from "@/content/portfolio";
 
 export function IntroSection() {
@@ -6,10 +7,12 @@ export function IntroSection() {
       <h2 id="intro-heading" className="sr-only">
         About
       </h2>
-      {intro.paragraphs.map((text, i) => (
-        <p key={i} className="intro__p">
-          {text}
-        </p>
+      {intro.paragraphs.map((segments, i) => (
+        <FocusParagraph
+          key={i}
+          segments={segments}
+          className="intro__p intro__p--focusable"
+        />
       ))}
     </section>
   );
