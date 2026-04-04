@@ -9,9 +9,7 @@
   --focus: #ffffff;
   --space-section: clamp(3rem, 8vw, 5.5rem);
   --space-p: 1rem;
-  --shell-pad: clamp(1.25rem, 4vw, 2rem);
   --max-read: 38rem;
-  --content-panel-max: 40rem;
 }
 
 *,
@@ -27,13 +25,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--bg);
-  background-image: radial-gradient(
-      120% 80% at 50% -15%,
-      rgba(55, 55, 55, 0.45) 0%,
-      transparent 55%
-    ),
-    linear-gradient(180deg, #0a0a0a 0%, var(--bg) 35%, var(--bg) 100%);
+  background-color: #000000;
   color: var(--text);
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, "Liberation Mono", "Courier New", monospace;
@@ -51,39 +43,6 @@ a {
   color: inherit;
 }
 
-.page-shell {
-  max-width: min(
-    calc(var(--content-panel-max) + 2 * var(--shell-pad)),
-    100%
-  );
-  margin-inline: auto;
-  padding: var(--shell-pad);
-  padding-bottom: clamp(2.5rem, 6vw, 4rem);
-}
-
-/* —— Content panel (#000 surface + main) —— */
-.content-panel {
-  box-sizing: border-box;
-  position: relative;
-  background-color: #000000;
-  padding-block: clamp(1.25rem, 0.75rem, 2rem);
-  /* Mobile: bleed to page-shell edges; inner padding keeps type alignment */
-  width: 100%;
-  max-width: min(var(--content-panel-max), 100%);
-  margin-inline: calc(-1 * var(--shell-pad));
-  padding-inline: var(--shell-pad);
-}
-
-@media (min-width: 768px) {
-  .content-panel {
-    margin-inline: auto;
-    width: min(var(--content-panel-max), 100%);
-    max-width: min(var(--content-panel-max), 100%);
-    border-radius: 10px;
-    padding-inline: 60px;
-  }
-}
-
 .section {
   margin-top: var(--space-section);
 }
@@ -92,37 +51,18 @@ a {
   margin-top: clamp(2rem, 2rem, 3rem);
 }
 
-/* —— Intro lead (avatar + status) —— */
-.intro__lead {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: var(--space-p);
-}
-
-.intro__avatar-wrap {
-  width: 200px;
-  height: 200px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.intro__avatar {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  /* Composites against .content-panel::before + black (halftone blacks lift off the texture) */
-  mix-blend-mode: lighten;
-}
-
 /* —— Intro —— */
 .intro__p {
-  margin: 0 50px var(--space-p) 0;
+  margin: 0 0 var(--space-p) 0;
   color: #b7babc;
   max-width: var(--max-read);
   font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .intro__p {
+    margin-right: 50px;
+  }
 }
 
 .intro__p:last-child {
