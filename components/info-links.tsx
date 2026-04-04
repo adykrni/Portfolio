@@ -1,12 +1,35 @@
+import type { InfoItem } from "@/content/portfolio";
 import { infoItems } from "@/content/portfolio";
 import { InfoGlyph } from "@/components/info-icon";
+
+function InfoLinkIcon({ item }: { item: InfoItem }) {
+  if (item.iconSrc) {
+    return (
+      <img
+        src={item.iconSrc}
+        alt=""
+        className="info__icon-img"
+        width={18}
+        height={18}
+        loading="lazy"
+        decoding="async"
+      />
+    );
+  }
+  return <InfoGlyph name={item.icon ?? "link"} />;
+}
 
 export function InfoLinks() {
   return (
     <section className="info section" aria-label="Quick links">
       <ul className="info__list">
         {infoItems.map((item) => (
-          <li key={item.id} className="info__item">
+          <li
+            key={item.id}
+            className={
+              item.focusMuted ? "info__item info__item--focus-muted" : "info__item"
+            }
+          >
             {item.href ? (
               <a
                 href={item.href}
@@ -14,14 +37,14 @@ export function InfoLinks() {
                 {...(item.external ? { target: "_blank", rel: "noreferrer" } : {})}
               >
                 <span className="info__icon" aria-hidden>
-                  <InfoGlyph name={item.icon} />
+                  <InfoLinkIcon item={item} />
                 </span>
                 <span className="info__label">{item.label}</span>
               </a>
             ) : (
               <span className="info__static">
                 <span className="info__icon" aria-hidden>
-                  <InfoGlyph name={item.icon} />
+                  <InfoLinkIcon item={item} />
                 </span>
                 <span className="info__label">{item.label}</span>
               </span>

@@ -5,9 +5,14 @@ export type InfoItem = {
   label: string;
   href?: string;
   external?: boolean;
-  icon: InfoIcon;
+  /** Asset under /public, e.g. "/images/Email.svg" */
+  iconSrc?: string;
+  /** Inline glyph when no iconSrc */
+  icon?: InfoIcon;
   /** If true, use decorative hover treatment (still a link or span) */
   accentHover?: boolean;
+  /** When Focus mode is on, mute this row (label + icon) like body muted spans */
+  focusMuted?: boolean;
 };
 
 /** Segment for “Focus” mode (normal = single tone; focused = key vs muted). */
@@ -54,30 +59,37 @@ export const infoItems: InfoItem[] = [
   {
     id: "reach",
     label: "Reach out to me",
-    href: "mailto:you@example.com",
-    icon: "message",
+    href: "mailto:adityakulkarni1894@gmail.com",
+    iconSrc: "/images/Email.svg",
   },
   {
     id: "experience",
     label: "Experience so far",
     href: "https://example.com/experience",
     external: true,
-    icon: "briefcase",
-    accentHover: true,
+    iconSrc: "/images/Resume.svg",
+  },
+  {
+    id: "linkedin",
+    label: "Networking circus ID",
+    href: "https://www.linkedin.com/in/adityakulkarni181194/",
+    external: true,
+    iconSrc: "/images/LinkedIn.svg",
+    focusMuted: true,
   },
   {
     id: "location",
     label: "Chillin' in Berlin",
-    href: "https://maps.google.com",
-    external: true,
-    icon: "map",
+    iconSrc: "/images/Location.svg",
+    focusMuted: true,
   },
   {
     id: "music",
     label: "Currently jammin on Kerela Dust",
-    href: "https://example.com/music",
+    href: "https://open.spotify.com/track/4vPK313yxxc4gz9VOzWo4k",
     external: true,
-    icon: "music",
+    iconSrc: "/images/Music.svg",
+    focusMuted: true,
   },
 ];
 

@@ -194,16 +194,30 @@ html[data-focus-mode="on"] .focus-toggle {
 
 .info__icon {
   display: flex;
-  color: var(--text-muted);
+  align-items: center;
+  justify-content: center;
+  color: #b7babc;
   flex-shrink: 0;
 }
 
+.info__icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
 .info__link:hover .info__icon {
-  color: var(--text);
+  color: #b7babc;
+}
+
+.info__link:hover .info__icon-img,
+.info__link--accent:hover .info__icon-img {
+  opacity: 1;
 }
 
 .info__link--accent:hover .info__icon {
-  color: var(--text);
+  color: #b7babc;
 }
 
 .info__label {
@@ -217,6 +231,29 @@ html[data-focus-mode="on"] .focus-toggle {
 .info__link:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 3px;
+}
+
+html[data-focus-mode="on"] .info__item--focus-muted .info__link,
+html[data-focus-mode="on"] .info__item--focus-muted .info__static {
+  color: #6d6d6d;
+  filter: blur(4px);
+  transition: color 0.2s ease, filter 0.2s ease, transform 0.18s ease;
+}
+
+html[data-focus-mode="on"] .info__item--focus-muted .info__link:hover {
+  color: #6d6d6d;
+  transform: none;
+}
+
+html[data-focus-mode="on"] .info__item--focus-muted .info__link:hover .info__label {
+  border-bottom-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-focus-mode="on"] .info__item--focus-muted .info__link,
+  html[data-focus-mode="on"] .info__item--focus-muted .info__static {
+    filter: none;
+  }
 }
 
 /* —— Timeline —— */
