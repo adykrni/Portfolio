@@ -1,3 +1,4 @@
+import { AutoplayVideo } from "@/components/autoplay-video";
 import { FocusModeProvider, FocusToggle } from "@/components/focus-mode";
 import { IntroSection } from "@/components/intro-section";
 import { InfoLinks } from "@/components/info-links";
@@ -14,14 +15,9 @@ export default function Home() {
         <div className="focus-toggle-sticky">
           <FocusToggle />
         </div>
-        <video
-          className="mb-6 w-full max-h-[40vh] rounded-[10px] object-cover mix-blend-screen saturate-2 md:mb-8 md:max-h-[min(50vh,28rem)]"
+        <AutoplayVideo
           src={VIDEO_SRC}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden
+          className="mb-6 w-full max-h-[40vh] rounded-[10px] object-cover mix-blend-screen saturate-2 md:mb-8 md:max-h-[min(50vh,28rem)]"
         />
         <main>
           <IntroSection />
