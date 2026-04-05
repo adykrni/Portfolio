@@ -46,21 +46,6 @@ export function useFocusMode() {
   return ctx;
 }
 
-export function FocusToggle() {
-  const { focused, toggle } = useFocusMode();
-  return (
-    <button
-      type="button"
-      className="focus-toggle"
-      onClick={toggle}
-      aria-pressed={focused}
-      aria-label={focused ? "Exit focus mode" : "Enable focus mode"}
-    >
-      {focused ? "Focus on" : "Focus"}
-    </button>
-  );
-}
-
 export function FocusParagraph({
   segments,
   className,

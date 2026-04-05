@@ -9,8 +9,8 @@ function InfoLinkIcon({ item }: { item: InfoItem }) {
         src={item.iconSrc}
         alt=""
         className="info__icon-img"
-        width={18}
-        height={18}
+        width={24}
+        height={24}
         loading="lazy"
         decoding="async"
       />
