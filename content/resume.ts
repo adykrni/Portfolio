@@ -99,7 +99,7 @@ export const resumeExperience: ResumeExperience[] = [
       },
       {
         id: "e2-c2",
-        client: "Philips",
+        client: "Phillips",
         paragraphs: [
           "Reworked product page experiences for Philips e-commerce through component redesign, motion, and experimentation. Shipped interactive patterns that improved discovery and reduced bounce rates by about 15%.",
         ],

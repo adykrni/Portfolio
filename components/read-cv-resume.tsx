@@ -42,7 +42,7 @@ function BackIcon({ className }: { className?: string }) {
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className={`mb-6 border-b ${cLine} pb-2 text-[0.8125rem] font-normal uppercase leading-snug tracking-[0.04em] ${cMuted}`}
+      className={`mb-6 border-b ${cLine} pb-2 text-[15px] font-normal uppercase leading-snug tracking-[0.04em] ${cMuted}`}
     >
       {children}
     </h2>
@@ -73,12 +73,12 @@ function ResumeStackedItem({
   return (
     <li className="flex flex-col gap-[30px]">
       <div className="flex flex-col gap-[10px]">
-        <p className={`m-0 text-[13px] tabular-nums ${cMuted} sm:text-[14px]`}>
+        <p className={`m-0 text-[14px] tabular-nums ${cMuted} sm:text-[14px]`}>
           {start}
           <span className="text-[#535353]"> — </span>
           {end}
         </p>
-        <h3 className={`m-0 text-[15px] font-semibold leading-snug ${cText} sm:text-[16px]`}>{primary}</h3>
+        <h3 className={`m-0 text-[16px] font-semibold leading-snug ${cText} sm:text-[16px]`}>{primary}</h3>
         <p className={`m-0 text-[14px] ${cBody} sm:text-[13px]`}>{org}</p>
         <p className={`m-0 text-[14px] ${cBody} sm:text-[13px]`}>{location}</p>
       </div>
@@ -93,12 +93,12 @@ function ResumeStackedItem({
             <div key={c.id} className="flex flex-col gap-[10px]">
               <div className="flex items-center gap-[0.65rem] [--timeline-marker-size:10px]">
                 <span className="timeline__marker shrink-0" aria-hidden />
-                <p className={`m-0 text-[14px] font-semibold ${cBodyAlt} md:text-[15px]`}>{c.client}</p>
+                <p className={`m-0 text-[14px] font-normal uppercase ${cBodyAlt}`}>{c.client}</p>
               </div>
               {c.paragraphs.map((para, i) => (
                 <p
                   key={`${id}-${c.id}-p${i}`}
-                  className={`m-0 max-w-[var(--max-read)] text-[14px] leading-[1.65] ${cBody} md:text-[15px]`}
+                  className={`m-0 max-w-[var(--max-read)] text-[16px] leading-[1.65] ${cBody} md:text-[16px]`}
                 >
                   {para}
                 </p>
@@ -170,11 +170,12 @@ export function ReadCvResume() {
           {resumeSkills.groups.map((g) => (
             <div key={g.label}>
               <dt
-                className={`mb-1.5 text-[12px] font-semibold uppercase tracking-[0.08em] ${cMuted}`}
+                className={`mb-1.5 flex items-center gap-[0.65rem] [--timeline-marker-size:10px] text-[14px] font-normal uppercase tracking-[0.08em] ${cMuted}`}
               >
-                {g.label}
+                <span className="timeline__marker shrink-0" aria-hidden />
+                <span>{g.label}</span>
               </dt>
-              <dd className={`max-w-[var(--max-read)] text-[14px] leading-[1.65] ${cBody} md:text-[15px]`}>
+              <dd className={`max-w-[var(--max-read)] text-[16px] leading-[1.65] ${cBody}`}>
                 {g.items}
               </dd>
             </div>
