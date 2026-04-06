@@ -77,17 +77,17 @@ export const infoItems: InfoItem[] = [
     focusMuted: true,
   },
   {
-    id: "location",
-    label: "Chillin' in Berlin",
-    iconSrc: "/images/Location.svg",
-    focusMuted: true,
-  },
-  {
     id: "music",
     label: "Currently jammin on Kerela Dust",
     href: "https://open.spotify.com/track/4vPK313yxxc4gz9VOzWo4k",
     external: true,
     iconSrc: "/images/Music.svg",
+    focusMuted: true,
+  },
+  {
+    id: "location",
+    label: "Livin' in Berlin",
+    iconSrc: "/images/Location.svg",
     focusMuted: true,
   },
 ];

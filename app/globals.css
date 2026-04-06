@@ -225,10 +225,10 @@ html[data-focus-mode="on"] .focus-switch__thumb {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 2px 4px;
+  padding: 6px 8px 6px 6px;
   text-decoration: none;
   color: var(--text);
-  border-radius: 2px;
+  border-radius: 4px;
   align-self: flex-start;
   width: fit-content;
   max-width: 100%;
@@ -236,15 +236,14 @@ html[data-focus-mode="on"] .focus-switch__thumb {
 }
 
 .info__link {
-  /* Inset “outline” animates smoothly (unlike outline); same 1px weight as before. */
-  box-shadow: inset 0 0 0 1px transparent;
+  background-color: transparent;
   transition:
-    color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.26s cubic-bezier(0.33, 1, 0.68, 1);
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.22s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .info__link:hover {
-  box-shadow: inset 0 0 0 1px #b7babc;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .info__link--accent:hover {
@@ -252,7 +251,7 @@ html[data-focus-mode="on"] .focus-switch__thumb {
 }
 
 .info__static {
-  color: var(--text-muted);
+  color: #ffffff;
   cursor: default;
   transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -292,7 +291,6 @@ html[data-focus-mode="on"] .focus-switch__thumb {
 .info__link:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 3px;
-  box-shadow: inset 0 0 0 1px transparent;
 }
 
 .info__link:focus-visible:hover {
@@ -306,12 +304,12 @@ html[data-focus-mode="on"] .info__item--focus-muted .info__static {
   transition:
     color 0.2s ease,
     filter 0.2s ease,
-    box-shadow 0.26s cubic-bezier(0.33, 1, 0.68, 1);
+    background-color 0.22s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 html[data-focus-mode="on"] .info__item--focus-muted .info__link:hover {
   color: #6d6d6d;
-  box-shadow: inset 0 0 0 1px transparent;
+  background-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
