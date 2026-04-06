@@ -58,15 +58,14 @@ export const intro = {
 export const infoItems: InfoItem[] = [
   {
     id: "reach",
-    label: "Reach out to me",
+    label: "Reach me at",
     href: "mailto:adityakulkarni1894@gmail.com",
     iconSrc: "/images/Email.svg",
   },
   {
     id: "experience",
     label: "Experience so far",
-    href: "https://example.com/experience",
-    external: true,
+    href: "/resume",
     iconSrc: "/images/Resume.svg",
   },
   {

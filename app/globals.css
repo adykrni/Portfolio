@@ -217,7 +217,7 @@ html[data-focus-mode="on"] .focus-switch__thumb {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: calc(0.35rem + 5px);
 }
 
 .info__link,
@@ -225,25 +225,36 @@ html[data-focus-mode="on"] .focus-switch__thumb {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.45rem 0;
+  padding: 2px 4px;
   text-decoration: none;
   color: var(--text);
   border-radius: 2px;
-  transition: color 0.18s ease, transform 0.18s ease;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.info__link {
+  /* Inset “outline” animates smoothly (unlike outline); same 1px weight as before. */
+  box-shadow: inset 0 0 0 1px transparent;
+  transition:
+    color 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.26s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .info__link:hover {
-  color: var(--text-muted);
+  box-shadow: inset 0 0 0 1px #b7babc;
 }
 
 .info__link--accent:hover {
   color: var(--text);
-  transform: translateX(4px);
 }
 
 .info__static {
   color: var(--text-muted);
   cursor: default;
+  transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .info__icon {
@@ -275,32 +286,32 @@ html[data-focus-mode="on"] .focus-switch__thumb {
 }
 
 .info__label {
-  border-bottom: 1px solid transparent;
-}
-
-.info__link:hover .info__label {
-  border-bottom-color: rgba(255, 255, 255, 0.25);
+  border-bottom: none;
 }
 
 .info__link:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 3px;
+  box-shadow: inset 0 0 0 1px transparent;
+}
+
+.info__link:focus-visible:hover {
+  outline-color: var(--focus);
 }
 
 html[data-focus-mode="on"] .info__item--focus-muted .info__link,
 html[data-focus-mode="on"] .info__item--focus-muted .info__static {
   color: #6d6d6d;
   filter: blur(4px);
-  transition: color 0.2s ease, filter 0.2s ease, transform 0.18s ease;
+  transition:
+    color 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.26s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 html[data-focus-mode="on"] .info__item--focus-muted .info__link:hover {
   color: #6d6d6d;
-  transform: none;
-}
-
-html[data-focus-mode="on"] .info__item--focus-muted .info__link:hover .info__label {
-  border-bottom-color: transparent;
+  box-shadow: inset 0 0 0 1px transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
