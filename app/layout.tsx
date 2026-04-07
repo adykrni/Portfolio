@@ -9,8 +9,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio (placeholder)",
-  description: "One-page portfolio — replace content in content/portfolio.ts",
+  title: "Aditya Kulkarni - Product designer",
+  description: "Design coherent AI experiences for web and mobile.",
 };
 
 export default function RootLayout({
