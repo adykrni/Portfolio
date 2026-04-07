@@ -8,7 +8,6 @@ export function CalloutSection() {
         <h2 id="callout-headline" className="callout__headline">
           {callout.headline}
         </h2>
-        <p className="callout__sub">{callout.subheadline}</p>
         <a className="callout__cta" href={callout.ctaHref}>
           {callout.ctaLabel}
         </a>

@@ -154,7 +154,7 @@ export const resumeSkills = {
     {
       label: "Leadership",
       items:
-        "Mentoring interns and junior designers, crit culture, stakeholder alignment, design culture governance",
+        "Helping stakeholders to see the value of design, mentoring interns and junior designers, crit culture, design culture governance",
     },
   ],
 };

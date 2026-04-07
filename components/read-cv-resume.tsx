@@ -12,11 +12,13 @@ import {
 
 /** Portfolio tokens: intro / timeline body */
 const cBody = "text-[#b7babc]";
-/** Slightly brighter, used for focusable-adjacent emphasis on home */
-const cBodyAlt = "text-[#c1c1c1]";
 const cMuted = "text-[var(--text-muted)]";
 const cLine = "border-[var(--line)]";
 const cText = "text-[var(--text)]";
+
+/** Long-form resume copy (about, summaries, client bullets, skills <dd>): 16px, #c1c1c1 */
+const readCvBody16 =
+  "max-w-[var(--max-read)] text-[16px] leading-[1.65] text-[#c1c1c1]";
 
 const reachInfoItem = infoItems.find((item) => item.id === "reach");
 
@@ -83,7 +85,7 @@ function ResumeStackedItem({
         <p className={`m-0 text-[14px] ${cBody} sm:text-[13px]`}>{location}</p>
       </div>
       {summary ? (
-        <p className={`m-0 max-w-[var(--max-read)] text-[16px] leading-[1.65] ${cBody} sm:text-[16px]`}>
+        <p className={`m-0 ${readCvBody16}`}>
           {summary}
         </p>
       ) : null}
@@ -93,12 +95,12 @@ function ResumeStackedItem({
             <div key={c.id} className="flex flex-col gap-[10px]">
               <div className="flex items-center gap-[0.65rem] [--timeline-marker-size:10px]">
                 <span className="timeline__marker shrink-0" aria-hidden />
-                <p className={`m-0 text-[14px] font-normal uppercase ${cBodyAlt}`}>{c.client}</p>
+                <p className="timeline__title m-0">{c.client}</p>
               </div>
               {c.paragraphs.map((para, i) => (
                 <p
                   key={`${id}-${c.id}-p${i}`}
-                  className={`m-0 max-w-[var(--max-read)] text-[16px] leading-[1.65] ${cBody} md:text-[16px]`}
+                  className={`m-0 ${readCvBody16}`}
                 >
                   {para}
                 </p>
@@ -127,7 +129,7 @@ export function ReadCvResume() {
         >
           {resumeProfile.name}
         </h1>
-        <p className={`mb-4 max-w-[var(--max-read)] text-[15px] leading-[1.65] ${cBody} md:text-[16px]`}>
+        <p className="mb-4 max-w-[var(--max-read)] text-[15px] leading-[1.65] text-[#c1c1c1] md:text-[16px]">
           {resumeProfile.headline}
         </p>
       </header>
@@ -136,7 +138,7 @@ export function ReadCvResume() {
         <SectionLabel>
           <span id="sec-about">{resumeAbout.title}</span>
         </SectionLabel>
-        <p className={`m-0 max-w-[var(--max-read)] text-[16px] leading-[1.65] ${cBody}`}>
+        <p className={`m-0 ${readCvBody16}`}>
           {resumeAbout.body}
         </p>
       </section>
@@ -169,13 +171,11 @@ export function ReadCvResume() {
         <dl className="grid gap-6">
           {resumeSkills.groups.map((g) => (
             <div key={g.label}>
-              <dt
-                className={`mb-1.5 flex items-center gap-[0.65rem] [--timeline-marker-size:10px] text-[14px] font-normal uppercase tracking-[0.08em] ${cMuted}`}
-              >
+              <dt className="mb-1.5 flex items-center gap-[0.65rem] [--timeline-marker-size:10px]">
                 <span className="timeline__marker shrink-0" aria-hidden />
-                <span>{g.label}</span>
+                <span className="timeline__title">{g.label}</span>
               </dt>
-              <dd className={`max-w-[var(--max-read)] text-[16px] leading-[1.65] ${cBody}`}>
+              <dd className={`m-0 ${readCvBody16}`}>
                 {g.items}
               </dd>
             </div>
