@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Experience & resume — placeholder",
-  description: "Resume and work history (placeholder content).",
+  title: "Adi's portfolio",
+  description: "Here's my work over the last 5 years",
 };
 
 export default function ResumeLayout({
