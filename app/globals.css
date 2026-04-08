@@ -256,6 +256,16 @@ html[data-focus-mode="on"] .focus-switch__thumb {
   transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Same row chrome as “static” info rows, but navigable (e.g. Pitch → home). */
+a.info__static {
+  cursor: pointer;
+}
+
+a.info__static:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
 .info__icon {
   display: flex;
   align-items: center;

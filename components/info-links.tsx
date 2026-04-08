@@ -26,16 +26,29 @@ export function InfoLinkRow({ item }: { item: InfoItem }) {
       className={item.focusMuted ? "info__item info__item--focus-muted" : "info__item"}
     >
       {item.href ? (
-        <a
-          href={item.href}
-          className={`info__link${item.accentHover ? " info__link--accent" : ""}`}
-          {...(item.external ? { target: "_blank", rel: "noreferrer" } : {})}
-        >
-          <span className="info__icon" aria-hidden>
-            <InfoLinkIcon item={item} />
-          </span>
-          <span className="info__label">{item.label}</span>
-        </a>
+        item.staticChrome ? (
+          <a
+            href={item.href}
+            className="info__static"
+            {...(item.external ? { target: "_blank", rel: "noreferrer" } : {})}
+          >
+            <span className="info__icon" aria-hidden>
+              <InfoLinkIcon item={item} />
+            </span>
+            <span className="info__label">{item.label}</span>
+          </a>
+        ) : (
+          <a
+            href={item.href}
+            className={`info__link${item.accentHover ? " info__link--accent" : ""}`}
+            {...(item.external ? { target: "_blank", rel: "noreferrer" } : {})}
+          >
+            <span className="info__icon" aria-hidden>
+              <InfoLinkIcon item={item} />
+            </span>
+            <span className="info__label">{item.label}</span>
+          </a>
+        )
       ) : (
         <span className="info__static">
           <span className="info__icon" aria-hidden>

@@ -13,6 +13,11 @@ export type InfoItem = {
   accentHover?: boolean;
   /** When Focus mode is on, mute this row (label + icon) like body muted spans */
   focusMuted?: boolean;
+  /**
+   * When set with href, render a link using `info__static` chrome (same as
+   * non-link rows like “Livin' in Berlin”): no hover fill, muted row styling.
+   */
+  staticChrome?: boolean;
 };
 
 /** Segment for “Focus” mode (normal = single tone; focused = key vs muted). */

@@ -1,10 +1,23 @@
 import Image from "next/image";
-import Link from "next/link";
+import type { InfoItem } from "@/content/portfolio";
 import { infoItems } from "@/content/portfolio";
+import { InfoLinkRow } from "@/components/info-links";
 
-const REACH_HREF =
-  infoItems.find((i) => i.id === "reach")?.href ??
-  "mailto:adityakulkarni1894@gmail.com";
+const reachItem: InfoItem =
+  infoItems.find((i) => i.id === "reach") ?? {
+    id: "reach",
+    label: "Reach me at",
+    href: "mailto:adityakulkarni1894@gmail.com",
+    iconSrc: "/images/Email.svg",
+  };
+
+/** Icon + Portfolio: Location icon, `info__link` chrome — same hover as “Reach me at”. */
+const portfolioPitchLink = {
+  id: "pitch-portfolio",
+  label: "Portfolio",
+  href: "/",
+  iconSrc: "/images/Location.svg",
+} satisfies InfoItem;
 
 function SectionLabel({
   children,
@@ -244,37 +257,11 @@ export default function PitchPage() {
           at Peec AI right now — and collaborating to build a system for your
           next phase.
         </p>
-        <nav aria-label="Pitch links" className="flex flex-col gap-2.5">
-          <a
-            href={REACH_HREF}
-            className="info__link !font-normal !text-[16px] !leading-[1.4] !tracking-normal"
-          >
-            <span className="info__icon">
-              <Image
-                src="/images/pitch/reach.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="info__icon-img size-5 max-h-5 max-w-5"
-              />
-            </span>
-            <span className="info__label">Reach me at</span>
-          </a>
-          <Link
-            href="/"
-            className="info__link !font-normal !text-[16px] !leading-[1.4] !tracking-normal"
-          >
-            <span className="info__icon">
-              <Image
-                src="/images/pitch/portfolio.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="info__icon-img size-5 max-h-5 max-w-5"
-              />
-            </span>
-            <span className="info__label">Portfolio</span>
-          </Link>
+        <nav aria-label="Pitch links">
+          <ul className="info__list">
+            <InfoLinkRow item={reachItem} />
+            <InfoLinkRow item={portfolioPitchLink} />
+          </ul>
         </nav>
       </footer>
     </article>
