@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Aditya Kulkarni - AI first designer",
-  description: "Here's my work over the last 5 years",
+  title: "Aditya Kulkarni - Product designer",
+  description: "Design coherent AI experiences for web and mobile.",
 };
 
 export default function ResumeLayout({
