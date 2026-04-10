@@ -19,6 +19,10 @@ const portfolioPitchLink = {
   iconSrc: "/images/Location.svg",
 } satisfies InfoItem;
 
+/** Figma node 4487:1578 — background + overlay + divider assets. */
+const IN_PRACTICE_BG = "/images/pitch/in-practice-bg.png";
+const IN_PRACTICE_DIVIDER = "/images/pitch/in-practice-divider.svg";
+
 function SectionLabel({
   children,
   variant,
@@ -61,23 +65,22 @@ function BodyText({ children }: { children: React.ReactNode }) {
 
 type PitchCardProps = {
   title: string;
-  iconSrc: string;
+  /** Filled circle next to the title (matches former icon swatches). */
+  markerColor: string;
   children: React.ReactNode;
 };
 
-function PitchCard({ title, iconSrc, children }: PitchCardProps) {
+function PitchCard({ title, markerColor, children }: PitchCardProps) {
   return (
-    <div className="relative isolate flex h-auto min-h-[175px] w-full max-w-[400px] flex-col gap-[10px] overflow-hidden rounded-[6px] border border-[#303030] bg-[#111] p-5 sm:shrink-0 sm:w-[400px]">
-      <div className="relative z-10 flex flex-col gap-[10px]">
+    <div className="relative isolate flex min-h-[150px] w-full flex-col gap-[10px] overflow-hidden rounded-[6px] border border-[#303030] bg-[#111] p-5">
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col gap-[10px]">
         <div className="flex items-center gap-2.5">
-          <Image
-            src={iconSrc}
-            alt=""
-            width={10}
-            height={10}
-            className="h-[10px] w-[10px] shrink-0"
+          <span
+            className="size-[10px] shrink-0 rounded-full"
+            style={{ backgroundColor: markerColor }}
+            aria-hidden
           />
-          <h3 className="m-0 text-[16px] font-semibold leading-none tracking-[0.16px] text-white">
+          <h3 className="m-0 text-[14px] font-semibold leading-none tracking-[0.16px] text-white">
             {title}
           </h3>
         </div>
@@ -104,7 +107,7 @@ export default function PitchPage() {
       <div className="mx-auto mb-16 flex max-w-[648px] flex-col gap-2.5 md:mb-[88px]">
         <SectionLabel variant="diamond">MADE FOR PEEC AI</SectionLabel>
         <p
-          className="m-0 bg-clip-text text-[30px] font-normal leading-[1.4] text-#c1c1c1"
+          className="m-0 text-[30px] font-normal leading-[1.4] text-[#c1c1c1]"
         >
           Designing future-proof, and scalable design systems for the next era
           of AI products.
@@ -170,40 +173,27 @@ export default function PitchPage() {
         </BodyText>
       </section>
 
-      <div className="mx-auto mb-20 flex flex-wrap justify-center gap-10 rounded-[10px] p-6 md:p-10 lg:mb-24">
+      <div className="mx-auto mb-20 flex w-full max-w-[648px] flex-col gap-10 rounded-[10px] py-6 sm:max-w-[547px] md:py-10 lg:mb-24">
         <PitchCard
           title="PRODUCT COLLABORATION"
-          iconSrc="/images/pitch/icon-product.svg"
+          markerColor="#40B0FF"
         >
-          Embedded with PMs to design features end-to-end — not handing off
-          specs, but shaping requirements before a pixel is drawn.
+          Approaching product collaboration as a shared system - not a handoff, but aligning design, engineering, and product through clear structures and decisions.
         </PitchCard>
         <PitchCard
-          title="TOKEN ARCHITECTURE"
-          iconSrc="/images/pitch/icon-token.svg"
+          title="API-FIRST DESIGN SYSTEM"
+          markerColor="#FFC35C"
         >
-          Designing semantic, multibrand token systems from scratch —
-          structured so they flex across web, mobile, and future surfaces
-          without being rewritten.
-        </PitchCard>
-        <PitchCard
-          title="COMPONENT LEVEL UI/UX"
-          iconSrc="/images/pitch/icon-component.svg"
-        >
-          Building component libraries that teams actually use — documented,
-          predictable, and faster to ship with than without.
+          Designing systems as APIs, where each component has explicit meaning, structure, contracts, and usage rules enabling reliable UI generation by both engineers and AI tools.
         </PitchCard>
         <PitchCard
           title="AI-ENABLED WORKFLOW"
-          iconSrc="/images/pitch/icon-ai.svg"
+          markerColor="#B184FF"
         >
-          Using AI tooling to move faster without losing craft — from
-          generative explorations to automated component documentation and design
-          QA.
+          Designing workflows that integrate AI as a collaborator—structuring systems and inputs so AI can reliably generate, assist, and scale outputs.
         </PitchCard>
-        <PitchCard title="AAA ACCESSIBILITY" iconSrc="/images/pitch/icon-a11y.svg">
-          Accessibility built into the system at the token and component level
-          — so every team ships inclusively by default, not as an afterthought.
+        <PitchCard title="ACCESSIBILITY" markerColor="#FF2084">
+          Building with AAA compliance ensuring interfaces are usable across a wide range, resulting in more inclusive and robust products.
         </PitchCard>
       </div>
 
@@ -216,26 +206,60 @@ export default function PitchPage() {
         </h2>
         <SectionLabel variant="marker">IN PRACTICE</SectionLabel>
 
-        <div className="flex w-full flex-col gap-5">
-          <div className="flex flex-col gap-[10px] rounded-[6px] border border-[#303030] bg-[#111] p-5">
-            <p className="m-0 text-[16px] font-medium leading-none tracking-[0.16px] text-white">
-              KLM HOLIDAYS
-            </p>
-            <p className="m-0 text-[16px] font-normal leading-[1.3] text-[#c1c1c1]">
-              Built their design system from the ground up. Enabled product
-              teams to ship and iterate A/B pages independently — removing design
-              as the bottleneck on every test cycle.
-            </p>
+        {/* Figma 4487:1578 — single card, bg image + rgba(0,0,0,0.2), 40px padding & gaps */}
+        <div className="relative flex w-full flex-col gap-10 rounded-[6px] border border-solid border-[#303030] p-10">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[6px]">
+            <img
+              src={IN_PRACTICE_BG}
+              alt=""
+              className="absolute max-w-none"
+              style={{
+                height: "123.49%",
+                width: "106.42%",
+                left: "-3.21%",
+                top: "-11.74%",
+              }}
+            />
           </div>
-          <div className="flex flex-col gap-[10px] rounded-[6px] border border-[#303030] bg-[#111] p-5">
-            <p className="m-0 text-[16px] font-medium leading-none tracking-[0.16px] text-white">
-              AUDI
-            </p>
-            <p className="m-0 text-[16px] font-normal leading-[1.3] text-[#c1c1c1]">
-              Core member on a multibrand system redesign. Refactored the full
-              token architecture and rebuilt all components for web and mobile —
-              designed to flex across products without forking.
-            </p>
+          <div
+            className="pointer-events-none absolute inset-0 rounded-[6px] bg-[rgba(0,0,0,0.2)]"
+            aria-hidden
+          />
+
+          <div className="relative z-10 flex w-full flex-col gap-10">
+            <div className="flex w-full flex-col gap-[10px]">
+              <p className="m-0 text-[16px] font-medium leading-none tracking-[0.16px] text-white">
+                LORYN
+              </p>
+              <p className="m-0 w-full text-[16px] font-normal leading-[1.3] text-[#c1c1c1]">
+                Currently designing a system for an AI-native product, where
+                complex tasks like requesting services, resolving issues, or
+                navigating policies, are simplified through clear, structured
+                components.
+              </p>
+            </div>
+
+            <div className="relative h-px w-full shrink-0">
+              <Image
+                src={IN_PRACTICE_DIVIDER}
+                alt=""
+                width={568}
+                height={1}
+                className="block h-px w-full max-w-none"
+              />
+            </div>
+
+            <div className="flex w-full flex-col gap-[10px]">
+              <p className="m-0 text-[16px] font-medium leading-none tracking-[0.16px] text-white">
+                AUDI
+              </p>
+              <p className="m-0 w-full text-[16px] font-normal leading-[1.3] text-[#c1c1c1]">
+                Core member on a multibrand system redesign. Refactored the token
+                architecture and rebuilt all components for web and mobile,
+                improving delivery cycles, and designed to flex across products
+                without forking.
+              </p>
+            </div>
           </div>
         </div>
       </section>
