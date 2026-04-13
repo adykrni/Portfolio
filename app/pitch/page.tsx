@@ -23,6 +23,48 @@ const portfolioPitchLink = {
 const IN_PRACTICE_BG = "/images/pitch/in-practice-bg.png";
 const IN_PRACTICE_DIVIDER = "/images/pitch/in-practice-divider.svg";
 
+const AUDI_DESIGN_SYSTEM_LIBRARY_URL =
+  "https://oneaudi.github.io/unified-web/?path=/docs/introduction--documentation&globals=viewport.value:mobile2";
+
+function ExternalLinkGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width={16}
+      height={16}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <polyline
+        points="15 3 21 3 21 9"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <line
+        x1="10"
+        y1="14"
+        x2="21"
+        y2="3"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function SectionLabel({
   children,
   variant,
@@ -259,6 +301,15 @@ export default function PitchPage() {
                 improving delivery cycles, and designed to flex across products
                 without forking.
               </p>
+              <a
+                href={AUDI_DESIGN_SYSTEM_LIBRARY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex w-fit max-w-full items-center gap-2 rounded border border-[#303030] bg-transparent px-3 py-2 text-[14px] font-medium leading-none text-[#c1c1c1] transition-colors hover:bg-[#c1c1c1]/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1c1c1]"
+              >
+                Audi design system library
+                <ExternalLinkGlyph className="shrink-0 text-[#c1c1c1]" />
+              </a>
             </div>
           </div>
         </div>
