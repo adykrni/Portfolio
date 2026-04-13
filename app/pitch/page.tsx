@@ -7,7 +7,8 @@ const reachItem: InfoItem =
   infoItems.find((i) => i.id === "reach") ?? {
     id: "reach",
     label: "Reach me at",
-    href: "mailto:adityakulkarni1894@gmail.com",
+    href: "https://calendly.com/adityakulkarni1894",
+    external: true,
     iconSrc: "/images/Email.svg",
   };
 
