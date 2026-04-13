@@ -212,7 +212,7 @@ export default function PitchPage() {
           I&apos;ve built and scaled design systems at enterprise level — not
           as a contributor, but as the person who establishes the foundation,
           understands problems across teams, and puts the system as the core
-          product layer. My work spans five areas:
+          product layer. I bring value in these four areas.
         </BodyText>
       </section>
 
@@ -221,22 +221,22 @@ export default function PitchPage() {
           title="PRODUCT COLLABORATION"
           markerColor="#40B0FF"
         >
-          Approaching product collaboration as a shared system - not a handoff, but aligning design, engineering, and product through clear structures and decisions.
+          Approaching product collaboration as a shared system - not a handoff, but aligning stakeholders early, make well reasoned trade-offs that teams can actually ship through clear structures and decisions.
         </PitchCard>
         <PitchCard
           title="API-FIRST DESIGN SYSTEM"
           markerColor="#FFC35C"
         >
-          Designing systems as APIs, where each component has explicit meaning, structure, contracts, and usage rules enabling reliable UI generation by both engineers and AI tools.
+          Components built with explicit contracts — props, states, usage rules, so engineers and AI tools can generate UI reliably without guessing intent. Fully documented so that teams can work with autonomy.
         </PitchCard>
         <PitchCard
           title="AI-ENABLED WORKFLOW"
           markerColor="#B184FF"
         >
-          Designing workflows that integrate AI as a collaborator—structuring systems and inputs so AI can reliably generate, assist, and scale outputs.
+          Designing workflows that integrate AI as a collaborator — structuring systems and inputs so AI can reliably assist, removing bottlenecks wherever they appear.
         </PitchCard>
         <PitchCard title="ACCESSIBILITY" markerColor="#FF2084">
-          Building with AAA compliance ensuring interfaces are usable across a wide range, resulting in more inclusive and robust products.
+          Accessibility built into the token and component layer from the start — not retrofitted, not a checklist, enabling AAA compliance to produce better products.
         </PitchCard>
       </div>
 
@@ -308,7 +308,7 @@ export default function PitchPage() {
                 rel="noopener noreferrer"
                 className="mt-2 inline-flex w-fit max-w-full items-center gap-2 rounded border border-[#303030] bg-transparent px-3 py-2 text-[14px] font-medium leading-none text-[#c1c1c1] transition-colors hover:bg-[#c1c1c1]/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c1c1c1]"
               >
-                Audi design system library
+                Audi design system
                 <ExternalLinkGlyph className="shrink-0 text-[#c1c1c1]" />
               </a>
             </div>
