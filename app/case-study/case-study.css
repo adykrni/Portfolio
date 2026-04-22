@@ -1,0 +1,47 @@
+/* All paragraph copy uses PP Radio Grotesk Regular (see app/case-study/layout.tsx). */
+.case-study p {
+  font-family: var(--font-pp-radio-grotesk), ui-sans-serif, system-ui, sans-serif;
+  font-style: normal;
+}
+
+/* Headlines / labels that intentionally stay Geist Mono (Tailwind `font-mono` on the element). */
+.case-study p.font-mono,
+.case-study p.font-mono span {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Scoped tokens for the case study (dark + mono, portfolio-aligned). */
+.case-study {
+  --cs-ink: #e6e6e6;
+  --cs-ink-2: #a1a1a1;
+  --cs-ink-3: #8a8a8a;
+  --cs-ink-4: #6d6d6d;
+  --cs-paper: #0a0a0a;
+  --cs-paper-2: #111111;
+  --cs-paper-3: #161616;
+  --cs-border: #303030;
+  --cs-accent: #6b8fd8;
+  --cs-accent-deep: #4a6ead;
+  --cs-accent-light: rgba(107, 143, 216, 0.14);
+  --cs-signal: #c94a1e;
+  --cs-signal-light: rgba(201, 74, 30, 0.16);
+  --cs-green: #3d9a6a;
+  --cs-upside: #3d9a6a;
+  --cs-risk: #c97a4a;
+  --cs-line: #2a2a2a;
+}
+
+.case-study__quote {
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.case-study__display-num {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
