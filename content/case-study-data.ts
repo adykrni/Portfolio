@@ -12,7 +12,7 @@ export const caseStudyProduct = {
 
 export const caseStudyMeta = {
   titleLines: ["Wealth at a glance.", "Decisions made with confidence."],
-  lead: `A dashboard experience designed around the way high-net-worth clients actually think about their money — not as a list of transactions to review, but a picture of where their wealth is going and why.`,
+  lead: `A dashboard experience designed around the way high-net-worth individuals actually think about their money — not as a list of transactions to review, but a picture of where their wealth is going and why.`,
 } as const;
 
 export const caseStudyHeroMeta = [
@@ -22,23 +22,22 @@ export const caseStudyHeroMeta = [
   {
     label: "My role",
     value:
-      "Finding the problem, challenging assumptions, alignign stakeholders, and delivering the right solutions.",
+      "Finding the right problem, challenging assumptions, alignign stakeholders, and delivering the right solutions.",
   },
 ] as const;
 
 export const caseStudyProblem = {
   marker: "UNDERSTANDING THE PROBLEM",
   /** 24px Geist mono line */
-  headline: `Wealthy clients don't distrust their bank. They distrust interfaces that make them feel like they cannot understand their own money.`,
+  headline: `Wealthy clients don't distrust their bank - they quietly resent the digital experience it gives them. The interface that makes them feel like a stranger to their own money is the one they'll eventually stop using.`,
   bodyRuns: [
-    { text: "I’m not saying anything new here, but we all know data driven dashboard are not efficient for users. A high-net-worth individual", tone: "muted" as const },
-    { text: " managing his money needs the right orientation.", tone: "default" as const },
+    { text: "I’m not saying anything new here, but we all know most of the dashboards are not efficient for users.", tone: "muted" as const },
+    { text: " A HNWI user managing his money needs the right orientation.", tone: "default" as const },
     { text: " The moment a financial interface requires effort to parse, it has already failed. ", tone: "default" as const },
     { text: "I spoke with", tone: "muted" as const },
     { text: " 17 users ", tone: "default" as const },
     { text: "to understand their struggle, and", tone: "muted" as const },
-    { text: " conducted workshops for our product teams, and where they stand. ", tone: "default" as const },
-    { text: "The challenge was to design a data where understanding arrives before the user has to ask for it.", tone: "muted" as const },
+    { text: " conducted workshops for our product teams, to understand the product itself.", tone: "default" as const },
   ] as const,
 } as const;
 
@@ -50,12 +49,12 @@ export const caseStudyChallenge = {
     "KPI driven design",
     "Consistent design across pages",
   ] as const,
-  body: `Sounds simple, but the reality was different. To reach there it needed a lot of convincing for our stakeholders. It’s not easy to make changes, specially when money is involved.`,
+  body: `The challenge was to design data - where understanding arrives before the user has to ask for it. Sounds simple, but the reality was different. To reach there it needed a lot of convincing, and tradeoffs for our stakeholders, specially when money is involved.`,
 } as const;
 
 export const caseStudySolution = {
   marker: "THE SOLUTION",
-  introHeadline: "Designing control surfaces that bring clarity, and give users control.",
+  introHeadline: "Designing surfaces that bring clarity, and give user the right intent.",
   /** Full-width solution hero visual (replaces previous placeholder). */
   wideVisual: {
     src: "/images/Visual-1.svg" as const,
@@ -74,7 +73,7 @@ export const caseStudyDashboard = {
     { text: "they need to feel oriented to their broader position.", tone: "default" as const },
     { text: " The dashboard is designed to answer the two questions a user asks every time they open the app:", tone: "muted" as const },
   ] as const,
-  copyQuestions: `"How is my wealth sitting?" and "Is there anything I need to do?"`,
+  copyQuestions: `"How does my wealth look like?" and "Is there anything I need to do?"`,
   copyParagraph2Runs: [
     { text: "The carousel places the answers to the first question - ", tone: "muted" as const },
     { text: "net wealth, portfolio performance, market context, asset allocation — in a single horizontal band, browsable without commitment.", tone: "default" as const },
@@ -89,7 +88,7 @@ export const caseStudyQuickAction = {
     { text: "Quick action card", tone: "default" as const },
     { text: " that does one thing: ", tone: "muted" as const },
     { text: "tell the user exactly where they stand, in the context they're currently looking at.", tone: "default" as const },
-    { text: " It adapts to their filters. It moves with their money. And it requires nothing from them except a glance.", tone: "muted" as const },
+    { text: " It adapts to their filters. It moves with their money and it requires nothing from them except a glance.", tone: "muted" as const },
   ] as const,
   /** Wide panoramic visual: fixed height strip, horizontal scroll (scrollbar hidden). */
   visual: {
