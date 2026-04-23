@@ -8,7 +8,7 @@ const ppRadioGrotesk = localFont({
 });
 
 /**
- * PP Radio Grotesk Regular for body; Geist Mono via `font-mono` on non-paragraph elements (e.g. spans, headings).
+ * Case study: light page (white bg), PP Radio Grotesk body; Geist Mono via `font-mono` where used.
  */
 export default function CaseStudyLayout({
   children,
@@ -17,7 +17,7 @@ export default function CaseStudyLayout({
 }) {
   return (
     <div
-      className={`${ppRadioGrotesk.className} ${ppRadioGrotesk.variable} min-h-dvh bg-black antialiased text-[#757575]`}
+      className={`${ppRadioGrotesk.className} ${ppRadioGrotesk.variable} min-h-dvh bg-white antialiased text-neutral-600`}
     >
       {children}
     </div>

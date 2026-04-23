@@ -1,3 +1,35 @@
+.case-study ::selection {
+  background: rgba(23, 23, 23, 0.12);
+}
+
+/* Vertical scroll without visible scrollbar (trackpad / touch / wheel still work). */
+.case-study__scroll-y-hidden {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.case-study__scroll-y-hidden::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Horizontal scroll without visible scrollbar (trackpad / touch / shift+wheel / drag still work). */
+.case-study__scroll-x-hidden {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.case-study__scroll-x-hidden::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 /* All paragraph copy uses PP Radio Grotesk Regular (see app/case-study/layout.tsx). */
 .case-study p {
   font-family: var(--font-pp-radio-grotesk), ui-sans-serif, system-ui, sans-serif;
@@ -11,25 +43,25 @@
     Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-/* Scoped tokens for the case study (dark + mono, portfolio-aligned). */
+/* Scoped tokens for the case study (light, readable on white). */
 .case-study {
-  --cs-ink: #e6e6e6;
-  --cs-ink-2: #a1a1a1;
-  --cs-ink-3: #8a8a8a;
-  --cs-ink-4: #6d6d6d;
-  --cs-paper: #0a0a0a;
-  --cs-paper-2: #111111;
-  --cs-paper-3: #161616;
-  --cs-border: #303030;
-  --cs-accent: #6b8fd8;
-  --cs-accent-deep: #4a6ead;
-  --cs-accent-light: rgba(107, 143, 216, 0.14);
-  --cs-signal: #c94a1e;
-  --cs-signal-light: rgba(201, 74, 30, 0.16);
-  --cs-green: #3d9a6a;
-  --cs-upside: #3d9a6a;
-  --cs-risk: #c97a4a;
-  --cs-line: #2a2a2a;
+  --cs-ink: #171717;
+  --cs-ink-2: #404040;
+  --cs-ink-3: #525252;
+  --cs-ink-4: #737373;
+  --cs-paper: #ffffff;
+  --cs-paper-2: #f5f5f4;
+  --cs-paper-3: #e7e5e4;
+  --cs-border: #e5e5e5;
+  --cs-accent: #4f6fbf;
+  --cs-accent-deep: #3d5a9e;
+  --cs-accent-light: rgba(79, 111, 191, 0.1);
+  --cs-signal: #b45309;
+  --cs-signal-light: rgba(180, 83, 9, 0.1);
+  --cs-green: #15803d;
+  --cs-upside: #15803d;
+  --cs-risk: #c2410c;
+  --cs-line: #e5e5e5;
 }
 
 .case-study__quote {

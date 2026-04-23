@@ -56,12 +56,19 @@ export const caseStudyChallenge = {
 export const caseStudySolution = {
   marker: "THE SOLUTION",
   introHeadline: "Designing control surfaces that bring clarity, and give users control.",
-  placeHolderWide: "VISUAL DESIGN WILL GO HERE",
+  /** Full-width solution hero visual (replaces previous placeholder). */
+  wideVisual: {
+    src: "/images/Visual-1.svg" as const,
+    alt: "Deutsche Wealth Online — visual design overview: dashboard components, filters, and mobile payment flows.",
+  },
 } as const;
 
 export const caseStudyDashboard = {
   label: "Dashboard",
-  placeHolderVideo: "VIDEO WILL GO HERE",
+  video: {
+    src: "/video/Dashboard.webm" as const,
+    title: "Dashboard experience — walkthrough of the client orientation flow",
+  },
   copyIntroRuns: [
     { text: "Before a client takes any single action, ", tone: "muted" as const },
     { text: "they need to feel oriented to their broader position.", tone: "default" as const },
@@ -84,7 +91,11 @@ export const caseStudyQuickAction = {
     { text: "tell the user exactly where they stand, in the context they're currently looking at.", tone: "default" as const },
     { text: " It adapts to their filters. It moves with their money. And it requires nothing from them except a glance.", tone: "muted" as const },
   ] as const,
-  placeHolder: "VISUAL DESIGN WILL GO HERE",
+  /** Wide panoramic visual: fixed height strip, horizontal scroll (scrollbar hidden). */
+  visual: {
+    src: "/images/Visual-2.svg" as const,
+    alt: "Quick Action and outflow: three side-by-side cards — cash outflow, upcoming outflow, and recurring outflow",
+  },
   howHelpsTitle: "How this helps?",
   howHelpsItems: [
     "The outflow figure always reflects exactly what the user is looking at — their current numbers.",
@@ -103,6 +114,10 @@ export const caseStudyFourViews = {
       id: "all",
       title: "All payments page",
       body: "The complete picture. Every outbound movement across all portfolios, filterable by portfolio, counterparty, date, or status. The summary card shows the total in context; the chart shows whether this month looks like last month. For clients who want the full view before drilling into anything.",
+      video: {
+        src: "/video/ALL%20payments.webm" as const,
+        title: "All payments page — walkthrough",
+      },
     },
     {
       id: "sched",
