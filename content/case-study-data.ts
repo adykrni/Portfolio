@@ -66,7 +66,7 @@ export const caseStudySolution = {
 export const caseStudyDashboard = {
   label: "Dashboard",
   video: {
-    src: "/video/Dashboard.webm" as const,
+    src: "/video/Dashboard%20overview.mp4" as const,
     title: "Dashboard experience — walkthrough of the client orientation flow",
   },
   copyIntroRuns: [
@@ -108,14 +108,13 @@ export const caseStudyQuickAction = {
 
 export const caseStudyFourViews = {
   title: "Four views, one mental model",
-  placeHolder: "VIDEO WILL GO HERE",
   items: [
     {
       id: "all",
       title: "All payments page",
       body: "The complete picture. Every outbound movement across all portfolios, filterable by portfolio, counterparty, date, or status. The summary card shows the total in context; the chart shows whether this month looks like last month. For clients who want the full view before drilling into anything.",
       video: {
-        src: "/video/ALL%20payments.webm" as const,
+        src: "/video/allPayments.mp4" as const,
         title: "All payments page — walkthrough",
       },
     },
@@ -123,11 +122,19 @@ export const caseStudyFourViews = {
       id: "sched",
       title: "Scheduled payments",
       body: "What is coming, and when. The chart maps upcoming payment volume by date — tapping a bar surfaces exactly which payments fall on that day, with the counterparty and amount visible without opening anything. Designed for clients who plan ahead and want no surprises.",
+      video: {
+        src: "/video/Scheduled.mp4" as const,
+        title: "Scheduled payments — walkthrough",
+      },
     },
     {
       id: "standing",
       title: "Standing orders",
       body: "The obligations that run themselves — staff, property, subscriptions, custodian fees. A horizontal bar chart makes the relative cost of each instruction immediately visible. For clients who rarely visit this page but want instant legibility when they do.",
+      video: {
+        src: "/video/Recurring.mp4" as const,
+        title: "Standing orders — walkthrough",
+      },
     },
   ] as const,
 } as const;
@@ -178,7 +185,7 @@ export const caseStudyClosing = {
 
 export const caseStudyOutro = {
   label: "OUTRO",
-  line: "Looking forward to sharing more work with you.",
+  line: "Thank you for your time, let me know if you need anything more.",
   reachLabel: "Reach me at",
   portfolioLabel: "Portfolio",
 } as const;

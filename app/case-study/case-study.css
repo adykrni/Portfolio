@@ -30,6 +30,44 @@
   height: 0;
 }
 
+/*
+ * Case-study loop videos: hide the 1px seam some engines draw between
+ * the video layer and bg (not in source). Combines no border paint + overlap +
+ * nudge; bg fills any in-box gap.
+ */
+.case-study__video-wrap {
+  overflow: hidden;
+  border-radius: 6px;
+  /* Same as case-study card padding bg (Tailwind neutral-100) */
+  background: #f5f5f5;
+  line-height: 0;
+}
+
+.case-study__video-frame {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 0;
+}
+
+.case-study__video-frame .case-study__video-el {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  /* Fill letterboxing inside the <video> box; avoids 1px grey flash */
+  background: #fff;
+  /* Pull paint over the area below; kills compositor hairline on most engines */
+  margin-bottom: -3px;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
 /* All paragraph copy uses PP Radio Grotesk Regular (see app/case-study/layout.tsx). */
 .case-study p {
   font-family: var(--font-pp-radio-grotesk), ui-sans-serif, system-ui, sans-serif;

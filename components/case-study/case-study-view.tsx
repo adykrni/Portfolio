@@ -24,16 +24,6 @@ const calendlyHref =
 /** Text column (600px); media placeholders stay full width of 1100px shell. */
 const proseNarrow = "w-full max-w-[600px] mx-auto";
 
-function Mono({
-  className = "",
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return <span className={`font-mono ${className}`}>{children}</span>;
-}
-
 function Runs({
   runs,
   className = "",
@@ -60,33 +50,16 @@ function Runs({
   );
 }
 
+/** Pitch page section marker (diamond dot), inverted: black circle on light background. */
 function SectionMarker({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-1.5">
+    <div className="flex items-center gap-2.5">
       <span
-        className="size-2 shrink-0 rounded-sm bg-neutral-900"
+        className="size-[8px] shrink-0 rounded-full bg-black"
         aria-hidden
       />
       <p className="m-0 font-mono text-[12px] leading-none tracking-[0.12px] text-neutral-900 whitespace-nowrap">
         {label}
-      </p>
-    </div>
-  );
-}
-
-function VideoPlaceholder({
-  children,
-  height,
-}: {
-  children: string;
-  height: 268 | 465;
-}) {
-  return (
-    <div
-      className={`mx-auto flex w-full max-w-[min(100vw-40px,1100px)] flex-col items-center justify-center rounded-[6px] border border-neutral-200 bg-neutral-100 p-5 ${height === 465 ? "h-[465px]" : "h-[268px]"}`}
-    >
-      <p className="m-0 text-center text-[16px] font-semibold leading-none tracking-[0.16px] text-neutral-500 whitespace-nowrap">
-        {children}
       </p>
     </div>
   );
@@ -114,22 +87,30 @@ function QuickActionVisual() {
 }
 
 function CaseStudyLoopVideo({ src, title }: { src: string; title: string }) {
+  const isMp4 = src.includes(".mp4");
   return (
-    <div className="box-border mx-auto w-fit max-w-full rounded-[6px] border border-neutral-200 bg-neutral-100 p-5 lg:p-[50px]">
-      <video
-        className="block h-auto w-auto max-w-full"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        title={title}
-        aria-label={title}
-        disablePictureInPicture
-      >
-        <source src={src} type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+    <div className="box-border mx-auto w-fit max-w-full rounded-[6px] bg-neutral-100 p-5 shadow-[0_0_0_1px_#e5e5e5] lg:p-[50px]">
+      <div className="case-study__video-wrap min-w-0 w-max max-w-full">
+        <div className="case-study__video-frame min-w-0 w-full">
+          <video
+            className="case-study__video-el w-auto max-w-full"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            title={title}
+            aria-label={title}
+            disablePictureInPicture
+          >
+            <source
+              src={src}
+              type={isMp4 ? "video/mp4" : "video/webm"}
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
   );
 }
@@ -347,16 +328,10 @@ export function CaseStudyView() {
                   key={it.id}
                   className="flex w-full flex-col items-stretch gap-5"
                 >
-                  {"video" in it && it.video ? (
-                    <CaseStudyLoopVideo
-                      src={it.video.src}
-                      title={it.video.title}
-                    />
-                  ) : (
-                    <VideoPlaceholder height={465}>
-                      {caseStudyFourViews.placeHolder}
-                    </VideoPlaceholder>
-                  )}
+                  <CaseStudyLoopVideo
+                    src={it.video.src}
+                    title={it.video.title}
+                  />
                   <div
                     className={`flex w-full flex-col gap-2.5 text-[16px] leading-[1.4] ${proseNarrow}`}
                   >
@@ -416,12 +391,7 @@ export function CaseStudyView() {
 
         <div className={proseNarrow}>
         <footer className="flex w-full max-w-[547px] flex-col gap-5 text-neutral-600">
-          <div className="flex items-center gap-2.5">
-            <span className="size-2.5 rounded-sm bg-neutral-900" aria-hidden />
-            <Mono className="text-[14px] font-medium leading-none tracking-[0.14px] text-neutral-900">
-              {caseStudyOutro.label}
-            </Mono>
-          </div>
+          <SectionMarker label={caseStudyOutro.label} />
           <p className="m-0 text-[16px] font-normal leading-[1.4] text-neutral-600">
             {caseStudyOutro.line}
           </p>
