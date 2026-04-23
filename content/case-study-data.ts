@@ -29,8 +29,9 @@ export const caseStudyHeroMeta = [
 export const caseStudyProblem = {
   marker: "UNDERSTANDING THE PROBLEM",
   /** 24px Geist mono line */
-  headline: `Wealthy clients don't distrust their bank - they quietly resent the digital experience it gives them. The interface that makes them feel like a stranger to their own money is the one they'll eventually stop using.`,
+  headline: `Wealthy clients don't distrust their bank - they quietly resent the digital experience it gives them.`,
   bodyRuns: [
+    { text: "The interface that makes them feel like a stranger to their own money is the one they'll eventually stop using.", tone: "muted" as const },
     { text: "I’m not saying anything new here, but we all know most of the dashboards are not efficient for users.", tone: "muted" as const },
     { text: " A HNWI user managing his money needs the right orientation.", tone: "default" as const },
     { text: " The moment a financial interface requires effort to parse, it has already failed. ", tone: "default" as const },
