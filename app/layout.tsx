@@ -9,8 +9,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aditya Kulkarni - Product designer",
-  description: "Design coherent AI experiences for web and mobile.",
+  title: "Aditya Kulkarni — Product designer",
+  description:
+    "Senior product designer crafting experiences for B2B and B2C products.",
 };
 
 export default function RootLayout({
