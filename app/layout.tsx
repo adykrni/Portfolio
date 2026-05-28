@@ -4,6 +4,7 @@ import "./globals.css";
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
   variable: "--font-geist-mono",
 });

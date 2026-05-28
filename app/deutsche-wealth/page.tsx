@@ -93,23 +93,25 @@ export default function DeutscheWealthPage() {
         ))}
       </section>
 
-      <CaseStudyVideo
-        src={deutscheWealth.heroVideoSrc}
-        title="Dashboard overview"
-      />
+      <div className={styles.mediaSections}>
+        <CaseStudyVideo
+          src={deutscheWealth.heroVideoSrc}
+          title="Dashboard overview"
+        />
 
-      {deutscheWealth.components.map((component) => (
-        <section
-          key={component.id}
-          className={styles.componentGroup}
-          aria-labelledby={`${component.id}-heading`}
-        >
-          <TextSection heading={component.title} headingId={`${component.id}-heading`}>
-            <p>{component.description}</p>
-          </TextSection>
-          <CaseStudyVideo src={component.videoSrc} title={component.title} />
-        </section>
-      ))}
+        {deutscheWealth.components.map((component) => (
+          <section
+            key={component.id}
+            className={styles.componentGroup}
+            aria-labelledby={`${component.id}-heading`}
+          >
+            <TextSection heading={component.title} headingId={`${component.id}-heading`}>
+              <p>{component.description}</p>
+            </TextSection>
+            <CaseStudyVideo src={component.videoSrc} title={component.title} />
+          </section>
+        ))}
+      </div>
 
       <footer className={styles.footer}>
         <hr className={styles.divider} />
