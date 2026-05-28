@@ -39,7 +39,7 @@
   color: var(--text-secondary);
   line-height: 1.4;
   letter-spacing: 0.01em;
-  max-width: 440px;
+  max-width: 300px;
 }
 
 .chevron {

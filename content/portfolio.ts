@@ -10,8 +10,7 @@ export const hero = {
   name: "Aditya Kulkarni",
   bio: "Hi, I'm a senior product designer crafting experiences for B2B and B2C products.",
   email: "adityakulkarni1894@gmail.com",
-  /** Replace when Twitter handle is confirmed */
-  twitterHref: "#",
+  twitterHref: "https://x.com/adykrni",
 };
 
 export const projects: Project[] = [
@@ -20,7 +19,7 @@ export const projects: Project[] = [
     name: "Loryn AI",
     description:
       "0 to 1 product design for internal employees of Syngenta Corp",
-    href: "#",
+    href: "/loryn-ai",
     active: true,
   },
   {
@@ -28,7 +27,7 @@ export const projects: Project[] = [
     name: "Deutsche wealth online",
     description:
       "MVP dashboard for money and portfolio management for 1M+ active users",
-    href: "#",
+    href: "/deutsche-wealth",
     active: true,
   },
   {

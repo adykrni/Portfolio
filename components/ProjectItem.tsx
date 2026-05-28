@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "@/styles/ProjectItem.module.css";
 
 type Props = {
@@ -6,6 +7,10 @@ type Props = {
   href: string | null;
   active: boolean;
 };
+
+function isInternalHref(href: string) {
+  return href.startsWith("/");
+}
 
 export function ProjectItem({ name, description, href, active }: Props) {
   const content = (
@@ -24,9 +29,19 @@ export function ProjectItem({ name, description, href, active }: Props) {
   );
 
   if (active && href) {
+    const className = `${styles.item} ${styles.active}`;
+
+    if (isInternalHref(href)) {
+      return (
+        <Link className={className} href={href}>
+          {content}
+        </Link>
+      );
+    }
+
     return (
       <a
-        className={`${styles.item} ${styles.active}`}
+        className={className}
         href={href}
         target="_blank"
         rel="noopener noreferrer"
