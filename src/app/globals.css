@@ -1,26 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcfcfc;
+  --foreground: #161e2b;
+  --muted: #677285;
+  --grid-line: #dde2ea;
+  --surface-card: #f3f3f3;
+  --surface-media: #f1f0f0;
+  --surface-diagram: #e3f0ff;
+  --divider: #e5e5e5;
+  --klm-orange: #e37222;
+  --klm-blue: #0077c8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-grid-line: var(--grid-line);
+  --color-surface-card: var(--surface-card);
+  --color-surface-media: var(--surface-media);
+  --color-surface-diagram: var(--surface-diagram);
+  --color-divider: var(--divider);
+  --color-klm-orange: var(--klm-orange);
+  --color-klm-blue: var(--klm-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Keep document scrolling on the root element — never lock html/body height */
+html {
+  height: auto;
+  overflow-y: scroll;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  min-height: 100svh;
+  overflow-x: clip;
+  overflow-y: visible;
 }
