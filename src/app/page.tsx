@@ -9,13 +9,13 @@ export default function Home() {
   return (
     <HomeLayout>
       <section className="flex flex-col gap-[0.6875rem] pt-20 pb-10 md:pt-[10.75rem]">
-        <div className="relative h-[35px] w-[50px] shrink-0 overflow-hidden">
+        <div className="relative h-[100px] w-[100px] shrink-0 overflow-hidden rounded-[15px]">
           <Image
             src="/images/profilepic.png"
             alt=""
             width={100}
-            height={50}
-            className="h-full w-full object-cover object-center"
+            height={100}
+            className="h-full w-full rounded-[15px] object-cover object-center"
             priority
           />
         </div>

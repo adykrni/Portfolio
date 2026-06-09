@@ -48,7 +48,7 @@ function RedesignPhase({ dotColor, title, description, imageSrc, imageAlt }: Red
             {title}
           </p>
         </div>
-        <p className="text-base font-normal leading-[1.2] text-foreground">{description}</p>
+        <p className="text-base font-normal leading-[1.4] text-muted">{description}</p>
       </div>
       <div className="flex w-full items-center justify-center overflow-hidden rounded-[10px] bg-white p-6 md:p-[50px]">
         <div className="w-full shrink-0 origin-center scale-90">
@@ -72,23 +72,23 @@ const redesignPhases = [
     title: "Before",
     description:
       "We all know data heavy dashboards are messy and not very user friendly. The users just didn't know what data to look at. The dashboard failed to answer one question - \"How is my wealth doing?\".",
-    imageSrc: "/images/Old.svg",
+    imageSrc: "/images/Old.png",
     imageAlt: "Deutsche Wealth Online dashboard before redesign",
   },
   {
     dotColor: "#3dba6d",
     title: "Proposed solution",
     description:
-      "We all know data heavy dashboards are messy and not very user friendly. The users just didn't know what data to look at. The dashboard failed to answer one question - \"How is my wealth doing?\".",
-    imageSrc: "/images/Proposed.svg",
+      "3-level information architecture that addresses the immediate questions of the user, and gives them the option to deep dive into information if needed.",
+    imageSrc: "/images/Proposed.png",
     imageAlt: "Deutsche Wealth Online proposed wealth overview redesign",
   },
   {
     dotColor: "#4a90d9",
     title: "Delivered solution",
     description:
-      "We all know data heavy dashboards are messy and not very user friendly. The users just didn't know what data to look at. The dashboard failed to answer one question - \"How is my wealth doing?\".",
-    imageSrc: "/images/Approved.svg",
+      "After sparring with engineering and management teams, we decided on this solution, as it was the most feasible and achievable solution.",
+    imageSrc: "/images/Approved.png",
     imageAlt: "Deutsche Wealth Online delivered wealth overview solution",
   },
 ] as const;
@@ -207,8 +207,7 @@ export default function DeutscheWealthCaseStudyPage() {
             <SectionHeading>Impact</SectionHeading>
             <SectionIntro>
               We conducted usability tests with 27+ users for the &quot;Net wealth&quot; feature,
-              and saw immediate increase in User actions showing a promise in retaining users. We
-              also projected 2x reduction in support tickets.
+              and saw a 17% increase in user retention, and a 9% increase in action rates.
             </SectionIntro>
           </div>
         </section>
