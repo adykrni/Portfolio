@@ -4,7 +4,7 @@ export const site = {
   location:
     "Located in Berlin, always down to chat! Feel free to hit me up via ",
   projectsIntro:
-    "I have been focused on UI engineering and design systems for a major part of my career, below are a few projects that I worked on...",
+    "I have shipped multiple design systems for small to large design teams, below are a few projects that I worked on...",
   footer:
     "Happy to chat and show my work in detail. Hit me up via ",
   links: {
@@ -25,6 +25,7 @@ export const projects: Project[] = [
     title: "Loryn AI",
     description:
       "Shipped an AI-first design system from ground up enabling PMs, UX designers to iterate on feature autonomously.",
+    href: "/loryn",
   },
   {
     title: "Deutsche wealth online",

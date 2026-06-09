@@ -66,19 +66,6 @@ function RedesignPhase({ dotColor, title, description, imageSrc, imageAlt }: Red
   );
 }
 
-function BackButton({ showLabel = true }: { showLabel?: boolean }) {
-  return (
-    <Link
-      href="/"
-      className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-divider bg-surface-card px-2.5 text-sm font-medium text-foreground transition-colors hover:bg-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-      aria-label={showLabel ? undefined : "Back to home"}
-    >
-      <ArrowLeft className="size-3.5 shrink-0" aria-hidden />
-      {showLabel ? "Back" : null}
-    </Link>
-  );
-}
-
 const redesignPhases = [
   {
     dotColor: "#f5c518",
@@ -229,7 +216,13 @@ export default function DeutscheWealthCaseStudyPage() {
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
 
         <div className="flex justify-center">
-          <BackButton />
+          <Link
+            href="/"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded border-0 px-5 text-base font-medium text-foreground outline-none transition-colors hover:bg-surface-card focus:outline-none focus-visible:outline-none"
+          >
+            <ArrowLeft className="size-4 shrink-0" aria-hidden />
+            Back
+          </Link>
         </div>
       </div>
     </main>

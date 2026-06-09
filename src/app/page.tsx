@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { ContactLinks } from "@/components/contact-links";
 import { HomeLayout, SectionDivider } from "@/components/grid-frame";
 import { ProjectItem } from "@/components/project-item";
@@ -7,6 +9,16 @@ export default function Home() {
   return (
     <HomeLayout>
       <section className="flex flex-col gap-[0.6875rem] pt-20 pb-10 md:pt-[10.75rem]">
+        <div className="relative h-[35px] w-[50px] shrink-0 overflow-hidden">
+          <Image
+            src="/images/profilepic.png"
+            alt=""
+            width={100}
+            height={50}
+            className="h-full w-full object-cover object-center"
+            priority
+          />
+        </div>
         <h1 className="font-mono text-[1.125rem] leading-normal tracking-[0.01125rem] text-foreground">
           {site.name}
         </h1>
