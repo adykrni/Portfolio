@@ -246,14 +246,17 @@ export default function LorynCaseStudyPage() {
             </SectionIntro>
           </div>
 
-          <div className="h-[400px] w-full overflow-auto rounded-[10px] bg-surface-media">
-            <img
-              src="/images/button.png"
-              alt="Loryn button component specification — variants, sizes, and states"
-              width={2718}
-              height={4388}
-              className="mx-auto block h-auto w-full"
-            />
+          <div className="flex flex-col gap-[15px]">
+            <SectionIntro>Example of a button component - Figma + code</SectionIntro>
+            <div className="h-[400px] w-full overflow-auto rounded-[10px] bg-surface-media">
+              <img
+                src="/images/button.png"
+                alt="Loryn button component specification — variants, sizes, and states"
+                width={2718}
+                height={4388}
+                className="mx-auto block h-auto w-full"
+              />
+            </div>
           </div>
 
           <ButtonCodeSnippet />
