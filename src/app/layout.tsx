@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aditya Kulkarni",
+  title: "Aditya Kulkarni — Product Designer",
   description:
-    "Senior product designer focused on UI engineering and design systems.",
+    "Product Designer at Accenture Song Design, Berlin based. Focused on UI engineering and design systems for B2B and B2C products.",
 };
 
 export default function RootLayout({

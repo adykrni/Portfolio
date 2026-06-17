@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Loryn AI — Case Study",
   description:
-    "Building a design system for Loryn, an AI assistant for 17k+ employees — from primitives to AI-ready specs.",
+    "Solo designer on a live enterprise product — shipped a 0→1 design system for Loryn, an AI assistant for 17k+ employees.",
 };
 
 export default function LorynLayout({

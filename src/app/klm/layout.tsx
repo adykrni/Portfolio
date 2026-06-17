@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "KLM Holidays — Case Study",
   description:
-    "A design system built in the middle of a live product. Migrating a UI library to Figma, then designing a custom component that shipped A/B tests across the BeNeLux market.",
+    "KLM Holidays case study — a reconfigurable Offers component shipped to engineering, with A/B-tested variants that lifted bookings 27% in the BeNeLux market.",
 };
 
 export default function KlmLayout({

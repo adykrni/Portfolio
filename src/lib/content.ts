@@ -1,12 +1,13 @@
 export const site = {
-  name: "Aditya Kulkarni",
-  bio: "Heylo, I'm a Senior product designer focused on UI engineering and design systems, crafting experiences for B2B and B2C products.",
-  location:
-    "Located in Berlin, always down to chat! Feel free to hit me up via ",
-  projectsIntro:
-    "I have shipped multiple design systems for small to large design teams, below are a few projects that I worked on...",
-  footer:
-    "Happy to chat and show my work in detail. Hit me up via ",
+  name: "aditya kulkarni",
+  bio: {
+    lead: "Product Designer at Accenture Song Design. Berlin based. Currently focused on UI engineering and design systems for B2B and B2C products. ",
+    contact: "Happy to chat and show my work in detail. Hit me up via ",
+  },
+  selectedWorkLabel: "Selected work",
+  copyright: "© 2026 - ADITYA KULKARNI",
+  resumeLabel: "Resume",
+  resumeUrl: undefined as string | undefined,
   links: {
     twitter: "https://x.com/adykrni",
     mail: "mailto:adityakulkarni1894@gmail.com",
@@ -14,34 +15,57 @@ export const site = {
 } as const;
 
 export type Project = {
-  title: string;
-  description: string;
-  href?: string;
-  disabled?: boolean;
+  cardTitle: string;
+  cardDescription: string | string[];
+  cardBg: string;
+  cardShadow: string;
+  cardImage?: string;
+  fullBleedPreview?: boolean;
+  href: string;
 };
 
 export const projects: Project[] = [
   {
-    title: "Loryn AI",
-    description:
-      "Shipped an AI-first design system from ground up enabling PMs, UX designers to iterate on feature autonomously.",
+    cardTitle: "Shipping a 0→1 design system for Loryn AI",
+    cardDescription:
+      "Led UI & Design systems, enabling product teams to launch features at scale 12k+ global employees",
+    cardBg: "#e9f4ef",
+    cardShadow:
+      "0px 1px 4px 0px rgba(156,184,170,0.25), 0px 1px 0px -1px rgba(156,184,170,0.25), 0px 0px 0px 0.5px rgba(156,184,170,0.8)",
+    cardImage: "/images/Card%201.png",
     href: "/loryn",
   },
   {
-    title: "Deutsche wealth online",
-    description: "UI design + prototyping for data heavy dashboards",
+    cardTitle: "Modern data heavy dashboards for Deutsche bank",
+    cardDescription: [
+      "Delivered new components, and prototypes for",
+      "Deutsche Wealth Online+",
+    ],
+    cardBg: "#e8edf1",
+    cardShadow:
+      "0px 1px 4px 0px rgba(140,158,173,0.25), 0px 1px 0px -1px rgba(140,158,173,0.25), 0px 0px 0px 0.5px rgba(140,158,173,0.8)",
+    cardImage: "/images/Card%202.png",
     href: "/deutsche-wealth",
   },
   {
-    title: "KLM Holidays",
-    description:
-      "Designing modular components for rapid A/B testing, and defining the token architecture.",
+    cardTitle: "Shipping a modular component leading to 27% increase in bookings",
+    cardDescription:
+      "Designed new components for KLM Holidays enabling the product teams to ship for A/B tests",
+    cardBg: "#ededed",
+    cardShadow:
+      "0px 1px 4px 0px rgba(167,167,167,0.25), 0px 1px 0px -1px rgba(167,167,167,0.25), 0px 0px 0px 0.5px rgba(167,167,167,0.8)",
+    cardImage: "/images/Card%203.png",
     href: "/klm",
   },
   {
-    title: "Audi",
-    description:
-      "Unified a design system for digital product teams, having one single source of truth.",
-    disabled: true,
+    cardTitle: "Unifying a global system for Audi",
+    cardDescription:
+      "A new design language, shipping a design system for web and mobile, for 10+ product teams at Audi.",
+    cardBg: "#eaeef6",
+    cardShadow:
+      "0px 1px 4px 0px rgba(151,159,175,0.25), 0px 1px 0px -1px rgba(151,159,175,0.25), 0px 0px 0px 0.5px rgba(151,159,175,0.8)",
+    cardImage: "/images/Card%204.png",
+    fullBleedPreview: true,
+    href: "/audi",
   },
 ];
