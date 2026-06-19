@@ -6,14 +6,16 @@ type HomePageShellProps = {
 
 export function HomePageShell({ children }: HomePageShellProps) {
   return (
-    <div className="relative box-border h-svh overflow-hidden p-[8px]">
+    <div className="relative h-svh overflow-hidden">
       <LoopingBackgroundVideo
         src="/images/ascii-magic-4.mp4"
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none fixed inset-0 h-svh w-full md:absolute md:h-full"
       />
-      <main className="font-radio relative box-border flex h-full min-h-0 w-full flex-col gap-10 overflow-hidden rounded-[10px] border border-[#3a3a3a] bg-black/70 backdrop-blur-md px-5 py-10 sm:gap-12 sm:px-8 sm:py-12 md:gap-14 md:px-12 md:py-14 lg:px-[178px] lg:py-16">
-        {children}
-      </main>
+      <div className="relative z-10 box-border h-svh p-[10px] md:p-[8px]">
+        <main className="font-radio relative box-border flex h-full min-h-0 w-full flex-col gap-8 overflow-y-auto rounded-[10px] border border-[#383838] bg-[rgba(20,19,19,0.8)] px-5 pb-10 pt-[63px] backdrop-blur-md md:gap-10 md:overflow-hidden md:border-[#3a3a3a] md:bg-black/70 md:px-8 md:py-12 md:pt-12 lg:gap-14 lg:px-[178px] lg:py-16">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

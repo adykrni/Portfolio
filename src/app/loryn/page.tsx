@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ButtonCodeSnippet } from "@/components/loryn/ButtonCodeSnippet";
 import { ColorPalette } from "@/components/loryn/ColorPalette";
 import { PaletteCodeSnippet } from "@/components/loryn/PaletteCodeSnippet";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+import { ScreenCarousel } from "@/components/loryn/ScreenCarousel";
 import { SectionDivider } from "@/components/SectionDivider";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -453,10 +453,7 @@ export default function LorynCaseStudyPage() {
         {/* Closing carousel */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-8">
           <SectionHeading>Loryn AI</SectionHeading>
-          <MediaPlaceholder
-            label="IMAGE PLACEHOLDER CAROUSEL"
-            className="aspect-[900/523] w-full"
-          />
+          <ScreenCarousel />
         </section>
 
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />

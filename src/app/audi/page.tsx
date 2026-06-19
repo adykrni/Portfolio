@@ -8,14 +8,22 @@ export default function AudiCaseStudyPage() {
         <h1 className="text-base font-bold leading-[1.4] text-foreground">
           Unifying a global system for Audi
         </h1>
-        <p className="text-base leading-[1.4] text-muted">Case study coming soon.</p>
-        <Link
-          href="/"
-          className="inline-flex h-10 w-fit items-center gap-2 text-base font-medium text-foreground transition-opacity hover:opacity-80"
-        >
-          <ArrowLeft className="size-4 shrink-0" aria-hidden />
-          Back
-        </Link>
+
+        <div className="flex h-[201px] w-full items-center justify-center overflow-hidden rounded-[10px] bg-surface-card">
+          <p className="font-radio text-base font-bold uppercase leading-[1.4] text-[#141414]">
+            Case study coming soon.
+          </p>
+        </div>
+
+        <div className="flex justify-center">
+          <Link
+            href="/"
+            className="inline-flex h-10 w-fit items-center gap-2 text-base font-medium text-foreground transition-opacity hover:opacity-80"
+          >
+            <ArrowLeft className="size-4 shrink-0" aria-hidden />
+            Back
+          </Link>
+        </div>
       </div>
     </main>
   );

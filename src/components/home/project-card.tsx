@@ -2,12 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { Project } from "@/lib/content";
-import { site } from "@/lib/content";
+import { site, sortProjectsForMobile } from "@/lib/content";
 
-function CardDescription({ description }: { description: string | string[] }) {
+function CardDescription({
+  description,
+  mobile = false,
+}: {
+  description: string | string[];
+  mobile?: boolean;
+}) {
+  const className = mobile
+    ? "text-sm font-normal leading-[1.4] tracking-[0.00875rem] text-[#373b42] md:text-base md:tracking-[0.01rem]"
+    : "text-base font-normal leading-[1.4] tracking-[0.01rem] text-[#373b42]";
+
   if (Array.isArray(description)) {
     return (
-      <p className="text-base font-normal leading-[1.4] tracking-[0.01rem] text-[#373b42]">
+      <p className={className}>
         {description[0]}
         <br />
         {description[1]}
@@ -15,11 +25,7 @@ function CardDescription({ description }: { description: string | string[] }) {
     );
   }
 
-  return (
-    <p className="text-base font-normal leading-[1.4] tracking-[0.01rem] text-[#373b42]">
-      {description}
-    </p>
-  );
+  return <p className={className}>{description}</p>;
 }
 
 function PreviewArea({ project }: { project: Project }) {
@@ -65,41 +71,94 @@ function PreviewArea({ project }: { project: Project }) {
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+  project,
+  mobile = false,
+}: {
+  project: Project;
+  mobile?: boolean;
+}) {
+  const isLoryn = project.href === "/loryn";
+  const cardBg = mobile ? (project.cardBgMobile ?? project.cardBg) : project.cardBg;
+
   return (
     <Link
       href={project.href}
-      className="flex h-[400px] w-[533px] shrink-0 flex-col gap-[10px] rounded-[14px] p-[8px]"
+      className={`flex h-[400px] shrink-0 flex-col gap-[10px] rounded-[14px] ${
+        mobile
+          ? isLoryn
+            ? "w-full p-[6px]"
+            : "w-full p-2"
+          : "w-[533px] p-2"
+      }`}
       style={{
-        backgroundColor: project.cardBg,
+        backgroundColor: cardBg,
         boxShadow: project.cardShadow,
       }}
     >
       <PreviewArea project={project} />
 
-      <div className="flex flex-col gap-[6px] pb-[6px] pl-2 pr-[100px]">
-        <p className="text-base font-bold leading-normal tracking-[0.01rem] text-[#1a1b1c]">
+      <div
+        className={
+          mobile && isLoryn
+            ? "flex flex-col gap-[6px] pb-[6px] pl-2.5 pr-3.5"
+            : "flex flex-col gap-[6px] pb-[6px] pl-2 pr-[100px]"
+        }
+      >
+        <p
+          className={
+            mobile && isLoryn
+              ? "text-sm font-bold leading-normal tracking-[0.00875rem] text-[#1a1b1c] md:text-base md:tracking-[0.01rem]"
+              : "text-base font-bold leading-normal tracking-[0.01rem] text-[#1a1b1c]"
+          }
+        >
           {project.cardTitle}
         </p>
-        <CardDescription description={project.cardDescription} />
+        <CardDescription description={project.cardDescription} mobile={mobile && isLoryn} />
       </div>
     </Link>
   );
 }
 
-export function ProjectCardRow({ projects }: { projects: Project[] }) {
+function MobileProjectStack({ projects }: { projects: Project[] }) {
+  const orderedProjects = sortProjectsForMobile(projects);
+
   return (
-    <section className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 md:hidden">
+      <h2 className="text-sm font-normal leading-[1.4] tracking-[0.00875rem] text-[#dadada]">
+        {site.selectedWorkLabel}
+      </h2>
+      <div className="flex flex-col gap-5">
+        {orderedProjects.map((project) => (
+          <ProjectCard key={project.cardTitle} project={project} mobile />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DesktopProjectRow({ projects }: { projects: Project[] }) {
+  return (
+    <section className="hidden flex-col gap-5 md:flex">
       <h2 className="text-base font-normal leading-[1.4] tracking-[0.01rem] text-[#d5d5d5]">
         {site.selectedWorkLabel}
       </h2>
-      <div className="hide-scrollbar -mx-5 overflow-x-auto px-5 py-[6px] sm:-mx-8 sm:px-8 md:-mx-12 md:px-12 lg:-mx-[178px] lg:px-[178px]">
-        <div className="flex w-max gap-[20px]">
+      <div className="hide-scrollbar -mx-12 overflow-x-auto px-12 py-[6px] lg:-mx-[178px] lg:px-[178px]">
+        <div className="flex w-max gap-5">
           {projects.map((project) => (
             <ProjectCard key={project.cardTitle} project={project} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+export function ProjectCardRow({ projects }: { projects: Project[] }) {
+  return (
+    <>
+      <MobileProjectStack projects={projects} />
+      <DesktopProjectRow projects={projects} />
+    </>
   );
 }

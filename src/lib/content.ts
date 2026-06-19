@@ -7,6 +7,7 @@ export const site = {
   selectedWorkLabel: "Selected work",
   copyright: "© 2026 - ADITYA KULKARNI",
   resumeLabel: "Resume",
+  resumeLabelMobile: "View resume",
   resumeUrl: undefined as string | undefined,
   links: {
     twitter: "https://x.com/adykrni",
@@ -18,11 +19,28 @@ export type Project = {
   cardTitle: string;
   cardDescription: string | string[];
   cardBg: string;
+  cardBgMobile?: string;
   cardShadow: string;
   cardImage?: string;
   fullBleedPreview?: boolean;
   href: string;
 };
+
+/** Mobile frame order differs from the desktop horizontal carousel. */
+export const mobileProjectOrder = [
+  "/loryn",
+  "/deutsche-wealth",
+  "/audi",
+  "/klm",
+] as const;
+
+export function sortProjectsForMobile(items: Project[]) {
+  return [...items].sort(
+    (a, b) =>
+      mobileProjectOrder.indexOf(a.href as (typeof mobileProjectOrder)[number]) -
+      mobileProjectOrder.indexOf(b.href as (typeof mobileProjectOrder)[number]),
+  );
+}
 
 export const projects: Project[] = [
   {
@@ -30,6 +48,7 @@ export const projects: Project[] = [
     cardDescription:
       "Led UI & Design systems, enabling product teams to launch features at scale 12k+ global employees",
     cardBg: "#e9f4ef",
+    cardBgMobile: "#e4ece8",
     cardShadow:
       "0px 1px 4px 0px rgba(156,184,170,0.25), 0px 1px 0px -1px rgba(156,184,170,0.25), 0px 0px 0px 0.5px rgba(156,184,170,0.8)",
     cardImage: "/images/Card%201.png",

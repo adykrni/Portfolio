@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 import { HeroImage } from "@/components/CaseStudyImage";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+import { OffersConfigurator } from "@/components/OffersConfigurator";
 import { SectionDivider } from "@/components/SectionDivider";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -30,12 +30,6 @@ export default function KlmCaseStudyPage() {
   return (
     <main className="bg-background">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-5 pb-20 pt-10 sm:px-6 md:px-8 md:pt-[55px]">
-        <div className="mx-auto mb-10 flex w-full max-w-[900px]">
-          <Link href="/" className={backButtonClassName} aria-label="Back to home">
-            <ArrowLeft className="size-3.5 shrink-0" aria-hidden />
-          </Link>
-        </div>
-
         {/* Hero */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">
           <div className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
@@ -86,8 +80,8 @@ export default function KlmCaseStudyPage() {
           </div>
         </section>
 
-        <div className="mx-auto mt-10 w-full max-w-[900px] md:mt-[70px]">
-          <MediaPlaceholder label="IMAGE PLACEHOLDER" className="h-[474px] w-full" />
+        <div className="mx-auto mt-10 w-full max-w-[1280px] md:mt-[70px]">
+          <OffersConfigurator />
         </div>
 
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />

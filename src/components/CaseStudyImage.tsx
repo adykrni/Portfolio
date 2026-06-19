@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { HeroBanner } from "@/components/HeroBanner";
-
 type CaseStudyImageProps = {
   src: string;
   alt: string;
@@ -102,5 +100,15 @@ export function ComponentGallery() {
 }
 
 export function HeroImage() {
-  return <HeroBanner />;
+  return (
+    <Image
+      src="/images/KLM-hero.png"
+      alt="KLM Holidays hero — find your perfect holiday package"
+      width={2880}
+      height={1136}
+      className="h-auto w-full rounded-[10px]"
+      priority
+      unoptimized
+    />
+  );
 }
