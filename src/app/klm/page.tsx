@@ -80,7 +80,7 @@ export default function KlmCaseStudyPage() {
           </div>
         </section>
 
-        <div className="mx-auto mt-10 w-full max-w-[1280px] md:mt-[70px]">
+        <div className="mx-auto mt-10 w-full md:mt-[70px]">
           <OffersConfigurator />
         </div>
 

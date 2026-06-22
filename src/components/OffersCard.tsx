@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { Info, Plus } from "lucide-react";
 import type { ComponentState } from "@/types";
+import type { HighlightRegion } from "@/lib/configuratorHighlight";
 import { getCardWidth, DEVICE_IMAGE_HEIGHT } from "@/types";
 import { FindDealsButton } from "./FindDealsButton";
 import { PartnerBrand } from "./PartnerBrand";
@@ -13,7 +14,14 @@ const CITY_IMAGE =
 
 type OffersCardProps = {
   state: ComponentState;
+  highlight?: HighlightRegion | null;
 };
+
+function highlightClass(active: boolean) {
+  return active
+    ? "rounded-md ring-2 ring-klm-blue/40 ring-offset-2 transition-shadow duration-300"
+    : "rounded-md transition-shadow duration-300";
+}
 
 function PlusSeparator({ className = "text-[#003f72]" }: { className?: string }) {
   return <Plus className={`size-3 shrink-0 ${className}`} strokeWidth={2.5} aria-hidden />;
@@ -96,6 +104,7 @@ type PackageBlockProps = {
   showPartners: boolean;
   partner1: string;
   partner2: string;
+  highlighted?: boolean;
 };
 
 function PackageBlock({
@@ -105,6 +114,7 @@ function PackageBlock({
   showPartners,
   partner1,
   partner2,
+  highlighted = false,
 }: PackageBlockProps) {
   return (
     <div
@@ -113,7 +123,7 @@ function PackageBlock({
       }`}
     >
       <div className="overflow-hidden">
-        <div className="flex flex-col gap-5">
+        <div className={`flex flex-col gap-5 p-0.5 ${highlightClass(highlighted)}`}>
           <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2">
               <p className="text-base font-normal leading-[1.3] text-[#003f72]">{label}</p>
@@ -140,7 +150,7 @@ function PackageBlock({
   );
 }
 
-export function OffersCard({ state }: OffersCardProps) {
+export function OffersCard({ state, highlight = null }: OffersCardProps) {
   const width = getCardWidth(state.device, state.size);
   const imageHeight = DEVICE_IMAGE_HEIGHT[state.device];
   const isTeaser = state.content === "Teaser";
@@ -156,19 +166,19 @@ export function OffersCard({ state }: OffersCardProps) {
 
   const packages = [
     {
-      key: "economy",
+      key: "economy" as const,
       visible: state.economy,
       label: "Economy class package",
       offer: state.economyOffer,
     },
     {
-      key: "business",
+      key: "business" as const,
       visible: state.business,
       label: "Business class package",
       offer: state.businessOffer,
     },
     {
-      key: "premium",
+      key: "premium" as const,
       visible: state.premium,
       label: "Premium package",
       offer: premiumOffer,
@@ -184,7 +194,9 @@ export function OffersCard({ state }: OffersCardProps) {
         style={{ width }}
       >
         <div
-          className="relative flex flex-col justify-end p-5"
+          className={`relative flex flex-col justify-end p-5 ${highlightClass(
+            highlight === "teaser" || highlight === "header",
+          )}`}
           style={{ height: imageHeight }}
         >
           <Image
@@ -224,7 +236,10 @@ export function OffersCard({ state }: OffersCardProps) {
       style={{ width }}
     >
       {state.image && (
-        <div className="relative w-full shrink-0" style={{ height: imageHeight }}>
+        <div
+          className={`relative w-full shrink-0 ${highlightClass(highlight === "image")}`}
+          style={{ height: imageHeight }}
+        >
           <Image
             src={CITY_IMAGE}
             alt=""
@@ -237,16 +252,20 @@ export function OffersCard({ state }: OffersCardProps) {
       )}
 
       <div className="flex flex-col gap-4 p-4">
-        <div className="flex flex-col gap-1.5">
+        <div
+          className={`flex flex-col gap-1.5 p-0.5 ${highlightClass(highlight === "header")}`}
+        >
           <p className="text-2xl leading-[1.3] text-[#003f72]">{state.cityName}</p>
           <p className="text-base leading-[1.3] text-[#003f72]">{state.countryName}</p>
         </div>
 
-        <CardDivider divider={state.divider} />
+        <div className={highlightClass(highlight === "divider")}>
+          <CardDivider divider={state.divider} />
+        </div>
 
         <div className="flex flex-col gap-5 px-0.5">
           {visiblePackages.map((pkg, index) => {
-            const partners = partnerConfigs[pkg.key as keyof typeof partnerConfigs];
+            const partners = partnerConfigs[pkg.key];
             return (
               <Fragment key={pkg.key}>
                 {index > 0 && <PackageDivider />}
@@ -257,6 +276,7 @@ export function OffersCard({ state }: OffersCardProps) {
                   showPartners={partners.brandPartnership}
                   partner1={partners.partner1}
                   partner2={partners.partner2}
+                  highlighted={highlight === pkg.key}
                 />
               </Fragment>
             );

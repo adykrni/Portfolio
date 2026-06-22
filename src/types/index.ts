@@ -39,7 +39,7 @@ export const defaultState: ComponentState = {
   teaserOffer: "3 nights, 4 days  from €197/person",
   divider: "Dotted",
   economy: true,
-  business: true,
+  business: false,
   premium: false,
   economyOffer: "3 nights, 4 days  from €197/person",
   businessOffer: "3 nights, 4 days  from €419/person",

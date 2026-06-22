@@ -51,18 +51,14 @@ function RedesignPhase({ title, description, imageSrc, imageAlt }: RedesignPhase
         <p className="text-base font-semibold leading-[1.4] text-foreground">{title}</p>
         <p className="text-base font-normal leading-[1.2] text-muted">{description}</p>
       </div>
-      <div className="flex h-[379px] w-full items-center justify-center overflow-hidden rounded-[10px] p-6 md:p-[50px]">
-        <div className="w-full shrink-0 origin-center scale-90">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={3840}
-            height={2016}
-            className="h-auto w-full rounded-[10px] border border-[#dee3ec] object-contain"
-            unoptimized
-          />
-        </div>
-      </div>
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        width={3840}
+        height={2016}
+        className="h-auto w-full object-contain"
+        unoptimized
+      />
     </div>
   );
 }
@@ -134,17 +130,15 @@ export default function DeutscheWealthCaseStudyPage() {
             </SectionIntro>
           </div>
 
-          <div className="flex aspect-[2620/1724] w-full items-center justify-center overflow-hidden rounded-[10px] bg-white">
-            <Image
-              src="/images/Dashboard v2.png"
-              alt="Deutsche Wealth Online full dashboard overview"
-              width={2620}
-              height={1724}
-              className="h-full w-full object-contain"
-              priority
-              unoptimized
-            />
-          </div>
+          <Image
+            src="/images/Dashboard v2.png"
+            alt="Deutsche Wealth Online full dashboard overview"
+            width={2620}
+            height={1724}
+            className="h-auto w-full object-contain"
+            priority
+            unoptimized
+          />
         </section>
 
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
@@ -170,13 +164,13 @@ export default function DeutscheWealthCaseStudyPage() {
 
           <div className="flex w-full items-center justify-center">
             <video
-              src="/images/old-test2.mov"
+              src="/images/DB-old.web.mp4"
               autoPlay
               loop
               muted
               playsInline
               aria-label="Deutsche Bank legacy portfolios overview dashboard"
-              className="h-auto w-full rounded-[30px] border-[15px] border-black object-contain"
+              className="h-auto w-full rounded-[30px] border-[10px] border-black"
             />
           </div>
         </section>
