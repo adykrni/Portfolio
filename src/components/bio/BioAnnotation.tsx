@@ -10,7 +10,7 @@ import { MediaPlaceholder } from "@/components/MediaPlaceholder";
 // fixed-duration keyframe animation, a spring retargets smoothly mid-flight
 // instead of snapping or restarting. bounce: 0 keeps it critically damped
 // (no overshoot), matching a quick, confident UI motion rather than a bouncy one.
-const springTransition = { type: "spring" as const, duration: 0.4, bounce: 0 };
+const springTransition = { type: "spring" as const, duration: 0.28, bounce: 0 };
 
 // Enter combines opacity + blur + a small translateY — exit is deliberately
 // more subtle (opacity + blur only, no movement) so dismissing a chip never
@@ -21,13 +21,14 @@ const itemVariants = {
   exit: { opacity: 0, filter: "blur(4px)" },
 };
 
-// Bubbles/facts are split and staggered individually — slow enough that each
-// one reads as its own beat, like messages landing one after another, rather
-// than the whole stack flashing in at once. Dismissal stays quicker since it
-// shouldn't hold attention the way arriving does.
+// Bubbles/facts still land one after another rather than flashing in as one
+// block, but enter and exit now run at nearly the same pace — with the old
+// panel exiting fast while the new one built in slowly (as it did before),
+// there was a stretch where neither was fully visible, which read as
+// glitchy when swapping between two rows in quick succession.
 const containerVariants = {
   initial: {},
-  animate: { transition: { staggerChildren: 0.28 } },
+  animate: { transition: { staggerChildren: 0.08 } },
   exit: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
 };
 
@@ -118,7 +119,7 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
           key={fact}
           variants={itemVariants}
           transition={springTransition}
-          className="rounded-[10px] bg-[#e7e7e7] px-3 py-2 text-[16px] tracking-[0.16px] text-[#191b1e]"
+          className="rounded-[6px] bg-[#e7e7e7] p-[6px] text-[16px] leading-[1.4] tracking-[0.16px] text-[#191b1e]"
         >
           {fact}
         </motion.div>

@@ -14,6 +14,13 @@ type BioAnnotationLayerProps = {
 
 type Position = { top: number; left: number };
 
+// Project rows (the "facts" panels) anchor at one fixed spot regardless of
+// which row triggered them, so the preview never jumps around depending on
+// which project the user hovers.
+const factsChipIds = Object.values(allBioChips)
+  .filter((chip) => chip.annotation.kind === "facts")
+  .map((chip) => chip.id);
+
 // Deliberately non-interactive: hover must stay scoped to the chip's own
 // hit-box (per design), so the floating card/bubbles can never themselves
 // keep a chip "active" by being hovered.
@@ -64,41 +71,69 @@ export function BioAnnotationLayer({ activeChipId, chipRefs, containerRef }: Bio
       const wrapperRect = wrapper.getBoundingClientRect();
       const gap = 24;
       const viewportMargin = 8;
-
-      // Preferred placement: beside the row, starting just past its own
-      // right edge (not the content column's full width) — matching the
-      // reference design, where the panel sits to the right of the row
-      // rather than stacked above it. Only enough room past the row itself
-      // is required, so this still fits comfortably on ordinary desktop
-      // widths even though the text column itself is narrow.
-      const spaceRight = window.innerWidth - chipRect.right;
-      const fitsRight = spaceRight >= wrapperRect.width + gap;
+      const isFactsPanel = activeChipId ? allBioChips[activeChipId]?.annotation.kind === "facts" : false;
 
       let top: number;
       let left: number;
 
-      if (fitsRight) {
-        left = chipRect.right - containerRect.left + gap;
-        const idealTop = chipRect.top + chipRect.height / 2 - wrapperRect.height / 2;
-        const clampedTop = Math.max(
-          viewportMargin,
-          Math.min(idealTop, window.innerHeight - wrapperRect.height - viewportMargin),
-        );
-        top = clampedTop - containerRect.top;
+      if (isFactsPanel) {
+        // Fixed placement: anchored just past the widest project row's own
+        // right edge (not the specific hovered row's), so every row opens
+        // the panel in exactly the same spot instead of it shifting
+        // left/right or up/down depending on which one triggered it.
+        let maxChipRight = chipRect.right;
+        for (const id of factsChipIds) {
+          const el = chipRefs.current.get(id);
+          if (el) maxChipRight = Math.max(maxChipRight, el.getBoundingClientRect().right);
+        }
+        const fixedLeftAbsolute = maxChipRight + gap;
+        const fitsRight = window.innerWidth - fixedLeftAbsolute >= wrapperRect.width + viewportMargin;
+
+        if (fitsRight) {
+          left = fixedLeftAbsolute - containerRect.left;
+          top = 0;
+        } else {
+          // Not enough room beside the rows (narrow viewport) — fall back to
+          // anchoring above whichever row is actually active.
+          top = Math.max(
+            viewportMargin - containerRect.top,
+            chipRect.top - containerRect.top - wrapperRect.height - gap,
+          );
+          left = Math.max(
+            4,
+            Math.min(
+              chipRect.left - containerRect.left,
+              containerRect.width - wrapperRect.width - 4,
+            ),
+          );
+        }
       } else {
-        // Not enough room beside the row (narrow viewport) — fall back to
-        // anchoring above it instead.
-        top = Math.max(
-          viewportMargin - containerRect.top,
-          chipRect.top - containerRect.top - wrapperRect.height - gap,
-        );
-        left = Math.max(
-          4,
-          Math.min(
-            chipRect.left - containerRect.left,
-            containerRect.width - wrapperRect.width - 4,
-          ),
-        );
+        // Bubbles (e.g. the employer chip) keep the original beside-the-chip
+        // anchor — small enough that it doesn't need a fixed spot.
+        const spaceRight = window.innerWidth - chipRect.right;
+        const fitsRight = spaceRight >= wrapperRect.width + gap;
+
+        if (fitsRight) {
+          left = chipRect.right - containerRect.left + gap;
+          const idealTop = chipRect.top + chipRect.height / 2 - wrapperRect.height / 2;
+          const clampedTop = Math.max(
+            viewportMargin,
+            Math.min(idealTop, window.innerHeight - wrapperRect.height - viewportMargin),
+          );
+          top = clampedTop - containerRect.top;
+        } else {
+          top = Math.max(
+            viewportMargin - containerRect.top,
+            chipRect.top - containerRect.top - wrapperRect.height - gap,
+          );
+          left = Math.max(
+            4,
+            Math.min(
+              chipRect.left - containerRect.left,
+              containerRect.width - wrapperRect.width - 4,
+            ),
+          );
+        }
       }
 
       // Bail out on an unchanged result — this is called from a ref callback

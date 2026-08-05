@@ -57,13 +57,17 @@ export const ProjectRow = forwardRef<HTMLButtonElement, ProjectRowProps>(functio
     >
       <Image src="/icons/folder.svg" alt="" width={16} height={16} className="shrink-0" aria-hidden />
       <span className="text-[16px] tracking-[0.16px] text-black">{chip.label}</span>
-      {isLinked && isActive ? (
+      {isLinked ? (
+        // Always mounted (rather than only while active) so the row's own
+        // width never changes when it activates — otherwise the widest-row
+        // measurement used to anchor the annotation panel would shift
+        // depending on which row happened to be active at the time.
         <Image
           src="/icons/triangle-marker.svg"
           alt=""
           width={8}
           height={8}
-          className="shrink-0"
+          className={`shrink-0 transition-opacity duration-200 ${isActive ? "opacity-100" : "opacity-0"}`}
           aria-hidden
         />
       ) : null}

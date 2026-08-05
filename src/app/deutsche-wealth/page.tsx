@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { VideoGallery } from "@/components/deutsche-wealth/VideoGallery";
 import { SectionDivider } from "@/components/SectionDivider";
+import { FloatingCaseStudyNav } from "@/components/floating-nav/FloatingCaseStudyNav";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -105,6 +106,7 @@ const redesignPhases = [
 export default function DeutscheWealthCaseStudyPage() {
   return (
     <main className="bg-white">
+      <FloatingCaseStudyNav currentPage="deutsche-wealth" />
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-5 pb-20 pt-10 sm:px-6 md:px-8 md:pt-[122px]">
         {/* Hero */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">

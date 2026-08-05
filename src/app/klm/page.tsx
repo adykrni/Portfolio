@@ -4,6 +4,7 @@ import Link from "next/link";
 import { HeroImage } from "@/components/CaseStudyImage";
 import { OffersConfigurator } from "@/components/OffersConfigurator";
 import { SectionDivider } from "@/components/SectionDivider";
+import { FloatingCaseStudyNav } from "@/components/floating-nav/FloatingCaseStudyNav";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -29,6 +30,7 @@ const backButtonClassName =
 export default function KlmCaseStudyPage() {
   return (
     <main className="bg-background">
+      <FloatingCaseStudyNav currentPage="klm" />
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-5 pb-20 pt-10 sm:px-6 md:px-8 md:pt-[55px]">
         {/* Hero */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">
