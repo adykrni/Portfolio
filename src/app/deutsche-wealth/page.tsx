@@ -104,7 +104,7 @@ const redesignPhases = [
 
 export default function DeutscheWealthCaseStudyPage() {
   return (
-    <main className="bg-background">
+    <main className="bg-white">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-5 pb-20 pt-10 sm:px-6 md:px-8 md:pt-[122px]">
         {/* Hero */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">
@@ -195,6 +195,20 @@ export default function DeutscheWealthCaseStudyPage() {
           </div>
 
           <VideoGallery frameHeight={474} />
+
+          <div className="mx-auto flex w-full max-w-[700px] items-start gap-2">
+            <Image
+              src="/icons/info.svg"
+              alt=""
+              width={16}
+              height={16}
+              className="mt-0.5 shrink-0"
+              aria-hidden
+            />
+            <p className="flex-1 text-sm leading-[1.4] text-muted">
+              These are clickable prototypes, try me.
+            </p>
+          </div>
         </section>
 
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />

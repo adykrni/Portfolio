@@ -1,0 +1,128 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+import type { BioChip } from "@/lib/bio-content";
+import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+
+// Springs stay interruptible when the pointer darts between chips — unlike a
+// fixed-duration keyframe animation, a spring retargets smoothly mid-flight
+// instead of snapping or restarting. bounce: 0 keeps it critically damped
+// (no overshoot), matching a quick, confident UI motion rather than a bouncy one.
+const springTransition = { type: "spring" as const, duration: 0.4, bounce: 0 };
+
+// Enter combines opacity + blur + a small translateY — exit is deliberately
+// more subtle (opacity + blur only, no movement) so dismissing a chip never
+// draws as much attention as revealing one did.
+const itemVariants = {
+  initial: { opacity: 0, y: 6, filter: "blur(4px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  exit: { opacity: 0, filter: "blur(4px)" },
+};
+
+// Bubbles/facts are split and staggered individually — slow enough that each
+// one reads as its own beat, like messages landing one after another, rather
+// than the whole stack flashing in at once. Dismissal stays quicker since it
+// shouldn't hold attention the way arriving does.
+const containerVariants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.28 } },
+  exit: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
+};
+
+type BioAnnotationProps = {
+  chip: BioChip;
+};
+
+export function BioAnnotation({ chip }: BioAnnotationProps) {
+  if (chip.annotation.kind === "bubbles") {
+    return (
+      <motion.div
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="flex flex-col items-start gap-[6px]"
+      >
+        {chip.annotation.texts.map((text) => (
+          <motion.div
+            key={text}
+            variants={itemVariants}
+            transition={springTransition}
+            className="whitespace-nowrap rounded-[10px] bg-[#e7e7e7] px-3 py-2 text-[16px] lowercase tracking-[0.16px] text-[#191b1e]"
+          >
+            {text}
+          </motion.div>
+        ))}
+      </motion.div>
+    );
+  }
+
+  // "facts" — a dark device-style preview frame followed by a stack of
+  // pill-shaped highlights, in the same enter/exit language as the bubbles.
+  const { mediaLabel, imageSrc, imageAlt, imageHasOwnFrame, imageWidth, imageHeight, facts } =
+    chip.annotation;
+  const imageSizes = "(min-width: 1024px) 650px, (min-width: 640px) 420px, 280px";
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="flex w-[280px] flex-col items-start gap-2 sm:w-[420px] lg:w-[650px]"
+    >
+      {imageSrc && imageHasOwnFrame && imageWidth && imageHeight ? (
+        // This image already bakes in its own border/bezel (a device mockup
+        // export) — render it at its native aspect ratio so the whole frame
+        // stays visible (no cropping) instead of wrapping it in another
+        // frame or force-fitting it into a mismatched box.
+        <motion.div variants={itemVariants} transition={springTransition} className="w-full">
+          <Image
+            src={imageSrc}
+            alt={imageAlt ?? mediaLabel}
+            width={imageWidth}
+            height={imageHeight}
+            className="h-auto w-full rounded-[10px]"
+            sizes={imageSizes}
+            quality={95}
+          />
+        </motion.div>
+      ) : (
+        <motion.div
+          variants={itemVariants}
+          transition={springTransition}
+          className="w-full rounded-[10px] bg-[#1d242d] p-1"
+        >
+          {imageSrc ? (
+            <div className="relative h-[150px] w-full overflow-hidden rounded-[6px] bg-white sm:h-[224px] lg:h-[433px]">
+              <Image
+                src={imageSrc}
+                alt={imageAlt ?? mediaLabel}
+                fill
+                className="object-cover"
+                sizes={imageSizes}
+                quality={95}
+              />
+            </div>
+          ) : (
+            <MediaPlaceholder
+              label={mediaLabel}
+              className="h-[150px] w-full rounded-[6px] bg-white sm:h-[224px] lg:h-[433px]"
+            />
+          )}
+        </motion.div>
+      )}
+      {facts.map((fact) => (
+        <motion.div
+          key={fact}
+          variants={itemVariants}
+          transition={springTransition}
+          className="rounded-[10px] bg-[#e7e7e7] px-3 py-2 text-[16px] tracking-[0.16px] text-[#191b1e]"
+        >
+          {fact}
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}

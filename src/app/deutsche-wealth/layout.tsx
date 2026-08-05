@@ -11,5 +11,5 @@ export default function DeutscheWealthLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <div className="font-radio">{children}</div>;
 }
