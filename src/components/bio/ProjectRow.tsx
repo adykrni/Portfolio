@@ -56,7 +56,7 @@ export const ProjectRow = forwardRef<HTMLButtonElement, ProjectRowProps>(functio
       className={`inline-flex items-center gap-[10px] text-left transition-[filter,opacity] duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${dimClass}`}
     >
       <Image src="/icons/folder.svg" alt="" width={16} height={16} className="shrink-0" aria-hidden />
-      <span className="text-[16px] tracking-[0.16px] text-black">{chip.label}</span>
+      <span className="text-[16px] tracking-[0.16px] text-foreground">{chip.label}</span>
       {isLinked ? (
         // Always mounted (rather than only while active) so the row's own
         // width never changes when it activates — otherwise the widest-row

@@ -3,12 +3,12 @@ export function LibraryDiagram() {
     <div className="relative w-full pt-2">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex h-[83px] items-center justify-center rounded-[10px] bg-surface-diagram p-[30px]">
-          <span className="text-center font-mono text-[15px] leading-[1.3] tracking-[0.003px] text-black">
+          <span className="text-center font-mono text-[15px] leading-[1.3] tracking-[0.003px] text-foreground">
             Icon library
           </span>
         </div>
         <div className="flex h-[83px] items-center justify-center rounded-[10px] bg-surface-diagram p-[30px]">
-          <span className="text-center font-mono text-[15px] leading-[1.3] tracking-[0.003px] text-black">
+          <span className="text-center font-mono text-[15px] leading-[1.3] tracking-[0.003px] text-foreground">
             Core library
           </span>
         </div>
@@ -42,7 +42,7 @@ export function LibraryDiagram() {
       </div>
 
       <div className="mt-[57px] flex h-[100px] items-center justify-center rounded-[10px] bg-surface-diagram p-[30px]">
-        <span className="text-center font-mono text-[15px] leading-[1.3] tracking-[0.003px] text-black">
+        <span className="text-center font-mono text-[15px] leading-[1.3] tracking-[0.003px] text-foreground">
           Custom library
         </span>
       </div>

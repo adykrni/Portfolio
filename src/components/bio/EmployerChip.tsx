@@ -44,7 +44,7 @@ export const EmployerChip = forwardRef<HTMLButtonElement, EmployerChipProps>(fun
       onFocus={(event) => handleFocus(event, onActivate)}
       onBlur={onDeactivate}
       onClick={onActivate}
-      className={`inline-flex items-center rounded-[3px] bg-[#eee] px-[5px] pb-[3px] pt-[2px] align-baseline text-[16px] leading-[1.4] tracking-[0.16px] text-black transition-[filter,opacity] duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${dimClass}`}
+      className={`inline align-baseline rounded-[3px] bg-[#eee] px-[5px] pb-[3px] pt-[2px] text-[16px] leading-[inherit] tracking-[0.16px] text-foreground transition-[filter,opacity] duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${dimClass}`}
     >
       {label}
     </button>

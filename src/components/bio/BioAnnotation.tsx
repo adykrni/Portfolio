@@ -51,7 +51,7 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
             key={text}
             variants={itemVariants}
             transition={springTransition}
-            className="whitespace-nowrap rounded-[10px] bg-[#e7e7e7] px-3 py-2 text-[16px] lowercase tracking-[0.16px] text-[#191b1e]"
+            className="whitespace-nowrap rounded-[10px] bg-[#e7e7e7] px-3 py-2 text-[16px] lowercase tracking-[0.16px] text-foreground"
           >
             {text}
           </motion.div>
@@ -119,7 +119,7 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
           key={fact}
           variants={itemVariants}
           transition={springTransition}
-          className="rounded-[6px] bg-[#e7e7e7] p-[6px] text-[16px] leading-[1.4] tracking-[0.16px] text-[#191b1e]"
+          className="rounded-[6px] bg-[#e7e7e7] p-[6px] text-[16px] leading-[1.4] tracking-[0.16px] text-foreground"
         >
           {fact}
         </motion.div>

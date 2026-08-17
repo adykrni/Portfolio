@@ -18,7 +18,7 @@ function SectionIntro({ children }: { children: React.ReactNode }) {
 
 function SubsectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[13px] font-semibold uppercase leading-[1.4] text-[#696d74]">
+    <p className="text-[13px] font-semibold uppercase leading-[1.4] text-foreground">
       {children}
     </p>
   );
@@ -32,7 +32,7 @@ type LayerCardProps = {
 function LayerCard({ title, description }: LayerCardProps) {
   return (
     <div className="flex w-full flex-col gap-1.5 rounded-[10px] bg-surface-card p-5">
-      <p className="text-base font-medium leading-[1.4] text-[#161617]">{title}</p>
+      <p className="text-base font-medium leading-[1.4] text-foreground">{title}</p>
       <p className="text-base font-normal leading-[1.4] text-muted">{description}</p>
     </div>
   );
@@ -152,7 +152,7 @@ export default function DeutscheWealthCaseStudyPage() {
             <p className="text-base leading-[1.4] text-muted">
               Our users were overwhelmed by information. Users arrive at the dashboard with simple,
               urgent questions —{" "}
-              <span className="font-medium text-[#292b2f]">
+              <span className="font-medium text-foreground">
                 &quot;What&apos;s my total wealth?&quot;, &quot;Am I on track to my financial
                 goals?&quot;
               </span>
@@ -261,7 +261,7 @@ export default function DeutscheWealthCaseStudyPage() {
           <div className="flex flex-col gap-2.5">
             <SubsectionLabel>What I found</SubsectionLabel>
             <p className="text-base leading-[1.4] text-muted">
-              -- <span className="font-semibold text-[#18191b]">19 / 27</span> users located their
+              -- <span className="font-semibold text-foreground">19 / 27</span> users located their
               total wealth and read their direction of travel from the L1 summary alone, unaided.
             </p>
             <SectionIntro>

@@ -75,12 +75,12 @@ export function BioPage() {
       <div ref={containerRef} className="relative flex flex-col items-start gap-[30px]">
         <div className={`flex items-center gap-[10px] ${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}>
           <AvatarDoodle />
-          <p className="font-radio text-[16px] font-bold tracking-[0.16px] text-black">
+          <p className="font-radio text-[16px] font-bold tracking-[0.16px] text-foreground">
             Aditya Kulkarni
           </p>
         </div>
 
-        <p className="font-radio text-[16px] leading-[1.4] tracking-[0.16px] text-[#3a3a3a]">
+        <p className="font-radio text-[16px] leading-[1.4] tracking-[0.16px] text-foreground">
           <span className={`${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}>
             {bioIntro.before}
           </span>
@@ -100,7 +100,7 @@ export function BioPage() {
         </p>
 
         <p
-          className={`font-radio text-[16px] leading-[1.4] tracking-[0.16px] text-[#3a3a3a] ${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}
+          className={`font-radio text-[16px] leading-[1.4] tracking-[0.16px] text-foreground ${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}
         >
           {bioContact.before}
           <a
@@ -109,7 +109,7 @@ export function BioPage() {
             rel={bioContact.resumeHref !== "#" ? "noopener noreferrer" : undefined}
             aria-disabled={bioContact.resumeHref === "#" || undefined}
             onClick={bioContact.resumeHref === "#" ? (event) => event.preventDefault() : undefined}
-            className={`underline decoration-solid underline-offset-2 ${bioContact.resumeHref === "#" ? "cursor-not-allowed text-[#999]" : ""}`}
+            className={`underline decoration-solid underline-offset-2 ${bioContact.resumeHref === "#" ? "cursor-not-allowed opacity-40" : ""}`}
           >
             {bioContact.resumeLabel}
           </a>

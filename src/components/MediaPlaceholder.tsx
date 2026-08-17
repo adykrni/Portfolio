@@ -8,7 +8,7 @@ export function MediaPlaceholder({ label, className = "" }: MediaPlaceholderProp
     <div
       className={`flex items-center justify-center overflow-hidden rounded-[10px] bg-surface-media ${className}`}
     >
-      <span className="font-mono text-base font-semibold leading-[1.4] text-[#141414]">
+      <span className="font-mono text-base font-semibold leading-[1.4] text-foreground">
         {label}
       </span>
     </div>

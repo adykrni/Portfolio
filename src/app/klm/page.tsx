@@ -18,7 +18,7 @@ function SectionIntro({ children }: { children: React.ReactNode }) {
 
 function SubsectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[13px] font-semibold uppercase leading-[1.4] text-[#696d74]">
+    <p className="text-[13px] font-semibold uppercase leading-[1.4] text-foreground">
       {children}
     </p>
   );
@@ -40,7 +40,7 @@ export default function KlmCaseStudyPage() {
               KLM Holidays sells complete vacation packages in one booking. I designed a single,
               reconfigurable Offers component, shipped it to engineering, and its A/B-tested
               variants{" "}
-              <span className="font-semibold text-[#151618]">
+              <span className="font-semibold text-foreground">
                 lifted bookings 27% in the BeNeLux market.
               </span>
             </p>

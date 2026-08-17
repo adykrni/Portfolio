@@ -10,7 +10,7 @@ export default function AudiCaseStudyPage() {
         </h1>
 
         <div className="flex h-[201px] w-full items-center justify-center overflow-hidden rounded-[10px] bg-surface-card">
-          <p className="font-radio text-base font-bold uppercase leading-[1.4] text-[#141414]">
+          <p className="font-radio text-base font-bold uppercase leading-[1.4] text-foreground">
             Case study coming soon.
           </p>
         </div>

@@ -48,7 +48,7 @@ export function StoryReveal({ children }: StoryRevealProps) {
         className="grid w-full transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
         style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
       >
-        <div className="overflow-hidden">
+        <div className={isExpanded ? "min-h-0 overflow-visible" : "min-h-0 overflow-hidden"}>
           <div
             className={`flex w-full flex-col items-center gap-16 pt-16 transition-[filter,opacity] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
               isExpanded ? "opacity-100 blur-0" : "opacity-0 blur-[6px]"

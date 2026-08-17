@@ -24,17 +24,20 @@ export function Subsection({ heading, children }: SubsectionProps) {
 
 type DeepDiveSectionProps = {
   children: React.ReactNode;
+  media?: React.ReactNode;
 };
 
 // A heading/paragraph column with a trailing full-width carousel — the most
 // common section shape, but not the only one (some sections skip the
 // carousel entirely, or interleave more than one), so this is a convenience
 // wrapper rather than something every section is forced through.
-export function DeepDiveSection({ children }: DeepDiveSectionProps) {
+export function DeepDiveSection({ children, media }: DeepDiveSectionProps) {
   return (
     <div className="flex w-full max-w-[900px] flex-col items-center gap-10">
       <div className="flex w-full max-w-[700px] flex-col gap-[30px]">{children}</div>
-      <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+      {media ?? (
+        <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+      )}
     </div>
   );
 }

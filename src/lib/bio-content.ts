@@ -96,7 +96,10 @@ export const projects: BioChip[] = [
       imageHasOwnFrame: true,
       imageWidth: 2600,
       imageHeight: 1704,
-      facts: ["data-driven dashboards", "UI redesign for wealth management portal"],
+      facts: [
+        "Data heavy dashboards for wealth management portal",
+        "validated with 27 users in usability testing",
+      ],
       href: "/deutsche-wealth",
     },
   },
@@ -111,8 +114,7 @@ export const projects: BioChip[] = [
       imageHasOwnFrame: true,
       imageWidth: 2600,
       imageHeight: 1704,
-      // TODO: replace with real fact copy — placeholders until provided.
-      facts: ["placeholder fact 1", "placeholder fact 2"],
+      facts: ["Unifying a global design system for Audi", "case study coming soon, apologies.."],
       href: "/audi",
     },
   },
@@ -127,7 +129,10 @@ export const projects: BioChip[] = [
       imageHasOwnFrame: true,
       imageWidth: 2600,
       imageHeight: 1704,
-      facts: ["sole UI designer", "design systems for travel tech"],
+      facts: [
+        "design system for travel tech",
+        "shipped a modular component adopted by multiple product teams in the org",
+      ],
       href: "/klm",
     },
   },

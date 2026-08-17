@@ -1,4 +1,5 @@
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+import { CaseStudyImage } from "@/components/CaseStudyImage";
+import { CaseStudyVideo } from "@/components/CaseStudyVideo";
 import { StoryReveal } from "@/components/loryn-next/StoryReveal";
 import { StoryDisclaimer } from "@/components/loryn-next/StoryDisclaimer";
 import { BlockBody, DeepDiveSection, Subsection } from "@/components/loryn-next/blocks";
@@ -11,7 +12,11 @@ export function AgenticWorkflowsStory() {
         chore into a 5-minute, AI-verified flow people actually trust.
       </p>
 
-      <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+      <CaseStudyVideo
+        src="/images/5.mp4"
+        ariaLabel="SAP access request flow using the Loryn side panel form pattern"
+        className="w-full"
+      />
 
       <div className="flex w-full max-w-[700px] flex-col items-start gap-5">
         <ul className="flex list-disc flex-col gap-4 pl-6 text-base leading-[1.4] text-foreground">
@@ -35,7 +40,17 @@ export function AgenticWorkflowsStory() {
       </div>
 
       <StoryReveal>
-        <DeepDiveSection>
+        <DeepDiveSection
+          media={
+            <CaseStudyImage
+              src="/images/LorynVisual1.png"
+              alt="Legacy SAP and ServiceNow access request workflows — dense forms and context-switching between systems"
+              width={1920}
+              height={1080}
+              className="w-full"
+            />
+          }
+        >
           <Subsection heading="The problem, and the problem behind the problem">
             <BlockBody>
               Users were losing hours every week to ServiceNow and SAP processes —{" "}
@@ -54,7 +69,15 @@ export function AgenticWorkflowsStory() {
           </BlockBody>
         </DeepDiveSection>
 
-        <DeepDiveSection>
+        <DeepDiveSection
+          media={
+            <CaseStudyVideo
+              src="/images/7.mp4"
+              ariaLabel="Chat + Form Panel pattern — SAP access request with side panel form beside the conversation"
+              className="w-full"
+            />
+          }
+        >
           <Subsection heading="Shaping the problem: two moments of scoping under real constraints">
             <BlockBody>
               I want to be precise about what I owned here, Loryn&apos;s roadmap sat with the
@@ -98,7 +121,17 @@ export function AgenticWorkflowsStory() {
           </Subsection>
         </DeepDiveSection>
 
-        <DeepDiveSection>
+        <DeepDiveSection
+          media={
+            <CaseStudyImage
+              src="/images/DesignDecision.png"
+              alt="Design decisions for the Chat + Form Panel pattern — prefill-not-submit, panel beside chat, and honest failure states"
+              width={1920}
+              height={1080}
+              className="w-full"
+            />
+          }
+        >
           <Subsection heading="The design decisions, and what each one cost">
             <BlockBody>
               Once Chat + Form Panel was the direction, three decisions shaped whether the pattern
@@ -126,35 +159,6 @@ export function AgenticWorkflowsStory() {
               If Loryn can&apos;t pull the needed data, it says so plainly and routes the user to
               the legacy portal rather than trapping them. The agent should accelerate the
               process, never gate it.
-            </BlockBody>
-          </Subsection>
-        </DeepDiveSection>
-
-        <DeepDiveSection>
-          <Subsection heading="What shipped, and what it actually changed">
-            <BlockBody>
-              The redesigned SAP access request flow{" "}
-              <span className="font-bold text-foreground">
-                cut completion time from roughly 25–30 minutes to about 5,
-              </span>{" "}
-              measured in the client&apos;s own user research comparing the legacy portal against
-              Loryn.
-            </BlockBody>
-            <BlockBody>
-              I want to be specific about where that time actually went - the form itself only
-              ever took about 5 minutes to fill.{" "}
-              <span className="font-bold text-foreground">
-                The other 20–25 minutes were lost to finding the right information — employees
-                pinging Slack, email, and colleagues across geographies to figure out what to
-                select.
-              </span>{" "}
-              Loryn&apos;s real contribution wasn&apos;t making form-filling faster. It was
-              eliminating the information finding by pulling the data directly and letting the
-              user ask follow-up questions inline instead of leaving the flow.
-            </BlockBody>
-            <BlockBody>
-              The same Chat + Form Panel pattern was then extended across 29 additional forms,
-              ranging from low to high complexity.
             </BlockBody>
           </Subsection>
         </DeepDiveSection>

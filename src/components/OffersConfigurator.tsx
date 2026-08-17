@@ -116,7 +116,7 @@ export function OffersConfigurator() {
     <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 md:gap-[25px]">
       <section className="mx-auto flex w-full max-w-[900px] flex-col gap-6 md:gap-[25px]">
         <div className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
-          <p className="text-[13px] font-semibold uppercase leading-[1.4] text-[#696d74]">
+          <p className="text-[13px] font-semibold uppercase leading-[1.4] text-foreground">
             Configure it
           </p>
           <p className="text-base font-normal leading-[1.4] text-muted">

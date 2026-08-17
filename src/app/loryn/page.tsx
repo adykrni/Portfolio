@@ -1,7 +1,26 @@
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import { FloatingCaseStudyNav } from "@/components/floating-nav/FloatingCaseStudyNav";
 import { BlockHeading, BlockBody } from "@/components/loryn-next/blocks";
 import { LorynStoryTabs } from "@/components/loryn-next/LorynStoryTabs";
+
+const lorynHeroScreens = [
+  {
+    src: "/images/Loryn-Screen-1.png",
+    alt: "Loryn AI chat — Microsoft 365 license upgrade flow with license type selection",
+  },
+  {
+    src: "/images/Loryn-Screen-2.png",
+    alt: "Loryn AI chat — extend external employee account duration with date picker",
+  },
+  {
+    src: "/images/Loryn-Screen-3.png",
+    alt: "Loryn AI chat — PC health diagnosis connecting to IT support agent",
+  },
+  {
+    src: "/images/Loryn-Screen-4.png",
+    alt: "Loryn AI chat — device diagnostics permission prompt for slow laptop",
+  },
+] as const;
 
 export default function LorynPage() {
   return (
@@ -31,7 +50,7 @@ export default function LorynPage() {
             </BlockBody>
           </div>
 
-          <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[379px] w-full" />
+          <ImageCarousel images={[...lorynHeroScreens]} className="w-full" />
 
           <LorynStoryTabs />
         </div>

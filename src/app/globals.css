@@ -18,16 +18,16 @@
 
 :root {
   --background: #efefef;
-  --foreground: #1a1c1d;
-  --muted: #5d6571;
+  --foreground: #171717;
+  --muted: #171717;
   --grid-line: #dde2ea;
   --surface-card: #f3f3f3;
   --surface-media: #f1f0f0;
   --surface-diagram: #e3f0ff;
   --divider: #e5e5e5;
   --panel-border: #c2c2c2;
-  --section-label: #242528;
-  --copyright: #999ca2;
+  --section-label: #171717;
+  --copyright: #171717;
   --klm-orange: #e37222;
   --klm-blue: #0077c8;
 }
