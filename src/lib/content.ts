@@ -8,7 +8,7 @@ export const site = {
   copyright: "© 2026 - ADITYA KULKARNI",
   resumeLabel: "Resume",
   resumeLabelMobile: "View resume",
-  resumeUrl: undefined as string | undefined,
+  resumeUrl: "/resume",
   links: {
     twitter: "https://x.com/adykrni",
     mail: "mailto:adityakulkarni1894@gmail.com",

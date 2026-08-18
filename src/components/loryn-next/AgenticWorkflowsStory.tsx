@@ -43,10 +43,10 @@ export function AgenticWorkflowsStory() {
         <DeepDiveSection
           media={
             <CaseStudyImage
-              src="/images/LorynVisual1.png"
+              src="/images/Problem.png"
               alt="Legacy SAP and ServiceNow access request workflows — dense forms and context-switching between systems"
-              width={1920}
-              height={1080}
+              width={1354}
+              height={426}
               className="w-full"
             />
           }
@@ -60,20 +60,15 @@ export function AgenticWorkflowsStory() {
               </span>
             </BlockBody>
           </Subsection>
-          <BlockBody>
-            But the more interesting problem wasn&apos;t the forms, nobody had yet decided which
-            broken workflow to fix first, or what &quot;fixed&quot; would even mean. Loryn was
-            going to scale to IT, HR, and Finance &amp; Procurement, and within IT specifically,
-            product hadn&apos;t settled on what to build. That ambiguity is where my actual work
-            started — not with a brief, but with an open question.
-          </BlockBody>
         </DeepDiveSection>
 
         <DeepDiveSection
           media={
-            <CaseStudyVideo
-              src="/images/7.mp4"
-              ariaLabel="Chat + Form Panel pattern — SAP access request with side panel form beside the conversation"
+            <CaseStudyImage
+              src="/images/UseCase.png"
+              alt="Two IT use cases compared — device-fixing flow versus SAP and ServiceNow access requests"
+              width={1920}
+              height={1080}
               className="w-full"
             />
           }
@@ -103,6 +98,17 @@ export function AgenticWorkflowsStory() {
               and momentum first.
             </BlockBody>
           </Subsection>
+        </DeepDiveSection>
+
+        <DeepDiveSection
+          media={
+            <CaseStudyVideo
+              src="/images/7.mp4"
+              ariaLabel="Chat + Form Panel pattern — SAP access request with side panel form beside the conversation"
+              className="w-full"
+            />
+          }
+        >
           <Subsection heading="2. When the shipped direction was wrong">
             <BlockBody>
               Engineering had already built a poc a conversational form — fill every field one at

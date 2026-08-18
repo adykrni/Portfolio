@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -103,16 +104,12 @@ export function BioPage() {
           className={`font-radio text-[16px] leading-[1.4] tracking-[0.16px] text-foreground ${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}
         >
           {bioContact.before}
-          <a
+          <Link
             href={bioContact.resumeHref}
-            target={bioContact.resumeHref !== "#" ? "_blank" : undefined}
-            rel={bioContact.resumeHref !== "#" ? "noopener noreferrer" : undefined}
-            aria-disabled={bioContact.resumeHref === "#" || undefined}
-            onClick={bioContact.resumeHref === "#" ? (event) => event.preventDefault() : undefined}
-            className={`underline decoration-solid underline-offset-2 ${bioContact.resumeHref === "#" ? "cursor-not-allowed opacity-40" : ""}`}
+            className="underline decoration-solid underline-offset-2"
           >
             {bioContact.resumeLabel}
-          </a>
+          </Link>
           {bioContact.afterResume}
           {bioContact.links.map((link, i) => (
             <span key={link.label}>
