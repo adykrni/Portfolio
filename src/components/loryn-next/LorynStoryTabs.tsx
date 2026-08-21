@@ -19,7 +19,7 @@ function TabContent({ tab }: { tab: StoryTab }) {
 
   return (
     <div
-      className={`flex w-full flex-col items-center gap-11 transition-[filter,opacity] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+      className={`flex w-full min-w-0 flex-col items-center gap-11 transition-[filter,opacity] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
         isVisible ? "opacity-100 blur-0" : "opacity-0 blur-[10px]"
       }`}
     >

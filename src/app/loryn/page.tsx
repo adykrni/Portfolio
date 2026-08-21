@@ -32,7 +32,7 @@ export default function LorynPage() {
           <div className="flex w-full max-w-[700px] flex-col gap-2.5">
             <BlockHeading>Loryn AI</BlockHeading>
             <BlockBody>
-              Shipping an AI-first enterprise product for 12k+ employees. Designing Agent
+              Shipping an AI-first enterprise product for 12k+ Syngenta employees. Designing Agent
               Workflows Enterprise Employees Can Trust.
             </BlockBody>
           </div>
@@ -40,13 +40,22 @@ export default function LorynPage() {
           <div className="flex w-full max-w-[700px] flex-col gap-2.5">
             <BlockHeading>Overview</BlockHeading>
             <BlockBody>
-              Built Loryn from zero, joined as sole UI designer to build the design system and
-              ship UI. Within 6 months, transitioned to end-to-end product designer owning the IT
-              Systems feature: research, scoping, flows, prototypes, through to ship.
+              Loryn&apos;s long-term product goal is for it to replace the company&apos;s Employee
+              Center - the entry to IT, HR, Finance and Procurement services. Today it&apos;s just a
+              directory of links into ServiceNow.
             </BlockBody>
             <BlockBody>
-              A client-side Experience Lead as daily partner and final decision-maker, two POs, a
-              team of 10 engineers. Project ongoing since August 2025.
+              It went live in August 2025 as a proof of concept. I joined in October 2025 as the
+              sole designer on the IT service management functionality, covering it end-to-end,
+              and releasing it in March 2026. I was working with a client-side Experience Lead,
+              and Product Lead as daily partner and a team of 7 engineers.
+            </BlockBody>
+            <BlockBody>
+              Feature scoping came out of the PM&apos;s research; I have to be honest that
+              research scope was limited for me. What I&apos;d have wanted to validate before is
+              ticket volume and cost so I went back to the ticket data afterward and checked.
+              Identity & Access and Hardware & Devices are the two largest automatable ticket
+              categories in that data.
             </BlockBody>
           </div>
 

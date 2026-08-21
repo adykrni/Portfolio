@@ -33,10 +33,10 @@ type DeepDiveSectionProps = {
 // wrapper rather than something every section is forced through.
 export function DeepDiveSection({ children, media }: DeepDiveSectionProps) {
   return (
-    <div className="flex w-full max-w-[900px] flex-col items-center gap-10">
+    <div className="flex w-full min-w-0 max-w-[900px] flex-col items-center gap-10">
       <div className="flex w-full max-w-[700px] flex-col gap-[30px]">{children}</div>
       {media ?? (
-        <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+        <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="aspect-[3112/2004] w-full" />
       )}
     </div>
   );

@@ -1,200 +1,174 @@
 import { CaseStudyImage } from "@/components/CaseStudyImage";
 import { CaseStudyVideo } from "@/components/CaseStudyVideo";
-import { StoryReveal } from "@/components/loryn-next/StoryReveal";
+import { MediaPlaceholder } from "@/components/MediaPlaceholder";
 import { StoryDisclaimer } from "@/components/loryn-next/StoryDisclaimer";
-import { BlockBody, DeepDiveSection, Subsection } from "@/components/loryn-next/blocks";
+import { BlockBody, BlockHeading } from "@/components/loryn-next/blocks";
+import { ProblemFlow } from "@/components/loryn-next/ProblemFlow";
+
+function StoryText({ children }: { children: React.ReactNode }) {
+  return <div className="flex w-full max-w-[700px] flex-col gap-[30px]">{children}</div>;
+}
+
+function StorySection({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex w-full min-w-0 max-w-[900px] flex-col items-center gap-[30px]">
+      {children}
+    </div>
+  );
+}
 
 export function AgenticWorkflowsStory() {
   return (
-    <>
-      <p className="w-full max-w-[700px] text-base font-normal leading-[1.4] text-foreground">
-        Redesigned how employees request IT and SAP access — turning a 30-minute, form-heavy
-        chore into a 5-minute, AI-verified flow people actually trust.
-      </p>
-
-      <CaseStudyVideo
-        src="/images/5.mp4"
-        ariaLabel="SAP access request flow using the Loryn side panel form pattern"
-        className="w-full"
-      />
-
-      <div className="flex w-full max-w-[700px] flex-col items-start gap-5">
-        <ul className="flex list-disc flex-col gap-4 pl-6 text-base leading-[1.4] text-foreground">
-          <li>
-            Pushed back on a shipped direction with research, and user data proved it right — my
-            Chat + Form Panel pattern replaced a purely conversational form on first rollout
-          </li>
-          <li>
-            Cut request time from <span className="font-bold">~30 min to ~5</span> by attacking
-            the real bottleneck — not the form, the information hunt
-          </li>
-          <li>
-            Designed the trust architecture —{" "}
-            <span className="font-bold">
-              prefill-not-submit, form panel-beside-chat, honest failure states
-            </span>{" "}
-            — so an AI agent could act without silently getting it wrong
-          </li>
-          <li>Scaled the same pattern across 29 forms without redesigning the interaction each time.</li>
-        </ul>
-      </div>
-
-      <StoryReveal>
-        <DeepDiveSection
-          media={
-            <CaseStudyImage
-              src="/images/Problem.png"
-              alt="Legacy SAP and ServiceNow access request workflows — dense forms and context-switching between systems"
-              width={1354}
-              height={426}
-              className="w-full"
-            />
-          }
-        >
-          <Subsection heading="The problem, and the problem behind the problem">
-            <BlockBody>
-              Users were losing hours every week to ServiceNow and SAP processes —{" "}
-              <span className="font-medium text-foreground">
-                dense catalog forms, manual data entry, constant context-switching between
-                systems just to request something as routine as software access.
-              </span>
-            </BlockBody>
-          </Subsection>
-        </DeepDiveSection>
-
-        <DeepDiveSection
-          media={
-            <CaseStudyImage
-              src="/images/UseCase.png"
-              alt="Two IT use cases compared — device-fixing flow versus SAP and ServiceNow access requests"
-              width={1920}
-              height={1080}
-              className="w-full"
-            />
-          }
-        >
-          <Subsection heading="Shaping the problem: two moments of scoping under real constraints">
-            <BlockBody>
-              I want to be precise about what I owned here, Loryn&apos;s roadmap sat with the
-              client&apos;s product leadership. What I owned was translating an ambiguous mandate
-              into a sequenced, evidence-backed plan, and pushing back when the evidence disagreed
-              with the shipped direction.
-            </BlockBody>
-          </Subsection>
-          <Subsection heading="1. Choosing where to focus, inside an open mandate">
-            <BlockBody>
-              Product had two use cases ready to build simultaneously within IT Systems: a
-              device-fixing flow (an agent attempts to resolve issues like a malfunctioning Teams
-              install, escalating to a human if it fails) and a request-access flow (employees
-              requesting SAP/ServiceNow access via forms).
-            </BlockBody>
-            <BlockBody>
-              I argued for sequencing access-requests first, on reach: device-fixing touches a
-              narrower IT-support surface, while access requests touch nearly every employee,
-              repeatedly. [I&apos;m being precise rather than inflating this: my argument leaned
-              on directional evidence of request volume and user frustration rather than a formal
-              quantitative study — worth knowing if you&apos;re asking me about it.] Both use
-              cases eventually shipped, but the sequencing call shaped what got design attention
-              and momentum first.
-            </BlockBody>
-          </Subsection>
-        </DeepDiveSection>
-
-        <DeepDiveSection
-          media={
-            <CaseStudyVideo
-              src="/images/7.mp4"
-              ariaLabel="Chat + Form Panel pattern — SAP access request with side panel form beside the conversation"
-              className="w-full"
-            />
-          }
-        >
-          <Subsection heading="2. When the shipped direction was wrong">
-            <BlockBody>
-              Engineering had already built a poc a conversational form — fill every field one at
-              a time, in chat. It was fast to build and it shipped. My prediction was that pure
-              conversation would frustrate users on a structured task. Verifying ten fields in a
-              chat transcript is worse than seeing them at a glance. I pushed back and proposed a
-              Chat + Form Panel pattern instead, the conversation stays for guidance, but a
-              structured panel sits alongside it for the actual data.
-            </BlockBody>
-            <BlockBody>
-              I lost that round. The conversational form shipped first — it was already built, and
-              shipping it was cheap. Then the first-rollout feedback came in: low adoption, real
-              user frustration with exactly the failure mode I&apos;d flagged. We revisited, and
-              the Chat + Form Panel pattern shipped in its place.
-            </BlockBody>
-          </Subsection>
-        </DeepDiveSection>
-
-        <DeepDiveSection
-          media={
-            <CaseStudyImage
-              src="/images/DesignDecision.png"
-              alt="Design decisions for the Chat + Form Panel pattern — prefill-not-submit, panel beside chat, and honest failure states"
-              width={1920}
-              height={1080}
-              className="w-full"
-            />
-          }
-        >
-          <Subsection heading="The design decisions, and what each one cost">
-            <BlockBody>
-              Once Chat + Form Panel was the direction, three decisions shaped whether the pattern
-              would actually earn trust.
-            </BlockBody>
-          </Subsection>
-          <Subsection heading="1. Prefill, never auto-submit.">
-            <BlockBody>
-              The agent pulls the user&apos;s data and prepares the request; nothing submits
-              without human review. This is a deliberate cost — one extra step of friction, kept
-              on purpose, because the system will sometimes be wrong and speed without
-              verification isn&apos;t actually faster, it&apos;s just riskier.
-            </BlockBody>
-          </Subsection>
-          <Subsection heading="2. The panel sits beside the chat, not inside it.">
-            <BlockBody>
-              Structured data needs at-a-glance verification. A chat transcript is good for
-              guidance and bad for catching a wrong field. This is heavier UI than a pure
-              conversational flow — I judged that trade-off worth it after watching the
-              conversational version fail.
-            </BlockBody>
-          </Subsection>
-          <Subsection heading="3. Honest failure states, never dead-end.">
-            <BlockBody>
-              If Loryn can&apos;t pull the needed data, it says so plainly and routes the user to
-              the legacy portal rather than trapping them. The agent should accelerate the
-              process, never gate it.
-            </BlockBody>
-          </Subsection>
-        </DeepDiveSection>
-
-        <div className="flex w-full max-w-[700px] flex-col gap-[30px]">
-          <Subsection heading="What I'd do differently">
-            <BlockBody>
-              The honest gap in this work, looking back, isn&apos;t a missing feature — it&apos;s
-              a missing question. Everything above assumes that when a user sees a prefilled,
-              editable field, they actually read and verify it. I never designed against the
-              opposite: a user on their ninth request of the day, rubber-stamping a field the AI
-              got quietly wrong. Our failure handling covers the loud failures — a data pull that
-              fails outright — and says nothing about the silent ones.
-            </BlockBody>
-          </Subsection>
+    <div className="flex w-full min-w-0 flex-col items-center gap-16">
+      <StorySection>
+        <StoryText>
+          <BlockHeading>The reframe : It was never a form problem</BlockHeading>
           <BlockBody>
-            If I were extending this today, I&apos;d split prefilled data by confidence rather
-            than treating every field the same, require explicit acknowledgment on
-            higher-consequence fields rather than allowing a passive scroll-past, and — most
-            importantly — instrument edit rate on AI-proposed values as the real measure of
-            whether verification is happening or just decorating the screen. A wrong value that
-            gets rubber-stamped isn&apos;t a UI problem. It&apos;s the one metric that would tell
-            you whether the entire trust model is actually working.
+            The brief arrived in typical manner- the SAP access request takes 30+ minutes, so build
+            a shorter, smarter form. When I conducted my own research and where the time actually
+            went, filling in the form only ever took about five minutes.
           </BlockBody>
-        </div>
-      </StoryReveal>
+          <BlockBody>
+            The other 30+ went in finding the correct information to fill it in - employees pinging
+            Slack, chasing email threads, and asking colleagues across time zones to work out which
+            system, role, or company code they were even supposed to select. The actual target was
+            the information hunt, and that changed what we were building. The ticket data showed the
+            same problem from the IT side. When someone asks for access, their ticket usually goes
+            to the wrong team first. That happens because people don&apos;t know what to ask for. So
+            they guess, and IT spends time sorting out the mess.
+          </BlockBody>
+          <ProblemFlow />
+          <BlockBody>
+            The ticket data showed the same problem from the IT side. When someone asks for access,
+            their ticket usually goes to the wrong team first. That happens because people
+            don&apos;t know what to ask for, and IT spends time sorting out the mess.
+          </BlockBody>
+          <BlockBody>
+            Making the form shorter would have saved five minutes out of thirty. The real problem
+            was everything that happened before the form - finding out what to ask for in the first
+            place.
+          </BlockBody>
+        </StoryText>
+      </StorySection>
+
+      <StorySection>
+        <StoryText>
+          <BlockHeading>What shipped first, and what it taught us</BlockHeading>
+          <BlockBody>
+            The first release was a pure conversational agent - ask in plain language, the assistant
+            handles the rest. I&apos;d argued against that approach from the start and I lost that
+            round. It shipped, and user frustration was high.
+          </BlockBody>
+          <BlockBody>
+            I built the alternative as a working prototype in parallel while the conversational
+            version went out. The reason turned out to be structural - access requests are
+            consequential and auditable, and a chat transcript gives you no way to check at a glance
+            what you&apos;re about to input. People couldn&apos;t verify what they were approving.
+            That was information no amount of argument in a meeting would have produced — the
+            release settled a question we couldn&apos;t settle in the abstract, and it settled it
+            against the approach the team had backed.
+          </BlockBody>
+        </StoryText>
+        <CaseStudyVideo
+          src="/images/7.mp4"
+          ariaLabel="Working prototype of the Chat + Form Panel pattern, built in parallel with the conversational release"
+        />
+      </StorySection>
+
+      <StorySection>
+        <StoryText>
+          <BlockHeading>The Form Panel pattern</BlockHeading>
+          <BlockBody>
+            I built the alternative as a working prototype in parallel while the conversational
+            version went out, and this became the second release.
+          </BlockBody>
+        </StoryText>
+        <CaseStudyVideo
+          src="/images/5.mp4"
+          ariaLabel="SAP access request flow using the Loryn Form Panel beside the chat"
+        />
+        <StoryText>
+          <BlockBody>
+            The Form Panel pairs the conversational surface with a structured, editable form beside
+            it: chat does the information-hunting, the panel holds the truth the human signs off on.
+          </BlockBody>
+          <div className="flex w-full flex-col gap-0 text-base font-normal leading-[1.4] text-muted">
+            <BlockBody>
+              Every prefilled field stays editable, the human submits, and the request lands in
+              ServiceNow as the system of record with a confirmation link back to it. Three major
+              decisions carried the weight.
+            </BlockBody>
+            <ul className="list-disc pl-6">
+              <li>
+                First, prefill but never auto-submit — the agent prepares, the human retains
+                authority. That&apos;s deliberate friction, and it&apos;s the difference between
+                speed and silent errors in a workflow that gets audited.
+              </li>
+              <li>
+                Second, the panel renders from ServiceNow&apos;s own variable schema, so it became
+                easy to scale it across the entire catalog (29 forms).
+              </li>
+            </ul>
+          </div>
+        </StoryText>
+        <CaseStudyImage
+          src="/images/DesignDecision.png"
+          alt="Design decisions for the Form Panel — prefill-not-submit, panel beside chat, and honest failure states"
+          aspectRatio="3112/2004"
+        />
+      </StorySection>
+
+      <StorySection>
+        <StoryText>
+          <BlockHeading>What I&apos;m currently working on</BlockHeading>
+          <BlockBody>
+            The first release was a pure conversational agent - ask in plain language, the assistant
+            handles the rest. I&apos;d argued against that approach from the start and I lost that
+            round. It shipped, and user frustration was high.
+          </BlockBody>
+          <BlockBody>
+            I built the alternative as a working prototype in parallel while the conversational
+            version went out. The reason turned out to be structural - access requests are
+            consequential and auditable, and a chat transcript gives you no way to check at a glance
+            what you&apos;re about to input. People couldn&apos;t verify what they were approving.
+            That was information no amount of argument in a meeting would have produced — the
+            release settled a question we couldn&apos;t settle in the abstract, and it settled it
+            against the approach the team had backed.
+          </BlockBody>
+        </StoryText>
+        <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="aspect-[3112/2004] w-full" />
+      </StorySection>
+
+      <StorySection>
+        <StoryText>
+          <BlockHeading>Impact, and what I&apos;d measure next</BlockHeading>
+          <BlockBody>
+            The clearest outcome was my design influence - the pattern replaced the shipped
+            approach: the product team changed its interaction architecture on the strength of a
+            prototype and the user response to the first release.
+          </BlockBody>
+          <BlockBody>
+            Loryn now reaches around 11k employees across Europe, North America, AMEA and LATAM. On
+            the operational side, monthly IT ticket volume in the six months after the March 2026
+            release averaged around 23% lower than in the 5 months before, with the categories we
+            designed for.
+          </BlockBody>
+          <BlockBody>
+            What&apos;s not working is that about one in six people still give up and ask a human
+            agent instead. I think better error messages and clearer confidence signals on the form
+            panel fields would fix that. The thing I&apos;d measure next is how often people change
+            what the AI filled in. If nobody edits anything, it could mean the AI is always right
+            (which is not going to be the case) or it could mean nobody is bothering to check and I
+            would look at the rejection rate of the requests. If people aren&apos;t editing and
+            nothing gets rejected, the AI is doing well. If people aren&apos;t editing and things
+            are getting rejected, they&apos;re just clicking approve without reading.
+          </BlockBody>
+        </StoryText>
+      </StorySection>
 
       <div className="flex w-full max-w-[700px] flex-col">
         <StoryDisclaimer />
       </div>
-    </>
+    </div>
   );
 }

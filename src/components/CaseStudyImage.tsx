@@ -9,6 +9,8 @@ type CaseStudyImageProps = {
   width?: number;
   height?: number;
   unoptimized?: boolean;
+  /** When set, the image is framed to this ratio (e.g. "3112/2004") with object-contain. */
+  aspectRatio?: string;
 };
 
 export function CaseStudyImage({
@@ -20,7 +22,27 @@ export function CaseStudyImage({
   width,
   height,
   unoptimized = false,
+  aspectRatio,
 }: CaseStudyImageProps) {
+  if (aspectRatio) {
+    return (
+      <div
+        className={`relative w-full overflow-hidden rounded-[10px] ${className}`}
+        style={{ aspectRatio }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-contain object-center"
+          sizes="(max-width: 768px) 100vw, 900px"
+          priority={priority}
+          unoptimized={unoptimized}
+        />
+      </div>
+    );
+  }
+
   if (width && height) {
     return (
       <div className={`overflow-hidden rounded-[10px] ${className.includes("w-full") ? "w-full" : "shrink-0"}`}>

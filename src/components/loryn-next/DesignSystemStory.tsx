@@ -7,6 +7,8 @@ import {
   Subsection,
   TextOnlySection,
 } from "@/components/loryn-next/blocks";
+import { ShippedInputPair } from "@/components/loryn-next/ShippedInputPair";
+import { TokenArchitectureFlow } from "@/components/loryn-next/TokenArchitectureFlow";
 
 export function DesignSystemStory() {
   return (
@@ -16,7 +18,7 @@ export function DesignSystemStory() {
         into one consistent enough to scale it to multiple operations.
       </p>
 
-      <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+      <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="aspect-[3112/2004] w-full" />
 
       <div className="flex w-full max-w-[700px] flex-col items-start gap-5">
         <ul className="flex list-disc flex-col gap-4 pl-6 text-base leading-[1.4] text-foreground">
@@ -54,18 +56,30 @@ export function DesignSystemStory() {
           </Subsection>
         </TextOnlySection>
 
-        <DeepDiveSection>
-          <Subsection heading="The token architecture: a deliberate two-tier decision">
+        <DeepDiveSection media={<TokenArchitectureFlow />}>
+          <Subsection heading="Three tier token architecture">
             <BlockBody>
-              I built the system on core tokens — raw values for color, typography, spacing —
-              mapped directly onto component tokens, deliberately skipping a semantic middle
-              layer. That was a considered trade-off, because at the time Loryn had one designer
-              and four frontend developers, and a semantic layer only wins once multiple teams
-              need to build autonomously. This architecture meant faster builds and simpler
-              overhead for a small team moving fast. As the client scales Loryn into other
-              operations, and a semantic token layer is exactly what I&apos;d add next — the
-              layer that lets multiple product teams build consistently without a single designer
-              as the bottleneck.
+              Firstly, I Implemented the standard practice of three-tier hierarchy. Also Loryn
+              serves for both desktop and mobile, so the UI has to be consistent by default.
+              Secondly, this design system not only live in Figma, but I execute the codebase as
+              well. It was entirely written by Claude code, and without explicit token contracts,
+              the models hallucinate and invents its own values (like spacing, arbitrary colours).
+              With this three-tier system and designsystem.md and .json files, Claude code had a
+              hard contract to build against.
+            </BlockBody>
+          </Subsection>
+        </DeepDiveSection>
+
+        <DeepDiveSection media={<ShippedInputPair />}>
+          <Subsection heading="Designed and shipped in code">
+            <BlockBody>
+              The input is the primitive everything else is built on, so it&apos;s where the
+              system started. I designed and shipped it as a real component, the same field used
+              across every form in the catalog. It&apos;s a controlled input: it takes a value,
+              stays editable, and reports changes back. Loryn prefills the field with the
+              agent&apos;s proposed value and the user edits or confirms it. Nothing fancy under
+              the hood — that&apos;s the point. One shipped component, consistent everywhere,
+              prefill-ready by design.
             </BlockBody>
           </Subsection>
         </DeepDiveSection>
@@ -98,7 +112,7 @@ export function DesignSystemStory() {
             </Subsection>
           </div>
 
-          <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+          <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="aspect-[3112/2004] w-full" />
 
           <div className="flex w-full max-w-[700px] flex-col gap-1.5">
             <Subsection heading="2. Inline Edit">
@@ -114,7 +128,7 @@ export function DesignSystemStory() {
             </Subsection>
           </div>
 
-          <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="h-[475px] w-full" />
+          <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="aspect-[3112/2004] w-full" />
         </div>
 
         <DeepDiveSection>

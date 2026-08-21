@@ -6,7 +6,7 @@ type StoryTagsProps = {
 };
 
 const tabs: { id: StoryTab; label: string }[] = [
-  { id: "agentic", label: "Agentic workflows" },
+  { id: "agentic", label: "Agentic workflow" },
   { id: "design-system", label: "Design system" },
 ];
 
