@@ -111,7 +111,7 @@ export function FloatingSiteNav({ currentPage }: FloatingSiteNavProps) {
         >
           <path
             d="M0 6H12M6 0V12"
-            stroke="black"
+            stroke="white"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"

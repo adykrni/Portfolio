@@ -1,7 +1,5 @@
 import { CaseStudyImage } from "@/components/CaseStudyImage";
 import { CaseStudyVideo } from "@/components/CaseStudyVideo";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
-import { StoryDisclaimer } from "@/components/loryn-next/StoryDisclaimer";
 import { BlockBody, BlockHeading } from "@/components/loryn-next/blocks";
 import { ProblemFlow } from "@/components/loryn-next/ProblemFlow";
 
@@ -122,21 +120,27 @@ export function AgenticWorkflowsStory() {
         <StoryText>
           <BlockHeading>What I&apos;m currently working on</BlockHeading>
           <BlockBody>
-            The first release was a pure conversational agent - ask in plain language, the assistant
-            handles the rest. I&apos;d argued against that approach from the start and I lost that
-            round. It shipped, and user frustration was high.
+            I&apos;m designing the approval experience that lets line managers handle their
+            approval queues directly inside Loryn, without switching between systems. The idea is
+            that Loryn analyses each request before the manager even opens the ticket / request,
+            which means checking compliance, verifying budgets, cross-referencing status, and
+            shows a recommendation alongside each item. Managers can approve an individual item,
+            or multiple in one clean action. Escalated items are flagged by Loryn beforehand and
+            suggest the manager the next action. Every action Loryn takes on a manager&apos;s
+            behalf is logged with a reasoning trail, which can be checked anytime, and is
+            reversible within a 12h window.
           </BlockBody>
           <BlockBody>
-            I built the alternative as a working prototype in parallel while the conversational
-            version went out. The reason turned out to be structural - access requests are
-            consequential and auditable, and a chat transcript gives you no way to check at a glance
-            what you&apos;re about to input. People couldn&apos;t verify what they were approving.
-            That was information no amount of argument in a meeting would have produced — the
-            release settled a question we couldn&apos;t settle in the abstract, and it settled it
-            against the approach the team had backed.
+            The broader vision is to shift the approval experience from passive notification /
+            email inbox into an intelligent system, where routine decisions are handled
+            automatically under delegation rules, and human judgement is kept for the cases that
+            genuinely need it.
           </BlockBody>
         </StoryText>
-        <MediaPlaceholder label="IMAGE PLACEHOLDER CAROUSEL" className="aspect-[3112/2004] w-full" />
+        <CaseStudyVideo
+          src="/images/Dashboard-v1.mp4"
+          ariaLabel="Loryn manager approval dashboard — analysing requests and recommending actions"
+        />
       </StorySection>
 
       <StorySection>
@@ -147,12 +151,12 @@ export function AgenticWorkflowsStory() {
             approach: the product team changed its interaction architecture on the strength of a
             prototype and the user response to the first release.
           </BlockBody>
-          <BlockBody>
+          <p className="text-base font-bold leading-[1.4] text-muted">
             Loryn now reaches around 11k employees across Europe, North America, AMEA and LATAM. On
             the operational side, monthly IT ticket volume in the six months after the March 2026
             release averaged around 23% lower than in the 5 months before, with the categories we
             designed for.
-          </BlockBody>
+          </p>
           <BlockBody>
             What&apos;s not working is that about one in six people still give up and ask a human
             agent instead. I think better error messages and clearer confidence signals on the form
@@ -165,10 +169,6 @@ export function AgenticWorkflowsStory() {
           </BlockBody>
         </StoryText>
       </StorySection>
-
-      <div className="flex w-full max-w-[700px] flex-col">
-        <StoryDisclaimer />
-      </div>
     </div>
   );
 }

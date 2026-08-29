@@ -1,6 +1,5 @@
 import { MediaPlaceholder } from "@/components/MediaPlaceholder";
 import { StoryReveal } from "@/components/loryn-next/StoryReveal";
-import { StoryDisclaimer } from "@/components/loryn-next/StoryDisclaimer";
 import {
   BlockBody,
   DeepDiveSection,
@@ -156,10 +155,6 @@ export function DesignSystemStory() {
           </Subsection>
         </TextOnlySection>
       </StoryReveal>
-
-      <div className="flex w-full max-w-[700px] flex-col">
-        <StoryDisclaimer />
-      </div>
     </>
   );
 }
