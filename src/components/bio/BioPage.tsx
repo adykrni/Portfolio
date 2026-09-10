@@ -136,22 +136,21 @@ export function BioPage() {
           .
         </p>
 
-        <div className="hidden w-full flex-col divide-y divide-divider md:flex">
+        <div className="hidden w-full flex-col items-start gap-5 md:flex">
           {projects.map((chip) => (
-            <div key={chip.id} className="py-5 first:pt-0 last:pb-0">
-              <ProjectRow
-                chip={chip}
-                isActive={activeChipId === chip.id}
-                isDimmed={anyActive && activeChipId !== chip.id}
-                onActivate={() => setActiveChipId(chip.id)}
-                onDeactivate={() => handleDeactivate(chip.id)}
-                onOpen={() => handleOpen(chip.id)}
-                ref={(el) => {
-                  if (el) chipRefs.current.set(chip.id, el);
-                  else chipRefs.current.delete(chip.id);
-                }}
-              />
-            </div>
+            <ProjectRow
+              key={chip.id}
+              chip={chip}
+              isActive={activeChipId === chip.id}
+              isDimmed={anyActive && activeChipId !== chip.id}
+              onActivate={() => setActiveChipId(chip.id)}
+              onDeactivate={() => handleDeactivate(chip.id)}
+              onOpen={() => handleOpen(chip.id)}
+              ref={(el) => {
+                if (el) chipRefs.current.set(chip.id, el);
+                else chipRefs.current.delete(chip.id);
+              }}
+            />
           ))}
         </div>
 
