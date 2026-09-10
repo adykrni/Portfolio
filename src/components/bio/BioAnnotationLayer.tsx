@@ -175,7 +175,7 @@ export function BioAnnotationLayer({ activeChipId, chipRefs, containerRef }: Bio
 
   return (
     <div
-      className="pointer-events-none absolute inset-0 z-20"
+      className="pointer-events-none absolute inset-0 z-20 hidden md:block"
       style={{ visibility: position ? "visible" : "hidden" }}
     >
       <AnimatePresence

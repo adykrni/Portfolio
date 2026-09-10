@@ -71,7 +71,7 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="flex w-[280px] flex-col items-start gap-2 sm:w-[420px] lg:w-[650px]"
+      className="flex w-[280px] flex-col items-start gap-5 sm:w-[420px] lg:w-[650px]"
     >
       {imageSrc && imageHasOwnFrame && imageWidth && imageHeight ? (
         // This image already bakes in its own border/bezel (a device mockup
@@ -114,16 +114,18 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
           )}
         </motion.div>
       )}
-      {facts.map((fact) => (
-        <motion.div
-          key={fact}
-          variants={itemVariants}
-          transition={springTransition}
-          className="rounded-[6px] bg-[#e7e7e7] p-[6px] text-[16px] leading-[1.4] tracking-[0.16px] text-foreground"
-        >
-          {fact}
-        </motion.div>
-      ))}
+      <ul className="flex list-none flex-col gap-2.5 p-0">
+        {facts.map((fact) => (
+          <motion.li
+            key={fact}
+            variants={itemVariants}
+            transition={springTransition}
+            className="font-radio text-[15px] leading-[1.55] tracking-[0.01em] text-[#3a3a3a]"
+          >
+            {fact}
+          </motion.li>
+        ))}
+      </ul>
     </motion.div>
   );
 }

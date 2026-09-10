@@ -48,13 +48,13 @@ export const employerChip: BioChip = {
 // Intro paragraph is split around the single inline employer chip.
 export const bioIntro = {
   before:
-    "Yo, I’m confused what to call myself. I’m a product designer who ships, and I love everything related to building a product - what to build, why to build, and who’s it for. I’m working at ",
-  after: " crafting B2B amd B2C products.",
+    "Yo, I’m a product designer who ships, and I love everything related to building a product - what to build, why to build, and who’s it for. I’m working at ",
+  after: " crafting B2B and B2C products.",
 };
 
 export const bioContact = {
   before:
-    "I live in Berlin, but I was born in Pune (a cool city in India). I’ve been designing scalable products and design systems since 5+ years, below are a few of my projects, and here is my ",
+    "I live in Berlin, but I was born in Pune (a cool city in India). I’ve been designing products for 5+ years, below are a few of my projects, and here is my ",
   resumeLabel: "Resume.",
   resumeHref: site.resumeUrl ?? "#",
   afterResume: " You can find me on ",
@@ -81,15 +81,15 @@ export const projects: BioChip[] = [
       imageHeight: 1704,
       facts: [
         "0→1 AI enterprise product",
-        "shipped IT management feature end-to-end",
-        "designed AI-first patterns & shipped the design system",
+        "Shipped IT requests and ticket management end-to-end",
+        "Designed AI-first patterns & scaled the design system",
       ],
       href: "/loryn",
     },
   },
   {
     id: "deutsche",
-    label: "Deutsche Bank",
+    label: "Deutsche Wealth Online",
     annotation: {
       kind: "facts",
       mediaLabel: "DEUTSCHE WEALTH PREVIEW",
@@ -99,8 +99,8 @@ export const projects: BioChip[] = [
       imageWidth: 3900,
       imageHeight: 2412,
       facts: [
-        "Data heavy dashboards for wealth management portal",
-        "validated with 27 users in usability testing",
+        "UI redesign for wealth management portal",
+        "Improved wealth overview and portfolio management",
       ],
       href: "/deutsche-wealth",
     },
@@ -116,7 +116,10 @@ export const projects: BioChip[] = [
       imageHasOwnFrame: true,
       imageWidth: 2600,
       imageHeight: 1704,
-      facts: ["Unifying a global design system for Audi", "case study coming soon, apologies.."],
+      facts: [
+        "Shipped the global web and mobile UI kits for global product teams covering myAudi app, Audi service portal, and the website.",
+        "Case study comping soon...",
+      ],
       href: "/audi",
       navigable: false,
     },
@@ -133,8 +136,8 @@ export const projects: BioChip[] = [
       imageWidth: 2600,
       imageHeight: 1704,
       facts: [
-        "design system for travel tech",
-        "case study coming soon...",
+        "Shipped the UI kit for KLM Holidays product teams leading to faster A/B tests, and small iteration cycles.",
+        "Case study comping soon...",
       ],
       href: "/klm",
       navigable: false,
@@ -142,7 +145,9 @@ export const projects: BioChip[] = [
   },
 ];
 
-export function isProjectNavigable(chip: BioChip): boolean {
+export function isProjectNavigable(
+  chip: BioChip,
+): chip is BioChip & { annotation: FactsAnnotation } {
   return chip.annotation.kind === "facts" && chip.annotation.navigable !== false;
 }
 

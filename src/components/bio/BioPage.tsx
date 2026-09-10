@@ -13,9 +13,12 @@ import {
   isProjectNavigable,
   projects,
 } from "@/lib/bio-content";
-import { EmployerChip } from "./EmployerChip";
-import { ProjectRow } from "./ProjectRow";
+import { FloatingSiteNav } from "@/components/floating-nav/FloatingSiteNav";
+
 import { BioAnnotationLayer } from "./BioAnnotationLayer";
+import { EmployerChip } from "./EmployerChip";
+import { MobileProjectSection } from "./MobileProjectSection";
+import { ProjectRow } from "./ProjectRow";
 
 const dimTransition =
   "transition-[filter,opacity] duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]";
@@ -79,8 +82,8 @@ export function BioPage() {
   const isEmployerDimmed = anyActive && activeChipId !== employerChip.id;
 
   return (
-    <div className="mx-auto w-full max-w-[520px] px-[50px] py-16 sm:px-5 sm:py-24">
-      <div ref={containerRef} className="relative flex flex-col items-start gap-[30px]">
+    <div className="mx-auto w-full max-w-[520px] px-5 pb-28 pt-16 md:px-[50px] md:py-24">
+      <div ref={containerRef} className="relative flex flex-col items-start gap-5 md:gap-[30px]">
         <div className={`flex items-center gap-[10px] ${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}>
           <AvatarDoodle />
           <p className="font-radio text-[16px] font-bold tracking-[0.16px] text-foreground">
@@ -133,21 +136,22 @@ export function BioPage() {
           .
         </p>
 
-        <div className="flex w-full flex-col items-start gap-[20px]">
+        <div className="hidden w-full flex-col divide-y divide-divider md:flex">
           {projects.map((chip) => (
-            <ProjectRow
-              key={chip.id}
-              chip={chip}
-              isActive={activeChipId === chip.id}
-              isDimmed={anyActive && activeChipId !== chip.id}
-              onActivate={() => setActiveChipId(chip.id)}
-              onDeactivate={() => handleDeactivate(chip.id)}
-              onOpen={() => handleOpen(chip.id)}
-              ref={(el) => {
-                if (el) chipRefs.current.set(chip.id, el);
-                else chipRefs.current.delete(chip.id);
-              }}
-            />
+            <div key={chip.id} className="py-5 first:pt-0 last:pb-0">
+              <ProjectRow
+                chip={chip}
+                isActive={activeChipId === chip.id}
+                isDimmed={anyActive && activeChipId !== chip.id}
+                onActivate={() => setActiveChipId(chip.id)}
+                onDeactivate={() => handleDeactivate(chip.id)}
+                onOpen={() => handleOpen(chip.id)}
+                ref={(el) => {
+                  if (el) chipRefs.current.set(chip.id, el);
+                  else chipRefs.current.delete(chip.id);
+                }}
+              />
+            </div>
           ))}
         </div>
 
@@ -156,6 +160,18 @@ export function BioPage() {
           chipRefs={chipRefs}
           containerRef={containerRef}
         />
+      </div>
+
+      <div className="mt-12 flex w-full flex-col divide-y divide-divider md:hidden">
+        {projects.map((chip) => (
+          <div key={chip.id} className="py-10 first:pt-0 last:pb-0">
+            <MobileProjectSection chip={chip} />
+          </div>
+        ))}
+      </div>
+
+      <div className="md:hidden">
+        <FloatingSiteNav />
       </div>
     </div>
   );

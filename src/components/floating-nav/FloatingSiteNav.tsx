@@ -67,13 +67,13 @@ export function FloatingSiteNav({ currentPage }: FloatingSiteNavProps) {
   const visibleCaseStudies = caseStudies.filter((study) => study.id !== currentPage);
 
   return (
-    <div className="fixed bottom-10 right-16 z-50 flex flex-col items-end gap-3 lg:right-[94px]">
+    <div className="fixed bottom-10 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center gap-3 md:left-auto md:right-16 md:translate-x-0 md:items-end lg:right-[94px]">
       <div
-        className="grid w-[180px] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+        className="grid w-[154px] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] md:w-[180px]"
         style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >
         <div
-          className={`overflow-hidden rounded-[10px] bg-white shadow-[0_4px_20px_0_rgba(0,0,0,0.08)] transition-opacity duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
+          className={`overflow-hidden rounded-[10px] border border-[#ddd] bg-[#fcfcfc] shadow-[0_4px_10px_0_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
             isOpen ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -113,7 +113,7 @@ export function FloatingSiteNav({ currentPage }: FloatingSiteNavProps) {
         onClick={() => setIsOpen((value) => !value)}
         aria-expanded={isOpen}
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-        className="flex size-[30px] shrink-0 items-center justify-center rounded-[6px] bg-[#FF5986]"
+        className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-[#0E0A1F]"
       >
         <svg
           width="12"
