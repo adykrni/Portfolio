@@ -24,6 +24,8 @@ export type FactsAnnotation = {
   imageHeight?: number;
   facts: string[];
   href: string;
+  /** When false, hover preview works but click won't navigate to the case study. */
+  navigable?: boolean;
 };
 
 export type ChipAnnotation = BubbleAnnotation | FactsAnnotation;
@@ -91,11 +93,11 @@ export const projects: BioChip[] = [
     annotation: {
       kind: "facts",
       mediaLabel: "DEUTSCHE WEALTH PREVIEW",
-      imageSrc: "/images/deutsche-preview.png",
+      imageSrc: "/images/deutsche-wealth/db-preview.png",
       imageAlt: "Deutsche Bank Wealth Management net wealth dashboard",
       imageHasOwnFrame: true,
-      imageWidth: 2600,
-      imageHeight: 1704,
+      imageWidth: 3900,
+      imageHeight: 2412,
       facts: [
         "Data heavy dashboards for wealth management portal",
         "validated with 27 users in usability testing",
@@ -116,6 +118,7 @@ export const projects: BioChip[] = [
       imageHeight: 1704,
       facts: ["Unifying a global design system for Audi", "case study coming soon, apologies.."],
       href: "/audi",
+      navigable: false,
     },
   },
   {
@@ -131,12 +134,17 @@ export const projects: BioChip[] = [
       imageHeight: 1704,
       facts: [
         "design system for travel tech",
-        "shipped a modular component adopted by multiple product teams in the org",
+        "case study coming soon...",
       ],
       href: "/klm",
+      navigable: false,
     },
   },
 ];
+
+export function isProjectNavigable(chip: BioChip): boolean {
+  return chip.annotation.kind === "facts" && chip.annotation.navigable !== false;
+}
 
 export const allBioChips: Record<string, BioChip> = Object.fromEntries(
   [employerChip, ...projects].map((chip) => [chip.id, chip]),

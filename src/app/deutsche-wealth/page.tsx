@@ -1,10 +1,7 @@
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
-import { VideoGallery } from "@/components/deutsche-wealth/VideoGallery";
-import { SectionDivider } from "@/components/SectionDivider";
 import { FloatingCaseStudyNav } from "@/components/floating-nav/FloatingCaseStudyNav";
+import { SectionDivider } from "@/components/SectionDivider";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -16,91 +13,48 @@ function SectionIntro({ children }: { children: React.ReactNode }) {
   return <p className="text-base font-normal leading-[1.4] text-muted">{children}</p>;
 }
 
-function SubsectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[13px] font-semibold uppercase leading-[1.4] text-foreground">
-      {children}
-    </p>
-  );
-}
-
-type LayerCardProps = {
-  title: string;
-  description: string;
+type CaseStudyImageProps = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  priority?: boolean;
+  className?: string;
 };
 
-function LayerCard({ title, description }: LayerCardProps) {
+function AspectCaseStudyImage({
+  src,
+  alt,
+  width,
+  height,
+  priority = false,
+  maxWidthClass = "max-w-[900px]",
+  className = "",
+}: CaseStudyImageProps & { maxWidthClass?: string }) {
   return (
-    <div className="flex w-full flex-col gap-1.5 rounded-[10px] bg-surface-card p-5">
-      <p className="text-base font-medium leading-[1.4] text-foreground">{title}</p>
-      <p className="text-base font-normal leading-[1.4] text-muted">{description}</p>
-    </div>
-  );
-}
-
-type RedesignPhaseProps = {
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string;
-};
-
-function RedesignPhase({ title, description, imageSrc, imageAlt }: RedesignPhaseProps) {
-  return (
-    <div className="flex w-full flex-col gap-5">
-      <div className="mx-auto flex w-full max-w-[700px] flex-col gap-1.5">
-        <p className="text-base font-semibold leading-[1.4] text-foreground">{title}</p>
-        <p className="text-base font-normal leading-[1.2] text-muted">{description}</p>
-      </div>
+    <div
+      className={`relative mx-auto w-full ${maxWidthClass} ${className}`.trim()}
+      style={{ aspectRatio: `${width} / ${height}` }}
+    >
       <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={3840}
-        height={2016}
-        className="h-auto w-full object-contain"
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
         unoptimized
+        sizes="(max-width: 768px) 100vw, 900px"
+        className="object-contain"
       />
     </div>
   );
 }
 
-const disclosureLayers = [
-  {
-    title: "L1 - Answer urgent questions instantly",
-    description: '"How is my wealth doing?" — total wealth and direction, at a glance.',
-  },
-  {
-    title: "L2 - Provide the evidence on expand",
-    description: "Portfolio breakdown and asset-class allocation, revealed when wanted.",
-  },
-  {
-    title: "L3 - Enable the deep dive",
-    description: "Full metrics and history for the detail-seekers — without taxing everyone else.",
-  },
-] as const;
-
-const redesignPhases = [
-  {
-    title: "Before",
-    description:
-      'Original component — Data-heavy and flat. Users couldn\'t tell what to look at, and it never answered "how is my wealth doing?"',
-    imageSrc: "/images/Old.png",
-    imageAlt: "Deutsche Wealth Online dashboard before redesign",
-  },
-  {
-    title: "Proposed",
-    description:
-      "My three-level logic. Immediate answer up top, optional depth below — the disclosure model applied.",
-    imageSrc: "/images/Proposed.png",
-    imageAlt: "Deutsche Wealth Online proposed wealth overview redesign",
-  },
-  {
-    title: "Delivered design - MVP",
-    description:
-      "After sparring with engineering and management on feasibility, I delivered the most achievable version that kept the disclosure model intact.",
-    imageSrc: "/images/Approved.png",
-    imageAlt: "Deutsche Wealth Online delivered wealth overview solution",
-  },
+const contributions = [
+  "Visual redesign — Modernized the entire UI language, moving from horizontal to vertical navigation",
+  "Navigation architecture — Integrated portfolio selection into sidebar, eliminating navigation clutter",
+  "UI pattern — Designed a Banner + Tabs pattern (Progressive Disclosure) that scales across multiple portfolio types",
+  "Dashboard (Home) redesign — Structured hierarchy into hero metrics → alerts → portfolio grid → tabs, enabling 1-second portfolio understanding",
+  "Component hierarchy — Designed insight cards with one-action-per-card governance, reducing cognitive load and support tickets",
 ] as const;
 
 export default function DeutscheWealthCaseStudyPage() {
@@ -108,203 +62,141 @@ export default function DeutscheWealthCaseStudyPage() {
     <main className="bg-white">
       <FloatingCaseStudyNav currentPage="deutsche-wealth" />
       <div className="mx-auto flex w-full max-w-[1280px] flex-col px-5 pb-20 pt-10 sm:px-6 md:px-8 md:pt-[122px]">
-        {/* Hero */}
+        {/* Intro */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">
-          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
-            <h1 className="text-base font-semibold leading-[1.4] text-foreground">DWO+</h1>
-            <SectionIntro>
-              I led the UI redesign and prototyping for Deutsche Bank&apos;s wealth-management
-              dashboard — turning a wall of data into a layered interface that answers a
-              client&apos;s first question at a glance, then validated it with 27 users in
-              task-based usability testing before handoff.
-            </SectionIntro>
-          </div>
+          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-10">
+            <div className="flex flex-col gap-2.5">
+              <h1 className="text-base font-semibold leading-[1.4] text-foreground">
+                Deutsche Wealth Online +
+              </h1>
+              <SectionIntro>
+                Redesigning portfolio management for Deutsche Bank. Modernized the desktop
+                experience for 22k+ wealth managers to navigate portfolios, insights, and
+                transactions with clarity and speed.
+              </SectionIntro>
+              <SectionIntro>
+                I was the sole UI designer, and partnered with 1 Product Owner, 2 UX Designers,
+                and 2 Engineers to align on information architecture and interaction patterns.
+              </SectionIntro>
+            </div>
 
-          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
-            <SectionHeading>Role &amp; responsibility</SectionHeading>
-            <SectionIntro>
-              I was an IC designer owning UI and prototyping, working the full cycle — strategy →
-              component design → prototyping → validation. I designed the progressive-disclosure
-              model, built 5 components, and ran the usability testing myself. My scope ended at
-              MVP delivery and validation; whether the design reached production was decided
-              downstream and out of my hands. So this case study is about the redesign and how I
-              tested it — not production numbers I can&apos;t verify.
-            </SectionIntro>
+            <div className="flex flex-col gap-2.5">
+              <SectionHeading>My contributions:</SectionHeading>
+              <ul className="flex flex-col gap-2.5">
+                {contributions.map((item) => (
+                  <li key={item} className="text-base leading-[1.4] text-muted">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-
-          <Image
-            src="/images/Dashboard v2.png"
-            alt="Deutsche Wealth Online full dashboard overview"
-            width={2620}
-            height={1724}
-            className="h-auto w-full object-contain"
-            priority
-            unoptimized
-          />
         </section>
+
+        <AspectCaseStudyImage
+          src="/images/deutsche-wealth/db-new-1@3x.png"
+          alt="Deutsche Wealth Online redesigned home dashboard with vertical navigation and portfolio grid"
+          width={3843}
+          height={2355}
+          priority
+          className="mt-10 md:mt-[70px]"
+        />
 
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
 
         {/* The challenge */}
-        <section className="mx-auto flex w-full max-w-[900px] flex-col gap-6 md:gap-[25px]">
-          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-5">
-            <SectionHeading>The challenge</SectionHeading>
-            <p className="text-base leading-[1.4] text-muted">
-              Our users were overwhelmed by information. Users arrive at the dashboard with simple,
-              urgent questions —{" "}
-              <span className="font-medium text-foreground">
-                &quot;What&apos;s my total wealth?&quot;, &quot;Am I on track to my financial
-                goals?&quot;
-              </span>
-            </p>
-            <SectionIntro>
-              Instead of finding answers, users saw a maze of metrics, charts, and data points. The
-              dashboard overwhelms rather than clarifies. The product fails at its core job —
-              enabling confidence in financial decisions.
-            </SectionIntro>
-          </div>
-
-          <div className="flex w-full items-center justify-center">
-            <video
-              src="/images/DB-old.web.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              aria-label="Deutsche Bank legacy portfolios overview dashboard"
-              className="h-auto w-full rounded-[30px] border-[10px] border-black"
-            />
-          </div>
-        </section>
-
-        <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
-
-        {/* Progressive disclosure */}
         <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">
-          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-5">
-            <SectionHeading>The idea — Progressive disclosure</SectionHeading>
+          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
+            <SectionHeading>The challenge</SectionHeading>
             <SectionIntro>
-              One model fixed the overload. Three layers, each answering a deeper need only when
-              the client asks for it — so the dashboard stops shouting everything at once and starts
-              answering in the order people actually think.
-            </SectionIntro>
-
-            <div className="flex flex-col gap-5">
-              {disclosureLayers.map((layer) => (
-                <LayerCard key={layer.title} title={layer.title} description={layer.description} />
-              ))}
-            </div>
-          </div>
-
-          <VideoGallery frameHeight={474} />
-
-          <div className="mx-auto flex w-full max-w-[700px] items-start gap-2">
-            <Image
-              src="/icons/info.svg"
-              alt=""
-              width={16}
-              height={16}
-              className="mt-0.5 shrink-0"
-              aria-hidden
-            />
-            <p className="flex-1 text-sm leading-[1.4] text-muted">
-              These are clickable prototypes, try me.
-            </p>
-          </div>
-        </section>
-
-        <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
-
-        {/* From proposal to delivery */}
-        <section className="mx-auto flex w-full max-w-[700px] flex-col gap-5">
-          <SectionHeading>From proposal to delivery</SectionHeading>
-          <SectionIntro>
-            I delivered the full working &quot;Net wealth&quot; dashboard feature, and stitched
-            together other features. Let&apos;s walk through the wealth-overview component — three
-            stages — the gap between the second and third is the real story.
-          </SectionIntro>
-        </section>
-
-        <section className="mx-auto mt-10 flex w-full max-w-[900px] flex-col gap-10 md:mt-[70px] md:gap-[70px]">
-          {redesignPhases.map((phase) => (
-            <RedesignPhase key={phase.title} {...phase} />
-          ))}
-        </section>
-
-        <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
-
-        {/* Validation */}
-        <section className="mx-auto flex w-full max-w-[700px] flex-col gap-10 md:gap-[70px]">
-          <div className="flex flex-col gap-2.5">
-            <SectionHeading>How I knew it worked</SectionHeading>
-            <p className="text-base leading-[1.4] text-muted">
-              I ran usability testing with 27 users —{" "}
-              <span className="text-foreground">
-                task-based sessions built around one question: could a client answer &quot;how is my
-                wealth doing?&quot; without help.
-              </span>{" "}
-              I didn&apos;t comparison metrics against the old dashboard, so there&apos;s no
-              percentage lift to claim. What the test gives me is direct evidence that the new
-              design did its job.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-2.5">
-            <SubsectionLabel>What I tested</SubsectionLabel>
-            <SectionIntro>
-              Real tasks, not opinions: find your total wealth, read whether you&apos;re up or down,
-              then drop one level into a single portfolio. I watched where people went first, where
-              they hesitated, and what they said out loud.
-            </SectionIntro>
-          </div>
-
-          <div className="flex flex-col gap-2.5">
-            <SubsectionLabel>What I found</SubsectionLabel>
-            <p className="text-base leading-[1.4] text-muted">
-              -- <span className="font-semibold text-foreground">19 / 27</span> users located their
-              total wealth and read their direction of travel from the L1 summary alone, unaided.
-            </p>
-            <SectionIntro>
-              -- Users went to the L1 answer first and only expanded for detail when they wanted the
-              &quot;why&quot;. The disclosure order matched how they actually navigated.
-            </SectionIntro>
-          </div>
-
-          <div className="flex flex-col gap-2.5">
-            <SubsectionLabel>What it confirmed</SubsectionLabel>
-            <SectionIntro>
-              Progressive disclosure was the right call. The layered model didn&apos;t just look
-              cleaner — it matched the order in which clients actually ask their questions, which
-              is what made the dense data feel manageable instead of overwhelming.
+              The old dashboard had a horizontal navigation model that was difficult to scale.
+              Portfolio navigation competed with global actions. Tab-based architecture felt ad-hoc
+              across different portfolio types. Hierarchy fell apart — users struggled with
+              information overload and actions weren&apos;t prioritized by importance.
             </SectionIntro>
           </div>
         </section>
 
+        <AspectCaseStudyImage
+          src="/images/deutsche-wealth/db-old.png"
+          alt="Deutsche Bank legacy dashboard with horizontal navigation and tab-based portfolio views"
+          width={3843}
+          height={2355}
+          className="mt-10 md:mt-[70px]"
+        />
+
         <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
 
-        {/* Reflection */}
-        <section className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
-          <SectionHeading>What I carry forward..</SectionHeading>
-          <SectionIntro>
-            This was a design-and-validation engagement, scoped to MVP. The win here wasn&apos;t a
-            new component, it was a model. Progressive disclosure became a default lens I bring to
-            any data-dense interface — answer the first question before offering the more. And the
-            proposal-to-shipped gap taught me to design the compromise as deliberately as the ideal,
-            so the core idea survives contact with engineering and stakeholders.
-          </SectionIntro>
+        {/* The Redesign */}
+        <section className="mx-auto flex w-full max-w-[900px] flex-col gap-10 md:gap-[70px]">
+          <div className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
+            <SectionHeading>The Redesign</SectionHeading>
+            <SectionIntro>
+              I redesigned the entire visual language. I led the UI pattern redesign, moving
+              navigation to a vertical sidebar, integrated portfolio selection, and created a
+              scalable banner + tabs system that worked across all portfolio types while
+              maintaining information hierarchy.
+            </SectionIntro>
+            <SectionIntro>
+              The outcome was a cleaner, faster experience where wealth managers can locate
+              portfolios and the information they need in seconds, and access insights without
+              friction. Every decision prioritized a high-level glance and progressive disclosure
+              to manage complexity.
+            </SectionIntro>
+          </div>
         </section>
 
-        <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
+        <div className="mx-auto mt-10 flex w-full flex-col gap-10 md:mt-[70px] md:gap-[70px]">
+          <AspectCaseStudyImage
+            src="/images/deutsche-wealth/db-new-performance.png"
+            alt="Redesigned Deutsche Wealth Online home screen with hero metrics and portfolio cards"
+            width={3843}
+            height={2355}
+          />
 
-        <div className="flex justify-center">
-          <Link
-            href="/"
-            className="inline-flex h-10 items-center justify-center gap-2 rounded border-0 px-5 text-base font-medium text-foreground outline-none transition-colors hover:bg-surface-card focus:outline-none focus-visible:outline-none"
-          >
-            <ArrowLeft className="size-4 shrink-0" aria-hidden />
-            Back
-          </Link>
+          <AspectCaseStudyImage
+            src="/images/deutsche-wealth/db-new-features.png"
+            alt="Sidebar navigation, CIO Insights, and feature highlights in the redesigned dashboard"
+            width={3840}
+            height={2475}
+          />
+
+          <AspectCaseStudyImage
+            src="/images/deutsche-wealth/db-new-allocations.png"
+            alt="All portfolios view with standing orders table and portfolio summary banner"
+            width={3843}
+            height={2355}
+          />
+
+          <AspectCaseStudyImage
+            src="/images/deutsche-wealth/db-new-table.png"
+            alt="Standing orders table with security, order type, quantity, price, and status"
+            width={3288}
+            height={1503}
+          />
         </div>
+
+        <SectionDivider className="mx-auto my-10 w-full max-w-[700px] md:my-[70px]" />
+
+        {/* The Outcome */}
+        <section className="mx-auto flex w-full max-w-[700px] flex-col gap-2.5">
+          <SectionHeading>The Outcome</SectionHeading>
+          <SectionIntro>
+            I delivered production-grade designs to the engineers, who built an MVP prototype.
+            This MVP was tested with 27 users in task-based sessions built around one question:
+            could a client answer &quot;how is my wealth doing?&quot; without help. I didn&apos;t
+            have comparison metrics against the old dashboard, so there&apos;s no percentage lift
+            to claim. What the test gives me is direct evidence that the new design did its job.
+          </SectionIntro>
+          <SectionIntro>
+            What I found is that{" "}
+            <span className="font-semibold text-foreground">19 / 27</span> users located their
+            total wealth and read their direction of travel from the banner alone. What it
+            confirmed: progressive disclosure was the right call. The layered model didn&apos;t
+            just look cleaner — it matched the order in which clients actually ask their
+            questions, which is what made the dense data feel manageable instead of overwhelming.
+          </SectionIntro>
+        </section>
       </div>
     </main>
   );

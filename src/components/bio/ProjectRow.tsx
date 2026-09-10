@@ -3,7 +3,7 @@
 import { forwardRef } from "react";
 import Image from "next/image";
 
-import type { BioChip } from "@/lib/bio-content";
+import { isProjectNavigable, type BioChip } from "@/lib/bio-content";
 
 type ProjectRowProps = {
   chip: BioChip;
@@ -34,7 +34,7 @@ export const ProjectRow = forwardRef<HTMLButtonElement, ProjectRowProps>(functio
   { chip, isActive, isDimmed, onActivate, onDeactivate, onOpen },
   ref,
 ) {
-  const isLinked = chip.annotation.kind === "facts";
+  const isNavigable = isProjectNavigable(chip);
   const dimClass = isDimmed ? "opacity-20 blur-[3px]" : "opacity-100 blur-0";
 
   return (
@@ -47,7 +47,7 @@ export const ProjectRow = forwardRef<HTMLButtonElement, ProjectRowProps>(functio
       onFocus={(event) => handleFocus(event, onActivate)}
       onBlur={onDeactivate}
       onClick={() => {
-        if (isLinked && isActive) {
+        if (isNavigable && isActive) {
           onOpen();
           return;
         }
@@ -57,7 +57,7 @@ export const ProjectRow = forwardRef<HTMLButtonElement, ProjectRowProps>(functio
     >
       <Image src="/icons/folder.svg" alt="" width={16} height={16} className="shrink-0" aria-hidden />
       <span className="text-[16px] tracking-[0.16px] text-foreground">{chip.label}</span>
-      {isLinked ? (
+      {isNavigable ? (
         // Always mounted (rather than only while active) so the row's own
         // width never changes when it activates — otherwise the widest-row
         // measurement used to anchor the annotation panel would shift

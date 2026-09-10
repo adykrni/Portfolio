@@ -5,7 +5,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import { allBioChips, bioContact, bioIntro, employerChip, projects } from "@/lib/bio-content";
+import {
+  allBioChips,
+  bioContact,
+  bioIntro,
+  employerChip,
+  isProjectNavigable,
+  projects,
+} from "@/lib/bio-content";
 import { EmployerChip } from "./EmployerChip";
 import { ProjectRow } from "./ProjectRow";
 import { BioAnnotationLayer } from "./BioAnnotationLayer";
@@ -54,7 +61,7 @@ export function BioPage() {
   const handleOpen = useCallback(
     (chipId: string) => {
       const chip = allBioChips[chipId];
-      if (chip.annotation.kind === "facts") {
+      if (isProjectNavigable(chip)) {
         router.push(chip.annotation.href);
       }
     },

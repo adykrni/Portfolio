@@ -8,6 +8,8 @@ export type ResumeProject = {
   description: string;
   imageSrc?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   link?: ResumeProjectLink;
 };
 
@@ -47,13 +49,17 @@ export const resumeExperience: ResumeRole[] = [
           "Designed a 0→1 agentic system for an enterprise product. I was responsible for the IT management vertical covering device management, inventory management, compliance.\n\nBuilt an AI first design system, and patterns for AI-assisted workflows. Shipped features that cut support tickets ~20% and contributed to ~$1.2M in client-measured operational savings. Drove AI-native workflows (Cursor, Claude Code) across ideation, prototyping, and documentation to compress iteration cycles.",
         imageSrc: "/images/loryn-preview.png",
         imageAlt: "Loryn AI chat with SAP system access request form",
+        imageWidth: 2600,
+        imageHeight: 1704,
       },
       {
         title: "Deutsche Bank — Wealth Management Platform",
         description:
           "Designed MVP dashboard and net wealth experiences for a regulated B2C product, focused on financial widgets and high-stakes decision surfaces. Improved interaction, information clarity and usability across data-heavy screens, balancing business, technical, and compliance constraints.",
-        imageSrc: "/images/deutsche-preview.png",
+        imageSrc: "/images/deutsche-wealth/db-preview.png",
         imageAlt: "Deutsche Bank Wealth Management net wealth dashboard",
+        imageWidth: 3900,
+        imageHeight: 2412,
       },
       {
         title: "myAudi — Connected-Car Platform & Global Design System",
@@ -61,6 +67,8 @@ export const resumeExperience: ResumeRole[] = [
           "Designed connected-car experiences across the myAudi app covering dashboards, vehicle-health monitoring, and service journeys for mobile at global scale.",
         imageSrc: "/images/audi-preview.png",
         imageAlt: "myAudi app range and charging overview",
+        imageWidth: 2600,
+        imageHeight: 1704,
       },
     ],
   },

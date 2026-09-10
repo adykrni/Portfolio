@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DWO+ — Case Study",
+  title: "Deutsche Wealth Online + — Case Study",
   description:
-    "UI redesign and prototyping for Deutsche Bank's wealth-management dashboard — progressive disclosure validated with 27 users in task-based usability testing.",
+    "Redesigning portfolio management for Deutsche Bank — modernized the desktop experience for 22k+ wealth managers with progressive disclosure and vertical navigation.",
 };
 
 export default function DeutscheWealthLayout({

@@ -9,11 +9,16 @@ import { site } from "@/lib/content";
 type CaseStudyId = "loryn" | "deutsche-wealth" | "klm" | "audi";
 type SitePageId = CaseStudyId | "resume";
 
-const caseStudies: { id: CaseStudyId; label: string; href: string }[] = [
+const caseStudies: {
+  id: CaseStudyId;
+  label: string;
+  href: string;
+  navigable?: boolean;
+}[] = [
   { id: "loryn", label: "Loryn AI", href: "/loryn" },
   { id: "deutsche-wealth", label: "Deutsche Bank", href: "/deutsche-wealth" },
-  { id: "klm", label: "KLM Holidays", href: "/klm" },
-  { id: "audi", label: "Audi", href: "/audi" },
+  { id: "klm", label: "KLM Holidays", href: "/klm", navigable: false },
+  { id: "audi", label: "Audi", href: "/audi", navigable: false },
 ];
 
 const utilityLinks = [
@@ -40,14 +45,19 @@ function MenuRow({
       href={href}
       aria-disabled={disabled || undefined}
       onClick={disabled ? (event) => event.preventDefault() : undefined}
-      className={`flex w-full items-center justify-between gap-2 rounded-[6px] p-1.5 text-sm text-foreground transition-colors ${
-        disabled ? "cursor-default text-muted" : "hover:bg-surface-card"
+      className={`flex w-full items-center justify-between gap-2 rounded-[6px] p-1.5 text-sm leading-none transition-colors ${
+        disabled ? "cursor-default text-[#d0d0d0]" : "text-foreground hover:bg-surface-card"
       }`}
     >
       {label}
-      {!disabled ? (
-        <Image src="/icons/chevron-right.svg" alt="" width={5} height={9} aria-hidden />
-      ) : null}
+      <Image
+        src="/icons/chevron-right.svg"
+        alt=""
+        width={5}
+        height={9}
+        aria-hidden
+        className={`shrink-0 ${disabled ? "opacity-30" : ""}`}
+      />
     </Link>
   );
 }
@@ -73,7 +83,12 @@ export function FloatingSiteNav({ currentPage }: FloatingSiteNavProps) {
             }`}
           >
             {visibleCaseStudies.map((study) => (
-              <MenuRow key={study.id} label={study.label} href={study.href} />
+              <MenuRow
+                key={study.id}
+                label={study.label}
+                href={study.href}
+                disabled={study.navigable === false}
+              />
             ))}
 
             <div className="my-1 h-px w-full bg-divider" aria-hidden />

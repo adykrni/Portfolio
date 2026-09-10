@@ -25,12 +25,13 @@ function ResumeProjectBlock({ project }: { project: ResumeProject }) {
         ))}
       </div>
       {project.imageSrc ? (
-        <div className="relative mt-0.5 h-[175px] w-[300px] overflow-hidden rounded-[10px] bg-surface-media">
+        <div className="mt-0.5 w-[300px]">
           <Image
             src={project.imageSrc}
             alt={project.imageAlt ?? ""}
-            fill
-            className="object-cover object-top"
+            width={project.imageWidth ?? 2600}
+            height={project.imageHeight ?? 1704}
+            className="h-auto w-full"
             sizes="300px"
             unoptimized
           />
