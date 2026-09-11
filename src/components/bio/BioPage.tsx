@@ -82,7 +82,7 @@ export function BioPage() {
   const isEmployerDimmed = anyActive && activeChipId !== employerChip.id;
 
   return (
-    <div className="mx-auto w-full max-w-[520px] px-5 pb-28 pt-16 md:px-[50px] md:py-24">
+    <div className="mx-auto w-full max-w-[520px] px-10 pb-28 pt-16 md:px-[50px] md:py-24">
       <div ref={containerRef} className="relative flex flex-col items-start gap-5 md:gap-[30px]">
         <div className={`flex items-center gap-[10px] ${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}>
           <AvatarDoodle />

@@ -44,8 +44,8 @@ function ProjectFacts({
       {facts.map((fact) => (
         <li
           key={fact}
-          className={`font-radio text-[15px] leading-[1.55] tracking-[0.01em] ${
-            muted ? "text-[#585d67]" : "text-[#3a3a3a]"
+          className={`font-radio leading-[1.4] tracking-[0.16px] ${
+            muted ? "text-[15px] text-[#585d67]" : "text-[16px] text-[#191b1e]"
           }`}
         >
           {fact}
@@ -67,14 +67,14 @@ function ProjectPreviewImage({
   imageHeight: number;
 }) {
   return (
-    <div className="w-full max-w-[300px]">
+    <div className="w-full">
       <Image
         src={imageSrc}
         alt={imageAlt ?? ""}
         width={imageWidth}
         height={imageHeight}
         className="h-auto w-full"
-        sizes="300px"
+        sizes="(max-width: 768px) calc(100vw - 80px), 520px"
         unoptimized
       />
     </div>
@@ -87,6 +87,7 @@ export function MobileProjectSection({ chip }: { chip: BioChip }) {
   const annotation: FactsAnnotation = chip.annotation;
   const navigable = isProjectNavigable(chip);
   const showPreview = navigable && Boolean(annotation.imageSrc);
+  const facts = annotation.mobileFacts ?? annotation.facts;
 
   return (
     <section className="flex flex-col">
@@ -102,11 +103,11 @@ export function MobileProjectSection({ chip }: { chip: BioChip }) {
               imageHeight={annotation.imageHeight ?? 1704}
             />
             <div className="mt-5">
-              <ProjectFacts facts={annotation.facts} muted={false} />
+              <ProjectFacts facts={facts} muted={false} />
             </div>
           </>
         ) : (
-          <ProjectFacts facts={annotation.facts} muted />
+          <ProjectFacts facts={facts} muted />
         )}
       </div>
     </section>

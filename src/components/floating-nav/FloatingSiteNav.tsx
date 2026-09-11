@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { site } from "@/lib/content";
 
@@ -27,6 +28,26 @@ const utilityLinks = [
   { id: "contact", label: "Get in touch", href: site.links.mail },
 ] as const;
 
+const menuSpring = { type: "spring" as const, duration: 0.45, bounce: 0 };
+const menuExitSpring = { type: "spring" as const, duration: 0.28, bounce: 0 };
+const backdropEase = { duration: 0.25, ease: [0.2, 0, 0, 1] as const };
+
+const menuVariants = {
+  initial: { opacity: 0, scale: 0.96, y: 8, filter: "blur(4px)" },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: menuSpring,
+  },
+  exit: {
+    opacity: 0,
+    filter: "blur(4px)",
+    transition: menuExitSpring,
+  },
+};
+
 type FloatingSiteNavProps = {
   currentPage?: SitePageId;
 };
@@ -45,7 +66,7 @@ function MenuRow({
       href={href}
       aria-disabled={disabled || undefined}
       onClick={disabled ? (event) => event.preventDefault() : undefined}
-      className={`flex w-full items-center justify-between gap-2 rounded-[6px] p-1.5 text-sm leading-none transition-colors ${
+      className={`flex h-8 max-h-8 w-full items-center justify-between gap-4 rounded-[6px] px-2 py-0 text-base leading-none transition-colors md:h-auto md:max-h-none md:p-1.5 ${
         disabled ? "cursor-default text-[#d0d0d0]" : "text-foreground hover:bg-surface-card"
       }`}
     >
@@ -67,73 +88,90 @@ export function FloatingSiteNav({ currentPage }: FloatingSiteNavProps) {
   const visibleCaseStudies = caseStudies.filter((study) => study.id !== currentPage);
 
   return (
-    <div className="fixed bottom-10 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center gap-3 md:left-auto md:right-16 md:translate-x-0 md:items-end lg:right-[94px]">
-      <div
-        className="grid w-[154px] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] md:w-[180px]"
-        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-      >
-        <div
-          className={`overflow-hidden rounded-[10px] border border-[#ddd] bg-[#fcfcfc] shadow-[0_4px_10px_0_rgba(0,0,0,0.1)] transition-opacity duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
-            isOpen ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div
-            className={`flex flex-col gap-1 p-1 transition-[filter] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
-              isOpen ? "blur-0" : "blur-[10px]"
-            }`}
-          >
-            {visibleCaseStudies.map((study) => (
-              <MenuRow
-                key={study.id}
-                label={study.label}
-                href={study.href}
-                disabled={study.navigable === false}
-              />
-            ))}
-
-            <div className="my-1 h-px w-full bg-divider" aria-hidden />
-
-            {utilityLinks.map((link) => (
-              <MenuRow
-                key={link.id}
-                label={link.label}
-                href={link.href}
-                disabled={
-                  (link.id === "resume" && currentPage === "resume") ||
-                  (link.id === "home" && currentPage === undefined && false)
-                }
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={() => setIsOpen((value) => !value)}
-        aria-expanded={isOpen}
-        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-        className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-[#0E0A1F]"
-      >
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          aria-hidden
-          className="transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
-          style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
-        >
-          <path
-            d="M0 6H12M6 0V12"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+    <>
+      <AnimatePresence>
+        {isOpen ? (
+          <motion.div
+            key="nav-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={backdropEase}
+            className="fixed inset-0 z-40 backdrop-blur-[16px] md:hidden"
+            aria-hidden
+            onClick={() => setIsOpen(false)}
           />
-        </svg>
-      </button>
-    </div>
+        ) : null}
+      </AnimatePresence>
+
+      <div className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center gap-3 md:bottom-10 md:left-auto md:right-16 md:translate-x-0 md:items-end lg:right-[94px]">
+        <AnimatePresence>
+          {isOpen ? (
+            <motion.div
+              key="nav-menu"
+              variants={menuVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              style={{ transformOrigin: "bottom center" }}
+              className="w-[204px] overflow-hidden rounded-[10px] border border-[#ddd] bg-[#fcfcfc] shadow-[0_4px_10px_0_rgba(0,0,0,0.1)] md:w-[230px]"
+            >
+              <div className="flex flex-col gap-1.5 p-1 md:gap-1">
+                {visibleCaseStudies.map((study) => (
+                  <MenuRow
+                    key={study.id}
+                    label={study.label}
+                    href={study.href}
+                    disabled={study.navigable === false}
+                  />
+                ))}
+
+                <div className="my-1 h-px w-full bg-divider" aria-hidden />
+
+                {utilityLinks.map((link) => (
+                  <MenuRow
+                    key={link.id}
+                    label={link.label}
+                    href={link.href}
+                    disabled={
+                      (link.id === "resume" && currentPage === "resume") ||
+                      (link.id === "home" && currentPage === undefined && false)
+                    }
+                  />
+                ))}
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
+        <motion.button
+          type="button"
+          onClick={() => setIsOpen((value) => !value)}
+          aria-expanded={isOpen}
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          whileTap={{ scale: 0.96 }}
+          className="flex size-10 shrink-0 items-center justify-center rounded-[6px] bg-[#0E0A1F]"
+        >
+          <motion.svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden
+            animate={{ rotate: isOpen ? 45 : 0 }}
+            transition={menuSpring}
+          >
+            <path
+              d="M0 6H12M6 0V12"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </motion.svg>
+        </motion.button>
+      </div>
+    </>
   );
 }
 
