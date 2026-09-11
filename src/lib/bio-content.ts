@@ -48,7 +48,7 @@ export const employerChip: BioChip = {
 // Intro paragraph is split around the single inline employer chip.
 export const bioIntro = {
   before:
-    "Yo, I’m a product designer who ships, and I love everything related to building a product - what to build, why to build, and who’s it for. I’m working at ",
+    "Yo, I’m a product designer who ships, and I love everything related to building a product - what to build, why to build, and who it’s for. I’m working at ",
   after: " crafting B2B and B2C products.",
 };
 
@@ -136,7 +136,7 @@ export const projects: BioChip[] = [
       imageWidth: 2600,
       imageHeight: 1704,
       facts: [
-        "Shipped the UI kit for KLM Holidays product teams leading to faster A/B tests, and small iteration cycles.",
+        "Shipped the UI kit for KLM Holidays product teams leading to faster A/B tests and shorter iteration cycles.",
         "Case study coming soon...",
       ],
       href: "/klm",

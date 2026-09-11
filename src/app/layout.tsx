@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Aditya Kulkarni — Product Designer",
   description:
-    "Product Designer at Accenture Song Design, Berlin based. Focused on UI engineering and design systems for B2B and B2C products.",
+    "Product Designer at Accenture Song Design, Berlin-based. Focused on UI engineering and design systems for B2B and B2C products.",
 };
 
 export const viewport = {

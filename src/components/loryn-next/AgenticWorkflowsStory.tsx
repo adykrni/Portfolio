@@ -20,14 +20,15 @@ export function AgenticWorkflowsStory() {
     <div className="flex w-full min-w-0 flex-col items-center gap-16">
       <StorySection>
         <StoryText>
-          <BlockHeading>The reframe : It was never a form problem</BlockHeading>
+          <BlockHeading>The reframe: It was never a form problem</BlockHeading>
           <BlockBody>
-            The brief arrived in typical manner- the SAP access request takes 30+ minutes, so build
-            a shorter, smarter form. When I conducted my own research and where the time actually
-            went, filling in the form only ever took about five minutes.
+            The brief arrived in a typical manner — the SAP access request takes 30+ minutes, so build
+            a shorter, smarter form. When I looked at where the time actually went, filling in the
+            form only ever took about five minutes.
           </BlockBody>
           <BlockBody>
-            The other 30+ went in finding the correct information to fill it in - employees pinging
+            The other 30+ minutes went into finding the correct information to fill it in —
+            employees pinging
             Slack, chasing email threads, and asking colleagues across time zones to work out which
             system, role, or company code they were even supposed to select. The actual target was
             the information hunt, and that changed what we were building. The ticket data showed the
@@ -37,13 +38,8 @@ export function AgenticWorkflowsStory() {
           </BlockBody>
           <ProblemFlow />
           <BlockBody>
-            The ticket data showed the same problem from the IT side. When someone asks for access,
-            their ticket usually goes to the wrong team first. That happens because people
-            don&apos;t know what to ask for, and IT spends time sorting out the mess.
-          </BlockBody>
-          <BlockBody>
             Making the form shorter would have saved five minutes out of thirty. The real problem
-            was everything that happened before the form - finding out what to ask for in the first
+            was everything that happened before the form — finding out what to ask for in the first
             place.
           </BlockBody>
         </StoryText>
@@ -53,13 +49,13 @@ export function AgenticWorkflowsStory() {
         <StoryText>
           <BlockHeading>What shipped first, and what it taught us</BlockHeading>
           <BlockBody>
-            The first release was a pure conversational agent - ask in plain language, the assistant
+            The first release was a pure conversational agent — ask in plain language, the assistant
             handles the rest. I&apos;d argued against that approach from the start and I lost that
             round. It shipped, and user frustration was high.
           </BlockBody>
           <BlockBody>
             I built the alternative as a working prototype in parallel while the conversational
-            version went out. The reason turned out to be structural - access requests are
+            version went out. The reason turned out to be structural — access requests are
             consequential and auditable, and a chat transcript gives you no way to check at a glance
             what you&apos;re about to input. People couldn&apos;t verify what they were approving.
             That was information no amount of argument in a meeting would have produced — the
@@ -126,7 +122,7 @@ export function AgenticWorkflowsStory() {
             which means checking compliance, verifying budgets, cross-referencing status, and
             shows a recommendation alongside each item. Managers can approve an individual item,
             or multiple in one clean action. Escalated items are flagged by Loryn beforehand and
-            suggest the manager the next action. Every action Loryn takes on a manager&apos;s
+            suggest the next action to the manager. Every action Loryn takes on a manager&apos;s
             behalf is logged with a reasoning trail, which can be checked anytime, and is
             reversible within a 12h window.
           </BlockBody>
@@ -147,7 +143,7 @@ export function AgenticWorkflowsStory() {
         <StoryText>
           <BlockHeading>Impact, and what I&apos;d measure next</BlockHeading>
           <BlockBody>
-            The clearest outcome was my design influence - the pattern replaced the shipped
+            The clearest outcome was my design influence — the pattern replaced the shipped
             approach: the product team changed its interaction architecture on the strength of a
             prototype and the user response to the first release.
           </BlockBody>

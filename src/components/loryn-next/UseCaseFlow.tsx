@@ -63,11 +63,11 @@ export function UseCaseFlow() {
             </Card>
             <Arrow size={6.43} />
             <Card width={100}>
-              <CardText>Users arrive at the company&apos;s employee center, and navigates to the form</CardText>
+              <CardText>Users arrive at the company&apos;s employee center and navigate to the form</CardText>
             </Card>
             <Arrow size={6.43} />
             <Card width={100}>
-              <CardText>Traditional form with multiple fields need to be provided by the user</CardText>
+              <CardText>Traditional form with multiple fields needs to be filled in by the user</CardText>
             </Card>
             <Arrow size={6.43} />
             <Card width={100} align="start">

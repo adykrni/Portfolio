@@ -47,24 +47,23 @@ export function DesignSystemStory() {
               When I joined, Loryn existed as an alpha-stage proof of concept — built by engineers
               on an open-source design system, with no one yet owning how it looked or behaved as
               a whole; screens differed across flows, and the same action might use three
-              different button styles. My first task was narrow and urgent -- bring structure
-              quickly, design systems are home ground for me, but because the product needed to
-              look and feel like one coherent thing before the client would trust it enough to
-              scale it.
+              different button styles. My first task was narrow and urgent: bring structure
+              quickly. Design systems are home ground for me, but the product needed to look and
+              feel like one coherent thing before the client would trust it enough to scale it.
             </BlockBody>
           </Subsection>
         </TextOnlySection>
 
         <DeepDiveSection media={<TokenArchitectureFlow />}>
-          <Subsection heading="Three tier token architecture">
+          <Subsection heading="Three-tier token architecture">
             <BlockBody>
-              Firstly, I Implemented the standard practice of three-tier hierarchy. Also Loryn
-              serves for both desktop and mobile, so the UI has to be consistent by default.
-              Secondly, this design system not only live in Figma, but I execute the codebase as
-              well. It was entirely written by Claude code, and without explicit token contracts,
-              the models hallucinate and invents its own values (like spacing, arbitrary colours).
-              With this three-tier system and designsystem.md and .json files, Claude code had a
-              hard contract to build against.
+              First, I implemented the standard three-tier hierarchy. Loryn serves both desktop and
+              mobile, so the UI had to be consistent by default. Second, this design system
+              didn&apos;t only live in Figma — I implemented it in the codebase as well. It was
+              entirely written by Claude Code, and without explicit token contracts, the models
+              hallucinate and invent their own values (like spacing and arbitrary colours). With
+              this three-tier system and designsystem.md and .json files, Claude Code had a hard
+              contract to build against.
             </BlockBody>
           </Subsection>
         </DeepDiveSection>

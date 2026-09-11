@@ -33,7 +33,7 @@ export type ResumeEducation = {
 export const resumeIntro = {
   title: "Resume",
   summary:
-    "5+ years shaping UI-led, systems-driven products across AI, automotive, and finance. Turning ambiguous problems into high-craft and scalable interface design with design-systems and I've been shipping to code since the last year.",
+    "5+ years shaping UI-led, systems-driven products across AI, automotive, and finance. Turning ambiguous problems into high-craft, scalable interface design with design systems — and I've been shipping to code for the past year.",
 };
 
 export const resumeExperience: ResumeRole[] = [
@@ -46,7 +46,7 @@ export const resumeExperience: ResumeRole[] = [
       {
         title: "Loryn AI - Enterprise AI Assistant",
         description:
-          "Designed a 0→1 agentic system for an enterprise product. I was responsible for the IT management vertical covering device management, inventory management, compliance.\n\nBuilt an AI first design system, and patterns for AI-assisted workflows. Shipped features that cut support tickets ~20% and contributed to ~$1.2M in client-measured operational savings. Drove AI-native workflows (Cursor, Claude Code) across ideation, prototyping, and documentation to compress iteration cycles.",
+          "Designed a 0→1 agentic system for an enterprise product. I was responsible for the IT management vertical covering device management, inventory management, and compliance.\n\nBuilt an AI-first design system and patterns for AI-assisted workflows. Shipped features that cut support tickets ~20% and contributed to ~$1.2M in client-measured operational savings. Drove AI-native workflows (Cursor, Claude Code) across ideation, prototyping, and documentation to compress iteration cycles.",
         imageSrc: "/images/loryn-preview.png",
         imageAlt: "Loryn AI chat with SAP system access request form",
         imageWidth: 2600,
@@ -75,7 +75,7 @@ export const resumeExperience: ResumeRole[] = [
   {
     period: "Aug 2021 - June 2022",
     company: "Hypersolid (prev. Code d'azur) - Digital Product Designer",
-    summary: "Shipping UI design for Ecommerce mainly KLM Holidays, and Philips.",
+    summary: "Shipping UI design for e-commerce, mainly KLM Holidays and Philips.",
     projects: [
       {
         title: "KLM Holidays",
@@ -101,7 +101,7 @@ export const resumeSkills: ResumeSkillGroup[] = [
   },
   {
     title: "Development",
-    items: "HTML · CSS · Javascript · React · Tailwind · ShadCN · Git · Github · Claude Code",
+    items: "HTML · CSS · JavaScript · React · Tailwind · ShadCN · Git · GitHub · Claude Code",
   },
 ];
 

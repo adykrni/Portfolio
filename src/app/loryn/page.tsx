@@ -32,8 +32,8 @@ export default function LorynPage() {
           <div className="flex w-full max-w-[700px] flex-col gap-2.5">
             <BlockHeading>Loryn AI</BlockHeading>
             <BlockBody>
-              Shipping an AI-first enterprise product for 12k+ Syngenta employees. Designing Agent
-              Workflows Enterprise Employees Can Trust.
+              Shipping an AI-first enterprise product for 12k+ Syngenta employees. Designing agent
+              workflows that enterprise employees can trust.
             </BlockBody>
           </div>
 
@@ -47,13 +47,13 @@ export default function LorynPage() {
             <BlockBody>
               It went live in August 2025 as a proof of concept. I joined in October 2025 as the
               sole designer on the IT service management functionality, covering it end-to-end,
-              and releasing it in March 2026. I was working with a client-side Experience Lead,
-              and Product Lead as daily partner and a team of 7 engineers.
+              and releasing it in March 2026. I was working with a client-side Experience Lead
+              and Product Lead as daily partners, and a team of 7 engineers.
             </BlockBody>
             <BlockBody>
               Feature scoping came out of the PM&apos;s research; I have to be honest that
               research scope was limited for me. What I&apos;d have wanted to validate before is
-              ticket volume and cost so I went back to the ticket data afterward and checked.
+              ticket volume and cost, so I went back to the ticket data afterward and checked.
               Identity & Access and Hardware & Devices are the two largest automatable ticket
               categories in that data.
             </BlockBody>
