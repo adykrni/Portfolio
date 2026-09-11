@@ -62,8 +62,9 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
 
   // "facts" — a dark device-style preview frame followed by a stack of
   // pill-shaped highlights, in the same enter/exit language as the bubbles.
-  const { mediaLabel, imageSrc, imageAlt, imageHasOwnFrame, imageWidth, imageHeight, facts } =
+  const { mediaLabel, imageSrc, imageAlt, imageHasOwnFrame, imageWidth, imageHeight, facts, navigable } =
     chip.annotation;
+  const isMuted = navigable === false;
   const imageSizes = "(min-width: 1024px) 650px, (min-width: 640px) 420px, 280px";
   return (
     <motion.div
@@ -120,7 +121,9 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
             key={fact}
             variants={itemVariants}
             transition={springTransition}
-            className="font-radio text-[15px] leading-[1.55] tracking-[0.01em] text-[#3a3a3a]"
+            className={`font-radio leading-[1.4] tracking-[0.16px] ${
+              isMuted ? "text-[15px] text-[#585d67]" : "text-[16px] text-[#191b1e]"
+            }`}
           >
             {fact}
           </motion.li>

@@ -23,8 +23,6 @@ export type FactsAnnotation = {
   imageWidth?: number;
   imageHeight?: number;
   facts: string[];
-  /** Mobile homepage layout — when set, overrides `facts` in MobileProjectSection. */
-  mobileFacts?: string[];
   href: string;
   /** When false, hover preview works but click won't navigate to the case study. */
   navigable?: boolean;
@@ -82,11 +80,6 @@ export const projects: BioChip[] = [
       imageWidth: 2600,
       imageHeight: 1704,
       facts: [
-        "0→1 AI enterprise product",
-        "Shipped IT requests and ticket management end-to-end",
-        "Designed AI-first patterns & scaled the design system",
-      ],
-      mobileFacts: [
         "Shipped 0→1 AI enterprise product, currently at 11k DAUs.",
         "Crafted and shipped IT requests and ticket management features",
         "Scaled AI-first design patterns across 3 feature teams (HR, Finance and Procurement)",
@@ -106,10 +99,6 @@ export const projects: BioChip[] = [
       imageWidth: 3900,
       imageHeight: 2412,
       facts: [
-        "UI redesign for wealth management portal",
-        "Improved wealth overview and portfolio management",
-      ],
-      mobileFacts: [
         "Modernized the wealth management portal for 22k DAUs",
         "Redesigned portfolio management feature, and introduced progressive disclosure pattern across the dashboard",
       ],

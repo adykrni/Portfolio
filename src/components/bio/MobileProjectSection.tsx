@@ -87,7 +87,7 @@ export function MobileProjectSection({ chip }: { chip: BioChip }) {
   const annotation: FactsAnnotation = chip.annotation;
   const navigable = isProjectNavigable(chip);
   const showPreview = navigable && Boolean(annotation.imageSrc);
-  const facts = annotation.mobileFacts ?? annotation.facts;
+  const facts = annotation.facts;
 
   return (
     <section className="flex flex-col">
