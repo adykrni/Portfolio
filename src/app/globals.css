@@ -17,7 +17,7 @@
 }
 
 :root {
-  --background: #efefef;
+  --background: #ffffff;
   --foreground: #171717;
   --muted: #171717;
   --grid-line: #dde2ea;
@@ -56,6 +56,7 @@
 html {
   height: auto;
   overflow-y: scroll;
+  background: var(--background);
 }
 
 body {

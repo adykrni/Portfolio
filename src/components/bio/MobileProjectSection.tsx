@@ -60,25 +60,35 @@ function ProjectPreviewImage({
   imageAlt,
   imageWidth,
   imageHeight,
+  href,
 }: {
   imageSrc: string;
   imageAlt?: string;
   imageWidth: number;
   imageHeight: number;
+  href?: string;
 }) {
-  return (
-    <div className="w-full">
-      <Image
-        src={imageSrc}
-        alt={imageAlt ?? ""}
-        width={imageWidth}
-        height={imageHeight}
-        className="h-auto w-full"
-        sizes="(max-width: 768px) calc(100vw - 80px), 520px"
-        unoptimized
-      />
-    </div>
+  const image = (
+    <Image
+      src={imageSrc}
+      alt={imageAlt ?? ""}
+      width={imageWidth}
+      height={imageHeight}
+      className="h-auto w-full"
+      sizes="(max-width: 768px) calc(100vw - 80px), 520px"
+      unoptimized
+    />
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block w-full" aria-label={`Open ${imageAlt ?? "case study"}`}>
+        {image}
+      </Link>
+    );
+  }
+
+  return <div className="w-full">{image}</div>;
 }
 
 export function MobileProjectSection({ chip }: { chip: BioChip }) {
@@ -101,6 +111,7 @@ export function MobileProjectSection({ chip }: { chip: BioChip }) {
               imageAlt={annotation.imageAlt}
               imageWidth={annotation.imageWidth ?? 2600}
               imageHeight={annotation.imageHeight ?? 1704}
+              href={annotation.href}
             />
             <div className="mt-5">
               <ProjectFacts facts={facts} muted={false} />

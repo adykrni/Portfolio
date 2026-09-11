@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     "Product Designer at Accenture Song Design, Berlin based. Focused on UI engineering and design systems for B2B and B2C products.",
 };
 
+export const viewport = {
+  themeColor: "#ffffff",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="font-sans">{children}</body>
+      <body className="bg-background font-sans">{children}</body>
     </html>
   );
 }

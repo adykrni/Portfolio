@@ -16,7 +16,6 @@ import {
 import { FloatingSiteNav } from "@/components/floating-nav/FloatingSiteNav";
 
 import { BioAnnotationLayer } from "./BioAnnotationLayer";
-import { EmployerChip } from "./EmployerChip";
 import { MobileProjectSection } from "./MobileProjectSection";
 import { ProjectRow } from "./ProjectRow";
 
@@ -79,7 +78,6 @@ export function BioPage() {
   }, []);
 
   const anyActive = activeChipId !== null;
-  const isEmployerDimmed = anyActive && activeChipId !== employerChip.id;
 
   return (
     <div className="mx-auto w-full max-w-[520px] px-10 pb-28 pt-16 md:px-[50px] md:py-24">
@@ -95,16 +93,11 @@ export function BioPage() {
           <span className={`${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}>
             {bioIntro.before}
           </span>
-          <EmployerChip
-            label={employerChip.label}
-            isDimmed={isEmployerDimmed}
-            onActivate={() => setActiveChipId(employerChip.id)}
-            onDeactivate={() => handleDeactivate(employerChip.id)}
-            ref={(el) => {
-              if (el) chipRefs.current.set(employerChip.id, el);
-              else chipRefs.current.delete(employerChip.id);
-            }}
-          />
+          <span
+            className={`inline align-baseline rounded-[3px] bg-[#eee] px-[5px] pb-[3px] pt-[2px] text-[16px] leading-[inherit] tracking-[0.16px] text-foreground transition-[filter,opacity] duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${anyActive ? "opacity-20 blur-[3px]" : ""}`}
+          >
+            {employerChip.label}
+          </span>
           <span className={`${dimTransition} ${anyActive ? "opacity-20 blur-[3px]" : ""}`}>
             {bioIntro.after}
           </span>
