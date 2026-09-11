@@ -115,7 +115,7 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
           )}
         </motion.div>
       )}
-      <ul className="flex w-full list-none flex-col gap-2.5 p-0">
+      <ul className="flex w-[80%] list-none flex-col gap-2.5 p-0">
         {facts.map((fact) => (
           <motion.li
             key={fact}
