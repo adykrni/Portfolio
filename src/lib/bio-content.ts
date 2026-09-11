@@ -117,7 +117,7 @@ export const projects: BioChip[] = [
       imageWidth: 2600,
       imageHeight: 1704,
       facts: [
-        "Shipped the global web and mobile UI kits for global product teams covering myAudi app, Audi service portal, and the website.",
+        "Built and shipped web and mobile UI kits across 2 design languages for myAudi app, the web service portal, and marketing, used by 9 product teams globally.",
         "Case study coming soon...",
       ],
       href: "/audi",
