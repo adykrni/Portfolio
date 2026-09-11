@@ -118,7 +118,7 @@ export const projects: BioChip[] = [
       imageHeight: 1704,
       facts: [
         "Shipped the global web and mobile UI kits for global product teams covering myAudi app, Audi service portal, and the website.",
-        "Case study comping soon...",
+        "Case study coming soon...",
       ],
       href: "/audi",
       navigable: false,
@@ -137,7 +137,7 @@ export const projects: BioChip[] = [
       imageHeight: 1704,
       facts: [
         "Shipped the UI kit for KLM Holidays product teams leading to faster A/B tests, and small iteration cycles.",
-        "Case study comping soon...",
+        "Case study coming soon...",
       ],
       href: "/klm",
       navigable: false,

@@ -122,7 +122,7 @@ export function BioAnnotation({ chip }: BioAnnotationProps) {
             variants={itemVariants}
             transition={springTransition}
             className={`font-radio leading-[1.4] tracking-[0.16px] ${
-              isMuted ? "text-[15px] text-[#585d67]" : "text-[16px] text-[#191b1e]"
+              isMuted ? "text-[16px] text-[#585d67]" : "text-[16px] text-[#191b1e]"
             }`}
           >
             {fact}

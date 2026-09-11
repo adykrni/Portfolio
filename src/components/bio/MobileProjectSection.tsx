@@ -45,7 +45,7 @@ function ProjectFacts({
         <li
           key={fact}
           className={`font-radio leading-[1.4] tracking-[0.16px] ${
-            muted ? "text-[15px] text-[#585d67]" : "text-[16px] text-[#191b1e]"
+            muted ? "text-[16px] text-[#585d67]" : "text-[16px] text-[#191b1e]"
           }`}
         >
           {fact}
