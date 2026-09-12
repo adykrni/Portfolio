@@ -1,26 +1,7 @@
-import { ImageCarousel } from "@/components/ImageCarousel";
+import { CaseStudyImage } from "@/components/CaseStudyImage";
 import { FloatingCaseStudyNav } from "@/components/floating-nav/FloatingCaseStudyNav";
 import { BlockHeading, BlockBody } from "@/components/loryn-next/blocks";
 import { LorynStoryTabs } from "@/components/loryn-next/LorynStoryTabs";
-
-const lorynHeroScreens = [
-  {
-    src: "/images/Loryn-Screen-1.png",
-    alt: "Loryn AI chat — Microsoft 365 license upgrade flow with license type selection",
-  },
-  {
-    src: "/images/Loryn-Screen-2.png",
-    alt: "Loryn AI chat — extend external employee account duration with date picker",
-  },
-  {
-    src: "/images/Loryn-Screen-3.png",
-    alt: "Loryn AI chat — PC health diagnosis connecting to IT support agent",
-  },
-  {
-    src: "/images/Loryn-Screen-4.png",
-    alt: "Loryn AI chat — device diagnostics permission prompt for slow laptop",
-  },
-] as const;
 
 export default function LorynPage() {
   return (
@@ -59,7 +40,12 @@ export default function LorynPage() {
             </BlockBody>
           </div>
 
-          <ImageCarousel images={[...lorynHeroScreens]} className="w-full" />
+          <CaseStudyImage
+            src="/images/loryn/Loryn-new.png"
+            alt="Loryn AI — product overview"
+            aspectRatio="3112/2004"
+            priority
+          />
 
           <LorynStoryTabs />
         </div>
